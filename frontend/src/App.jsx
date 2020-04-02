@@ -20,6 +20,8 @@ class App extends React.Component {
   }
 
   render() {
+    const storage = localStorage.getItem('email')
+
     return (
       <>
         <div className={main}>
@@ -34,7 +36,7 @@ class App extends React.Component {
               path="/login"
               render={(props) => <Login {...props} />}
             />
-            {this.props.email ? (
+            {storage ? (
               <>
                 <Route
                   exact
