@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
+import Filters from "./Filters";
 
 class Account extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Account extends React.Component {
   render() {
     return (
       <div>
-        <b>AutoClicker</b>
+        <Filters></Filters>
       </div>
     );
   }

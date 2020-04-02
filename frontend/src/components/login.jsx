@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { addUser } from "../redux/action";
 import { withRouter } from "react-router-dom";
 import { loginFetch } from "../allFetch/loginFetch";
-import Filters from "./Filters";
 
 class Login extends React.Component {
   constructor(props) {
@@ -57,7 +56,6 @@ class Login extends React.Component {
         >
           Авторизация
         </button>
-        <Filters></Filters>
       </div>
     );
   }
