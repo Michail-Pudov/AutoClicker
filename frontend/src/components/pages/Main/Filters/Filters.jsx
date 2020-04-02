@@ -10,12 +10,14 @@ import KeyWords from "./filterComponentsAndFetch/KeyWords";
 import SpecializationsAndProfissions from "./filterComponentsAndFetch/specializationsAndProfissions";
 import Dictionaries from "./filterComponentsAndFetch/dictionaries";
 import WageLevel from "./filterComponentsAndFetch/WageLevel";
+import Vacansies from "../../Vacansies/vacansies";
 
 class Filters extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      vacansies: false,
       blockProfessions: false,
       areas: { areas: [] },
       specializations: [],
@@ -99,7 +101,17 @@ class Filters extends React.Component {
         ></SpecializationsAndProfissions>
         <Dictionaries state={this.state}></Dictionaries>
         <WageLevel></WageLevel>
-        <button onClick={() => this.saveData()}>Сохранить</button>
+        <button
+          onClick={() => {
+            this.saveData();
+            this.setState({
+              vacansies: true
+            });
+          }}
+        >
+          Сохранить
+        </button>
+        {this.state.vacansies ? <Vacansies></Vacansies> : null}
       </div>
     );
   }

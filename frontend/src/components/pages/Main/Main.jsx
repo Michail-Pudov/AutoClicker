@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Filters from './Filters/Filters';
+import React, { Component } from "react";
+import Filters from "./Filters/Filters";
 
 class Main extends Component {
   render() {
