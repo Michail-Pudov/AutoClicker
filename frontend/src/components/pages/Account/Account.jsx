@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import classes from './Account.module.css';
 
+
 class Account extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +21,7 @@ class Account extends React.Component {
     );
   }
 }
+
 
 const mapStateToProps = (state) => ({
   email: state.email,

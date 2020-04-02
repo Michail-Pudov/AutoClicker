@@ -15,12 +15,11 @@ const { main } = classes;
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 
   render() {
-    const storage = localStorage.getItem('email')
+    const storage = localStorage.getItem('email');
 
     return (
       <>
