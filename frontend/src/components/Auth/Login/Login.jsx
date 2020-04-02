@@ -11,7 +11,7 @@ class Login extends React.Component {
     this.state = {
       email: "",
       password: "",
-      status: false
+      status: false,
     };
   }
 
@@ -24,7 +24,7 @@ class Login extends React.Component {
   userAuthorization = async () => {
     let result = await loginFetch(this.state.email, this.state.password);
     this.setState({
-      status: result.logIn
+      status: result.logIn,
     });
   };
 
@@ -48,6 +48,7 @@ class Login extends React.Component {
             await this.userAuthorization();
             if (this.state.status) {
               this.props.addUser(this.state.email);
+              localStorage.setItem("email", this.state.email);
               this.props.history.push(`/`);
             } else {
               document.querySelector(".log").innerHTML += "Неверные данные";
