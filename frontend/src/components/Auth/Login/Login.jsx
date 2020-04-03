@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addUser } from "../redux/action";
+import { addUser } from "../../../redux/action";
 import { withRouter } from "react-router-dom";
-import { loginFetch } from "../allFetch/loginFetch";
+import { loginFetch } from "../../../allFetch/loginFetch";
 
 class Login extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class Login extends React.Component {
     this.state = {
       email: "",
       password: "",
-      status: false
+      status: false,
     };
   }
 
@@ -24,7 +24,7 @@ class Login extends React.Component {
   userAuthorization = async () => {
     let result = await loginFetch(this.state.email, this.state.password);
     this.setState({
-      status: result.logIn
+      status: result.logIn,
     });
   };
 
@@ -35,20 +35,21 @@ class Login extends React.Component {
           name="email"
           placeholder="Email"
           onChange={e => this.createData(e)}
-        ></input>
+        />
         <br />
         <input
           name="password"
           placeholder="Password"
           onChange={e => this.createData(e)}
-        ></input>
+        />
         <br />
         <button
           onClick={async () => {
             await this.userAuthorization();
             if (this.state.status) {
               this.props.addUser(this.state.email);
-              this.props.history.push(`/account`);
+              localStorage.setItem("email", this.state.email);
+              this.props.history.push(`/`);
             } else {
               document.querySelector(".log").innerHTML += "Неверные данные";
             }

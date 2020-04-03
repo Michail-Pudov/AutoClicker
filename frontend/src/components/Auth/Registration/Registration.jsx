@@ -1,5 +1,5 @@
 import React from "react";
-import { registrationFetch } from "../allFetch/registrationFetch";
+import { registrationFetch } from "../../../allFetch/registrationFetch";
 
 class Registration extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Registration extends React.Component {
     });
   }
 
-  createUser = async () => {
+  createUser = async ( ) => {
     let result = await registrationFetch(this.state.email, this.state.password);
     this.setState({
       status: result.registration
@@ -32,13 +32,13 @@ class Registration extends React.Component {
           name="email"
           placeholder="Email"
           onChange={e => this.createData(e)}
-        ></input>
+        />
         <br />
         <input
           name="password"
           placeholder="Password"
           onChange={e => this.createData(e)}
-        ></input>
+        />
         <br />
         <button
           onClick={async () => {
