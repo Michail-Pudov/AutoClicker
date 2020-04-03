@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import classes from "./App.module.css";
 import Registration from "./components/Auth/Registration/Registration";
 import Login from "./components/Auth/Login/Login";
 import Header from "./components/Header-links/Header";
@@ -12,7 +11,7 @@ import Showvacancy from './components/pages/crmComponents/Showvacancy'
 import Addvacancy from './components/pages/crmComponents/Addvacancy'
 
 
-const { main } = classes;
+
 
 class App extends React.Component {
   constructor(props) {
