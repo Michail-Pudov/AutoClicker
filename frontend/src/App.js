@@ -6,6 +6,8 @@ import Login from "./components/Auth/Login/Login";
 import Header from "./components/Header-links/Header";
 import Account from "./components/pages/Account/Account";
 import Main from "./components/pages/Main/Main";
+import Showvacancy from "./components/pages/crmComponents/Showvacancy";
+import Addvacancy from "./components/pages/crmComponents/Addvacancy";
 
 class App extends React.Component {
   constructor(props) {
@@ -36,6 +38,12 @@ class App extends React.Component {
                   <Route path="/account">
                     <Account />
                   </Route>
+                  <Route
+                    exact
+                    path="/crm/show-vacancy"
+                    component={Showvacancy}
+                  />
+                  <Route exact path="/crm/add" component={Addvacancy} />
                 </>
               ) : (
                 <Redirect to="/login" />

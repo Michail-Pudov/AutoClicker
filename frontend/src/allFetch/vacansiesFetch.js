@@ -1,4 +1,6 @@
 export const vacansiesFetch = async payload => {
+  console.log(payload);
+
   let response = await fetch(
     `https://api.hh.ru/vacancies?salary=${
       payload.WageLevel ? payload.WageLevel : 10000
