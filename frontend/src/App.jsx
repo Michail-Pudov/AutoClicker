@@ -1,14 +1,11 @@
-import React from 'react';
-import {
-  withRouter, Route, Switch, Redirect,
-} from 'react-router-dom';
-import { connect } from 'react-redux';
-import Registration from './components/Auth/Registration/Registration';
-import Login from './components/Auth/Login/Login';
-import Header from './components/Header-links/Header';
-import Account from './components/pages/Account/Account';
-import Main from './components/pages/Main/Main';
-
+import React from "react";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import Registration from "./components/Auth/Registration/Registration";
+import Login from "./components/Auth/Login/Login";
+import Header from "./components/Header-links/Header";
+import Account from "./components/pages/Account/Account";
+import Main from "./components/pages/Main/Main";
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +14,7 @@ class App extends React.Component {
   }
 
   render() {
-    const storage = localStorage.getItem('email');
+    const storage = localStorage.getItem("email");
 
     return (
       <>
@@ -28,18 +25,12 @@ class App extends React.Component {
               <Route
                 exact
                 path="/registration"
-                render={(props) => <Registration {...props} />}
+                render={props => <Registration {...props} />}
               />
-              <Route
-                path="/login"
-                render={(props) => <Login {...props} />}
-              />
-              {(storage && this.props.email) ? (
+              <Route path="/login" render={props => <Login {...props} />} />
+              {storage && this.props.email ? (
                 <>
-                  <Route
-                    exact
-                    path="/"
-                  >
+                  <Route exact path="/">
                     <Main />
                   </Route>
                   <Route path="/account">
@@ -57,8 +48,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  email: state.email,
+const mapStateToProps = state => ({
+  email: state.email
 });
 
 export default withRouter(connect(mapStateToProps)(App));
