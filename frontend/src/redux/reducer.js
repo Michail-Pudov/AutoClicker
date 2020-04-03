@@ -1,7 +1,8 @@
-import { ADD_USER } from "./action-types";
+import { ADD_USER, WRITE_FILTERS } from "./action-types";
 
 const initialState = {
-  email: false
+  email: false,
+  filters: {}
 };
 
 export const reducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         email: action.email
+      };
+    case WRITE_FILTERS:
+      return {
+        ...state,
+        filters: action.filters
       };
     default:
       return state;

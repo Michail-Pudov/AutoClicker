@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -7,6 +8,7 @@ import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import { reducer } from './redux/reducer';
 import App from './App';
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

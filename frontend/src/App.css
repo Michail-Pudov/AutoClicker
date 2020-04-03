@@ -1,0 +1,12 @@
+@import '~materialize-css/dist/css/materialize.min.css';
+
+nav .brand-logo {
+  margin-left: 20px;
+}
+
+select {
+  border: 1px solid lightgray !important;
+}
+select:focus {
+  outline: 1px solid #26a69a !important;
+}
