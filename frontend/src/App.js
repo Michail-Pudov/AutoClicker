@@ -5,6 +5,8 @@ import Login from "./components/login";
 import Header from "./components/Header";
 import Account from "./components/Account";
 import { connect } from "react-redux";
+import Showvacancy from './components/crmComponents/Showvacancy'
+import Addvacancy from './components/crmComponents/Addvacancy'
 
 class App extends React.Component {
   constructor(props) {
@@ -28,14 +30,24 @@ class App extends React.Component {
               path="/login"
               render={props => <Login {...props}></Login>}
             ></Route>
+
             {this.props.email ? (
+              <>
               <Route path="/account">
                 <Account />
               </Route>
+            
+          <Route exact path='/crm/show-vacancy' component={Showvacancy} />
+          <Route exact path='/crm/add' component={Addvacancy} />
+          </>
             ) : (
               <Redirect to="/login" />
             )}
           </Switch>
+        </div>
+        
+        <div>
+
         </div>
       </>
     );
