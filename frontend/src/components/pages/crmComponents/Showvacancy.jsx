@@ -1,6 +1,8 @@
 import React from 'react'
 import Table from './Components/Table'
-import {vacancyFetch} from '../../allFetch/vacancyFetch'
+import {vacancyFetch} from '../../../allFetch/vacancyFetch'
+import AddtoBase from './Components/AddtoBase'
+import Filters from '../Main/Filters/Filters'
 //хардкод для отображения  потом заменим на редакс
 const data = [
   {id:1, title: 'Front-end', description: 'Desc', salary:100000, link: 'http://'},
@@ -17,6 +19,7 @@ class Showvacancy extends React.Component {
          
     }
   }
+  componentDidMount() {}
   // getVacancy = async () => {
   //   let result = await vacancyFetch();
   //   this.setState({
@@ -26,12 +29,15 @@ class Showvacancy extends React.Component {
     
   // };
 
+
   render() {
     return (
    <>
-   <h1>Текущие отклики</h1>
+   <h1>Загрузить вакансии</h1>
+   <div>
+     <AddtoBase />
+   </div>
       <div>
-        <Table data={data}/>
       </div>
     </>
     )

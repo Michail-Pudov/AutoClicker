@@ -1,63 +1,62 @@
 import React from "react";
-import Registration from "./components/registration";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import Login from "./components/login";
-import Header from "./components/Header";
-import Account from "./components/Account";
 import { connect } from "react-redux";
-import Showvacancy from './components/crmComponents/Showvacancy'
-import Addvacancy from './components/crmComponents/Addvacancy'
+import classes from "./App.module.css";
+import Registration from "./components/Auth/Registration/Registration";
+import Login from "./components/Auth/Login/Login";
+import Header from "./components/Header-links/Header";
+import Account from "./components/pages/Account/Account";
+import Main from "./components/pages/Main/Main";
+import Vacansies from "./components/pages/Vacansies/vacansies";
+import Showvacancy from './components/pages/crmComponents/Showvacancy'
+import Addvacancy from './components/pages/crmComponents/Addvacancy'
+
+
+const { main } = classes;
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 
   render() {
+    const storage = localStorage.getItem("email");
+
     return (
       <>
-        <div>
+        <div className={main}>
           <Header />
           <Switch>
             <Route
               exact
-              path="/"
-              render={props => <Registration {...props}></Registration>}
-            ></Route>
-            <Route
-              path="/login"
-              render={props => <Login {...props}></Login>}
-            ></Route>
-
-            {this.props.email ? (
+              path="/registration"
+              render={props => <Registration {...props} />}
+            />
+            <Route path="/login" render={props => <Login {...props} />} />
+            {storage ? (
               <>
-              <Route path="/account">
-                <Account />
-              </Route>
-            
-          <Route exact path='/crm/show-vacancy' component={Showvacancy} />
-          <Route exact path='/crm/add' component={Addvacancy} />
-          </>
+                <Route exact path="/">
+                  <Main />
+                </Route>
+                <Route path="/account">
+                  <Account />
+                </Route>
+                <Route exact path='/crm/show-vacancy' component={Showvacancy} />
+                <Route exact path='/crm/add' component={Addvacancy} />
+              </>
             ) : (
-              <Redirect to="/login" />
-            )}
+                <Redirect to="/login" />
+              )}
           </Switch>
-        </div>
-        
-        <div>
-
         </div>
       </>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    email: state.email
-  };
-};
+const mapStateToProps = state => ({
+  email: state.email
+});
 
 export default withRouter(connect(mapStateToProps)(App));
