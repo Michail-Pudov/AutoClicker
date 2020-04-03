@@ -16,7 +16,7 @@ router.post("/registration", async function (req, res) {
       password: await bcrypt.hash(password, 10)
     });
 
-    res.json({ registration: true });
+    res.json({ registration: true })
   } else {
     res.json({ registration: false });
   }
