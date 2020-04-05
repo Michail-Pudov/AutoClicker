@@ -8,6 +8,7 @@ import Account from "./components/pages/Account/Account";
 import Main from "./components/pages/Main/Main";
 import Showvacancy from "./components/pages/crmComponents/Showvacancy";
 import Addvacancy from "./components/pages/crmComponents/Addvacancy";
+import Home from "./components/pages/Home/Home";
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +34,9 @@ class App extends React.Component {
               {storage && this.props.email ? (
                 <>
                   <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route exact path="/search">
                     <Main />
                   </Route>
                   <Route path="/account">
@@ -56,8 +60,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  email: state.email
+const mapStateToProps = (state) => ({
+  email: state.email,
 });
 
 export default withRouter(connect(mapStateToProps)(App));
