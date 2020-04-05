@@ -4,7 +4,7 @@ import Filters from './Filters/Filters';
 class Main extends Component {
   render() {
     return (
-      <div>
+      <div className="search">
         <h1>Главная страница</h1>
         <Filters />
       </div>

@@ -1,48 +1,44 @@
-import React, { PureComponent } from "react";
-import { vacansiesFetch } from "../../../allFetch/vacansiesFetch";
-import { connect } from "react-redux";
-import { writeFilters } from "../../../redux/action";
+import React from 'react';
+import { connect } from 'react-redux';
+import { vacansiesFetch } from '../../../allFetch/vacansiesFetch';
+import { writeFilters } from '../../../redux/action';
 
 class Vacansies extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      vacansies: [{ name: "" }]
+      vacansies: [{ name: '' }],
     };
   }
 
   async componentDidMount() {
-    let vacansies = await vacansiesFetch(this.props.filters);
+    const vacansies = await vacansiesFetch(this.props.filters);
     this.setState({
-      vacansies
+      vacansies,
     });
   }
 
   render() {
     return (
       <div>
-        {this.state.vacansies.map(item => {
-          return (
-            <>
-              <br />
-              <a href={item.alternate_url}>{item.name}</a>
-            </>
-          );
-        })}
+        {this.state.vacansies.map((item, index) => (
+          <div key={index}>
+            <br />
+            <a href={item.alternate_url}>{item.name}</a>
+          </div>
+        ))}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    filters: state.filters
-  };
-};
+const mapStateToProps = (state) => ({
+  filters: state.filters,
+});
 
 const mapDispatchToProps = {
-  writeFilters
+  writeFilters,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vacansies);

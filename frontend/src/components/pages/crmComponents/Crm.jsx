@@ -1,33 +1,34 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import { withRouter, Link } from "react-router-dom";
-import {vacancyFetch} from '../../../allFetch/vacancyFetch'
+import React from 'react';
+import {
+  Switch, Route, withRouter, Link,
+} from 'react-router-dom';
+
+import { vacancyFetch } from '../../../allFetch/vacancyFetch';
 
 class Crm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      
-    }
+
+    };
   }
-  
 
   render() {
     return (
       <>
         <h1>Общая база моих откликов</h1>
-        <div className='crmNav'>
-          <Link to='/crm/bd'>Зайти в текущую базу</Link>
+        <div className="crmNav">
+          <Link to="/crm/bd">Зайти в текущую базу</Link>
           <br />
-          <Link to='/crm/show-vacancy'>Загрузить новые вакансии в базу</Link>
+          <Link to="/crm/show-vacancy">Загрузить новые вакансии в базу</Link>
           <br />
-          <Link to='/crm/add'>Добавить вакансию вручную</Link>
+          <Link to="/crm/add">Добавить вакансию вручную</Link>
 
         </div>
       </>
-    )
+    );
   }
 }
 
-export default Crm
+export default Crm;

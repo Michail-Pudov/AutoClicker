@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        <h1>Домашняя страница</h1>
+      <div className="home white-text">
+        <h1>Найти работу!</h1>
+        <h2>Быстро!</h2>
+        <Link to="/search" className="grey-text text-darken-4">
+          <button type="button" className="btn-large grey lighten-4 grey-text text-darken-4">
+            <i className="material-icons right">search</i>
+            Сейчас!
+          </button>
+        </Link>
       </div>
     );
   }
