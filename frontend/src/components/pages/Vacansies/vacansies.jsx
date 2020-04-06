@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import M from 'materialize-css';
 import { vacansiesFetch } from '../../../allFetch/vacansiesFetch';
 import { writeFilters } from '../../../redux/action';
 import ModalWindow from './components/modalWindow';
 import { vacansiesToTheDatabase } from '../../../allFetch/vacansiesToTheDatabase';
+import Vacancy from './components/Vacancy';
 
 class Vacansies extends React.Component {
   constructor(props) {
@@ -21,27 +21,6 @@ class Vacansies extends React.Component {
   }
 
   async componentDidMount() {
-    const options = {
-      onOpenStart: () => {
-        console.log('Open Start');
-      },
-      onOpenEnd: () => {
-        console.log('Open End');
-      },
-      onCloseStart: () => {
-        console.log('Close Start');
-      },
-      onCloseEnd: () => {
-        console.log('Close End');
-      },
-      inDuration: 250,
-      outDuration: 250,
-      opacity: 0.5,
-      dismissible: false,
-      startingTop: '4%',
-      endingTop: '30%',
-    };
-    M.Modal.init(this.Modal, options);
     const vacansies = await vacansiesFetch(this.props.filters);
     this.setState({
       vacansies,
@@ -80,44 +59,25 @@ class Vacansies extends React.Component {
   }
 
   render() {
+
     return (
       <div>
-
+        {this.state.modalWindow ? (
+          <Vacancy
+            closeModalWindowAndWriteVacansies={this.closeModalWindowAndWriteVacansies.bind(
+              this,
+            )}
+            vacansies={this.state.certainVacancy}
+          />
+        ) : null}
         {this.state.vacansies.map((item, index) => (
-          <div key={index}>
-            <br />
-
-            <a href={item.alternate_url}>
-              <a
-                className="modal-trigger"
-                data-target="modal1"
-              >
-                {item.name}
-              </a>
-            </a>
-
-            <div
-              ref={(Modal) => {
-                this.Modal = Modal;
-              }}
-              id="modal1"
-              className="modal"
-            >
-              <div className="modal-content">
-                <h4>{item.name}</h4>
-                <p>A bunch of text</p>
-              </div>
-              <div className="modal-footer">
-                <a className="modal-close waves-effect waves-red btn-flat">
-                  Disagree
-                </a>
-                <a className="modal-close waves-effect waves-green btn-flat">
-                  Agree
-                </a>
-              </div>
-            </div>
-
-          </div>
+          <Vacancy
+            onOpen={() => this.openModalWindow(index, item.name)}
+            item={item}
+            index={index}
+            key={index}
+            vacansies={this.state.certainVacancy}
+          />
         ))}
       </div>
     );
