@@ -12,8 +12,6 @@ class Account extends React.Component {
   }
 
   async componentDidMount() {
-    // let vacancies = await uploadUserJobsFetch(localStorage.email);
-    // console.log(vacancies);
     this.props.getUserJobsSaga(localStorage.email);
   }
 
@@ -34,6 +32,7 @@ class Account extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  userJobs: state.userJobs,
   email: state.email
 });
 
