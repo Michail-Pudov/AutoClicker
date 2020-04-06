@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
 
 class Account extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Account extends React.Component {
         </div>
         <div>
           <Link to="/crm">Зайти в текущую базу</Link>
-          <br></br>
+          <br />
           <b>Здесь будет статистика</b>
         </div>
       </>
@@ -25,12 +25,12 @@ class Account extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  email: state.email
+const mapStateToProps = (state) => ({
+  email: state.email,
 });
 
 const mapDispatchToProps = {};
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Account)
+  connect(mapStateToProps, mapDispatchToProps)(Account),
 );

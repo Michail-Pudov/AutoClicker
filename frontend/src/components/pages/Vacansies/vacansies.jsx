@@ -63,11 +63,12 @@ class Vacansies extends React.Component {
       <div>
         {modalWindow ? (
           <Vacancy
-
             vacansies={certainVacancy}
           />
         ) : null}
+
         {vacansies.map((item, index) => (
+
           <Vacancy
             onOpen={() => this.openModalWindow(index, item.name)}
             item={item}
