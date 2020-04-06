@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-// import classes from './Account.module.css';
 import Crm from "../crmComponents/Crm";
 
 class Account extends React.Component {
@@ -20,8 +19,8 @@ class Account extends React.Component {
           <h2>Личный кабинет</h2>
         </div>
         <div>
-          <Crm data={this.state.result} />
-          <b>AutoClicker</b>
+          <Crm />
+          <b>Здесь будет статистика</b>
         </div>
       </>
     );
