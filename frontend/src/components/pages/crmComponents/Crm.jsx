@@ -12,9 +12,7 @@ class Crm extends React.Component {
     return (
       <>
         <h3>Общая база моих откликов</h3>
-        <div className="crmNav">
-          <Link to="/crm/bd">Зайти в текущую базу</Link>
-        </div>
+        <div className="crmNav"></div>
       </>
     );
   }
