@@ -1,0 +1,7 @@
+.modalWindow {
+  position: absolute;
+  margin: auto;
+  background-color: rgba(120, 197, 228, 0.8);
+  height: 50%;
+  width:50%;
+}

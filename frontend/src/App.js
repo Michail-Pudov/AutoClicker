@@ -8,6 +8,7 @@ import Account from "./components/pages/Account/Account";
 import Main from "./components/pages/Main/Main";
 import Home from "./components/pages/Home/Home";
 import Footer from "./components/Footer/Footer";
+import CRM from "./components/pages/crmComponents/Crm";
 
 const mainBackground = {
   background:
@@ -88,7 +89,7 @@ class App extends React.Component {
                     <Route exact path="/account">
                       <Account />
                     </Route>
-                    {/* <Route exact path="/crm/add" component={Addvacancy} /> */}
+                    <Route exact path="/crm" component={CRM} />
                   </>
                 ) : (
                   <Redirect to="/login" />

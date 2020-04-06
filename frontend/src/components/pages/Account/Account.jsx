@@ -1,15 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import Crm from "../crmComponents/Crm";
+import { withRouter, Link } from "react-router-dom";
 
 class Account extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      newTask: ""
-    };
+    this.state = {};
   }
 
   render() {
@@ -19,7 +16,8 @@ class Account extends React.Component {
           <h2>Личный кабинет</h2>
         </div>
         <div>
-          <Crm />
+          <Link to="/crm">Зайти в текущую базу</Link>
+          <br></br>
           <b>Здесь будет статистика</b>
         </div>
       </>
