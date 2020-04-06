@@ -1,4 +1,4 @@
-import { ADD_USER, WRITE_FILTERS } from "./action-types";
+import { ADD_USER, WRITE_FILTERS, GET_USER_JOBS } from "./action-types";
 
 const initialState = {
   email: false,
@@ -16,6 +16,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         filters: action.filters
+      };
+    case GET_USER_JOBS:
+      return {
+        ...state,
+        userJobs: action.userJobs
       };
     default:
       return state;

@@ -52,7 +52,6 @@ class Vacansies extends React.Component {
         localStorage.email,
         vacansies
       );
-      console.log(answerFetch);
     }
   }
   render() {

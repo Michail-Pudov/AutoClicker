@@ -1,4 +1,4 @@
-import { ADD_USER, WRITE_FILTERS } from "./action-types";
+import { ADD_USER, WRITE_FILTERS, GET_USER_JOBS, SAGA_GET_USER_JOBS } from "./action-types";
 
 export const addUser = payload => {
   return {
@@ -13,3 +13,18 @@ export const writeFilters = payload => {
     filters: payload
   };
 };
+
+export const getUserJobs = payload => {
+  return {
+    type: GET_USER_JOBS,
+    userJobs: payload.arrayAllVacansies
+  };
+};
+
+export const getUserJobsSaga = payload => {
+  return {
+    type: SAGA_GET_USER_JOBS,
+    email: payload
+  };
+};
+

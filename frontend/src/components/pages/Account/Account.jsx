@@ -1,12 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
+import { uploadUserJobsFetch } from "../../../allFetch/uploadUserJobsFetch";
+import { getUserJobsSaga } from "../../../redux/action";
 
 class Account extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {};
+  }
+
+  async componentDidMount() {
+    // let vacancies = await uploadUserJobsFetch(localStorage.email);
+    // console.log(vacancies);
+    this.props.getUserJobsSaga(localStorage.email);
   }
 
   render() {
@@ -29,7 +37,9 @@ const mapStateToProps = state => ({
   email: state.email
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  getUserJobsSaga
+};
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(Account)
