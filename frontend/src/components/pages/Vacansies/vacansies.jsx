@@ -13,11 +13,7 @@ class Vacansies extends React.Component {
   }
 
   async componentDidMount() {
-    console.log(this.props.filters);
-    
     let vacansies = await vacansiesFetch(this.props.filters);
-    console.log(vacansies);
-    
     this.setState({
       vacansies
     });
@@ -41,8 +37,7 @@ class Vacansies extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    filters: state.filters,
-    
+    filters: state.filters
   };
 };
 

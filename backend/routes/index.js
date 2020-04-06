@@ -2,28 +2,27 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
-const Vacancy = require('../models/vacancy')
+const Vacancy = require("../models/vacancy");
 
 ////Ручка для регистрации
-router.post("/registration", async function (req, res) {
+router.post("/registration", async function(req, res) {
   let email = req.body.email;
   let password = req.body.password;
   let user = await User.findOne({ email: email });
-  
   if (!user) {
     User.create({
       email: email,
       password: await bcrypt.hash(password, 10)
     });
 
-    res.json({ registration: true })
+    res.json({ registration: true });
   } else {
     res.json({ registration: false });
   }
 });
 
 ////Ручка для авторизации
-router.post("/login", async function (req, res) {
+router.post("/login", async function(req, res) {
   let email = req.body.email;
   let password = req.body.password;
   let user = await User.findOne({ email: email });
@@ -34,7 +33,5 @@ router.post("/login", async function (req, res) {
     res.json({ logIn: false });
   }
 });
-
-
 
 module.exports = router;

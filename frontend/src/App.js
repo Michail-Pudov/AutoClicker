@@ -6,12 +6,8 @@ import Login from "./components/Auth/Login/Login";
 import Header from "./components/Header-links/Header";
 import Account from "./components/pages/Account/Account";
 import Main from "./components/pages/Main/Main";
-import Vacansies from "./components/pages/Vacansies/vacansies";
-import Showvacancy from './components/pages/crmComponents/Showvacancy'
-import Addvacancy from './components/pages/crmComponents/Addvacancy'
-
-
-
+import Showvacancy from "./components/pages/crmComponents/Showvacancy";
+import Addvacancy from "./components/pages/crmComponents/Addvacancy";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,30 +20,32 @@ class App extends React.Component {
 
     return (
       <>
-        <div className={main}>
+        <div>
           <Header />
-          <Switch>
-            <Route
-              exact
-              path="/registration"
-              render={props => <Registration {...props} />}
-            />
-            <Route path="/login" render={props => <Login {...props} />} />
-            {storage ? (
-              <>
-                <Route exact path="/">
-                  <Main />
-                </Route>
-                <Route path="/account">
-                  <Account />
-                </Route>
-                <Route exact path='/crm/show-vacancy' component={Showvacancy} />
-                <Route exact path='/crm/add' component={Addvacancy} />
-              </>
-            ) : (
+          <div className="container">
+            <Switch>
+              <Route
+                exact
+                path="/registration"
+                render={props => <Registration {...props} />}
+              />
+              <Route path="/login" render={props => <Login {...props} />} />
+              {storage && this.props.email ? (
+                <>
+                  <Route exact path="/">
+                    <Main />
+                  </Route>
+                  <Route path="/account">
+                    <Account />
+                  </Route>
+                  <Route exact path="/crm/show-vacancy" component={Showvacancy}/>
+                  <Route exact path="/crm/add" component={Addvacancy} />
+                </>
+              ) : (
                 <Redirect to="/login" />
               )}
-          </Switch>
+            </Switch>
+          </div>
         </div>
       </>
     );

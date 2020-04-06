@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { writeFilters } from "../../../../redux/action";
 import {
@@ -34,9 +34,9 @@ class Filters extends React.Component {
   }
 
   async componentDidMount() {
-    let areas = await fetchAreas();
-    let specializations = await fetchSpecializations();
-    let dictionaries = await fetchDictionaries();
+    const areas = await fetchAreas();
+    const specializations = await fetchSpecializations();
+    const dictionaries = await fetchDictionaries();
     this.setState({
       areas,
       specializations,
@@ -45,11 +45,11 @@ class Filters extends React.Component {
   }
 
   professions() {
-    let specializationsIndex = document.querySelector(
+    const specializationsIndex = document.querySelector(
       ".select__specializations"
     ).value;
-    let specializationsIndexZero = specializationsIndex.split(" ");
-    let profArray = this.state.specializations[+specializationsIndexZero[0]]
+    const specializationsIndexZero = specializationsIndex.split(" ");
+    const profArray = this.state.specializations[+specializationsIndexZero[0]]
       .specializations;
     this.setState({
       blockProfessions: true,
@@ -58,25 +58,26 @@ class Filters extends React.Component {
   }
 
   saveData() {
-    let specialization = document.querySelector(".select__specializations")
+    const specialization = document.querySelector(".select__specializations")
       .value;
-    let specializationsIndexOne = specialization.split(" ");
-    let employment = document.querySelector(".select__employment").value;
-    let experience = document.querySelector(".select__experience").value;
-    let schedule = document.querySelector(".select__schedule").value;
-    let vacancy_type = document.querySelector(".select__vacancy_type").value;
-    let vacancy_label = document.querySelector(".select__vacancy_label").value;
-    let vacancy_search_fields = document.querySelector(
+    const specializationsIndexOne = specialization.split(" ");
+    const employment = document.querySelector(".select__employment").value;
+    const experience = document.querySelector(".select__experience").value;
+    const schedule = document.querySelector(".select__schedule").value;
+    const vacancy_type = document.querySelector(".select__vacancy_type").value;
+    const vacancy_label = document.querySelector(".select__vacancy_label")
+      .value;
+    const vacancy_search_fields = document.querySelector(
       ".select__vacancy_search_fields"
     ).value;
     let keyWords = document.querySelector(".keyWords").value;
     keyWords = keyWords.replace(/\s/, "&");
-    let WageLevel = document.querySelector(".WageLevel").value;
+    const WageLevel = document.querySelector(".WageLevel").value;
     let profession = "1.395";
     if (document.querySelector(".select__professions")) {
       profession = document.querySelector(".select__professions").value;
     }
-    let data = {
+    const data = {
       specialization: specializationsIndexOne[1],
       profession,
       employment,
@@ -93,25 +94,29 @@ class Filters extends React.Component {
 
   render() {
     return (
-      <div>
-        <KeyWords dictionaries={this.state.dictionaries}></KeyWords>
-        <SpecializationsAndProfissions
-          professions={this.professions.bind(this)}
-          state={this.state}
-        ></SpecializationsAndProfissions>
-        <Dictionaries state={this.state}></Dictionaries>
-        <WageLevel></WageLevel>
-        <button
-          onClick={() => {
-            this.saveData();
-            this.setState({
-              vacansies: true
-            });
-          }}
-        >
-          Сохранить
-        </button>
-        {this.state.vacansies ? <Vacansies></Vacansies> : null}
+      <div className="row">
+        <div className="col s12">
+          <KeyWords dictionaries={this.state.dictionaries} />
+          <SpecializationsAndProfissions
+            professions={this.professions.bind(this)}
+            state={this.state}
+          />
+          <Dictionaries state={this.state} />
+          <WageLevel />
+          <button
+            type="button"
+            onClick={() => {
+              this.saveData();
+              this.setState({
+                vacansies: true
+              });
+            }}
+            className="btn grey lighten-4 grey-text text-darken-4"
+          >
+            Сохранить
+          </button>
+          {this.state.vacansies ? <Vacansies></Vacansies> : null}
+        </div>
       </div>
     );
   }

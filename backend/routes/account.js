@@ -11,4 +11,18 @@ const Vacancy = require('../models/vacancy')
 //   res.json({vacancies:vacancies});
 // });
 
+router.post('/getBase', async function (req, res) {
+// console.log('dfgdfggggg/gggggggggggggggggggggggggggggggggggggg');
+  
+ // console.log(req.bo/dy.vacansies);
+  
+const user = await User.findOne({email:req.body.email});
+console.log(user);
+
+// await user.vacancyBase.push(req.body.vacansies);
+// console.log({vacancyBase: user.vacancyBase})//;
+
+await res.json({vacancyBase: user})
+})
+
 module.exports = router;

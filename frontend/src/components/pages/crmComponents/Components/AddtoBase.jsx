@@ -11,6 +11,7 @@ import SpecializationsAndProfissions from "../../Main/Filters/filterComponentsAn
 import Dictionaries from "../../Main/Filters/filterComponentsAndFetch/dictionaries";
 import WageLevel from "../../Main/Filters/filterComponentsAndFetch/WageLevel";
 import Vacansies from '../../Vacansies/vacansies'
+import GetVacancy from './GetVacancy'
 
 
 class AddtoBase extends React.Component {
@@ -110,9 +111,9 @@ class AddtoBase extends React.Component {
             });
           }}
         >
-          Сохранить
+          Найти
         </button>
-        {this.state.vacansies ? <Vacansies/> : null}
+        {this.state.vacansies ? <GetVacancy/> : null}
       </div>
     );
   }

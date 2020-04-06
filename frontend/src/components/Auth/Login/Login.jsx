@@ -30,20 +30,31 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="log">
+      <div className="row" style={{marginTop: "7vh"}}>
+        <div className="col s6 offset-s3">
+        <div className="card grey lighten-4 ">
+      <div className="log card-content grey-text text-darken-4">
+        <span className="card-title">Авторизация</span>
+        <div className="input-field">
         <input
+          className="validate"
           name="email"
           placeholder="Email"
           onChange={e => this.createData(e)}
         />
-        <br />
+        </div>
+
+        <div className="input-field">
         <input
+          className="validate"
           name="password"
           placeholder="Password"
           onChange={e => this.createData(e)}
         />
-        <br />
+        </div>
+
         <button
+          className="btn grey lighten-4 grey-text text-darken-4"
           onClick={async () => {
             await this.userAuthorization();
             if (this.state.status) {
@@ -57,6 +68,9 @@ class Login extends React.Component {
         >
           Авторизация
         </button>
+          </div>
+        </div>
+       </div>
       </div>
     );
   }

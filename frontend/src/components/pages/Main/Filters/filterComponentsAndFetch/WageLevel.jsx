@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from 'react';
 
 class WageLevel extends React.Component {
   constructor(props) {
@@ -9,9 +9,11 @@ class WageLevel extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>Уровень заработной платы</h3>
-        <input type="text" placeholder="RUB" className="WageLevel" />
+      <div className="row">
+        <div className="input-field col s6">
+          <h4>Уровень заработной платы</h4>
+          <input type="text" placeholder="RUB" className="WageLevel" />
+        </div>
       </div>
     );
   }

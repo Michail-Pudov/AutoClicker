@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from 'react';
 
 class Dictionaries extends React.Component {
   constructor(props) {
@@ -9,37 +9,32 @@ class Dictionaries extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="block__dictionaries">
-          <h3>Tип занятости</h3>
-          <select name="" className="select__employment">
-            {this.props.state.dictionaries.employment.map(item => {
-              return <option value={item.id}>{item.name}</option>;
-            })}
+      <div className="row">
+        <div className="block__dictionaries input-field col s6">
+          <h4>Tип занятости</h4>
+          <select name="" className="select__employment browser-default">
+            {this.props.state.dictionaries.employment
+              .map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
           </select>
-          <h3>Опыт работы</h3>
-          <select name="" className="select__experience">
-            {this.props.state.dictionaries.experience.map(item => {
-              return <option value={item.id}>{item.name}</option>;
-            })}
+          <h4>Опыт работы</h4>
+          <select name="" className="select__experience browser-default">
+            {this.props.state.dictionaries.experience
+              .map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
           </select>
-          <h3>График работы</h3>
-          <select name="" className="select__schedule">
-            {this.props.state.dictionaries.schedule.map(item => {
-              return <option value={item.id}>{item.name}</option>;
-            })}
+          <h4>График работы</h4>
+          <select name="" className="select__schedule browser-default">
+            {this.props.state.dictionaries.schedule
+              .map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
           </select>
-          <h3>Tип вакансии</h3>
-          <select name="" className="select__vacancy_type">
-            {this.props.state.dictionaries.vacancy_type.map(item => {
-              return <option value={item.id}>{item.name}</option>;
-            })}
+          <h4>Tип вакансии</h4>
+          <select name="" className="select__vacancy_type browser-default">
+            {this.props.state.dictionaries.vacancy_type
+              .map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
           </select>
-          <h3>Метки вакансии</h3>
-          <select name="" className="select__vacancy_label">
-            {this.props.state.dictionaries.vacancy_label.map(item => {
-              return <option value={item.id}>{item.name}</option>;
-            })}
+          <h4>Метки вакансии</h4>
+          <select name="" className="select__vacancy_label browser-default">
+            {this.props.state.dictionaries.vacancy_label
+              .map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
           </select>
         </div>
       </div>

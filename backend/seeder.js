@@ -11,7 +11,7 @@ const Vacancy = require('./models/vacancy');
 
 
 async function createBase() {
-  await mongoose.connect('mongodb://localhost:27017/autoClicker', { useNewUrlParser: true, useUnifiedTopology: true });
+  await mongoose.connect('mongodb://localhost:27017/AutoClicker', { useNewUrlParser: true, useUnifiedTopology: true });
   mongoose.connection.on('error', console.error.bind(console, 'Ошибка соединения с MongoDB:'));
 
   for (let indexUser =1; indexUser < 10; indexUser++) {
@@ -20,6 +20,7 @@ async function createBase() {
       name: faker.name.findName(),
       email: indexUser,
       password: passwordHash,
+      vacancyBase: [],
     })
   }
 
