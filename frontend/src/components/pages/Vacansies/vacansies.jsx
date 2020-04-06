@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { vacansiesFetch } from '../../../allFetch/vacansiesFetch';
 import { writeFilters } from '../../../redux/action';
-import ModalWindow from './components/modalWindow';
 import { vacansiesToTheDatabase } from '../../../allFetch/vacansiesToTheDatabase';
 import Vacancy from './components/Vacancy';
 
@@ -59,24 +58,22 @@ class Vacansies extends React.Component {
   }
 
   render() {
-
+    const { modalWindow, certainVacancy, vacansies } = this.state;
     return (
       <div>
-        {this.state.modalWindow ? (
+        {modalWindow ? (
           <Vacancy
-            closeModalWindowAndWriteVacansies={this.closeModalWindowAndWriteVacansies.bind(
-              this,
-            )}
-            vacansies={this.state.certainVacancy}
+
+            vacansies={certainVacancy}
           />
         ) : null}
-        {this.state.vacansies.map((item, index) => (
+        {vacansies.map((item, index) => (
           <Vacancy
             onOpen={() => this.openModalWindow(index, item.name)}
             item={item}
             index={index}
             key={index}
-            vacansies={this.state.certainVacancy}
+            vacansies={certainVacancy}
           />
         ))}
       </div>

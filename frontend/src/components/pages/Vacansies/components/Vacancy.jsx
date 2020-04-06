@@ -3,6 +3,12 @@ import M from 'materialize-css';
 
 
 class Vacancy extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   async componentDidMount() {
     const options = {
       onOpenStart: () => {
@@ -36,7 +42,9 @@ class Vacancy extends Component {
         <div>
           <br />
           <a
-            onClick={() => window.open(item.alternate_url)}
+            onClick={() => {
+              window.open(item.alternate_url);
+            }}
             className="modal-trigger"
             data-target={index}
             href={item.alternate_url}
@@ -57,10 +65,16 @@ class Vacancy extends Component {
               <p>Хотите добавить эту вакансию в личный кабинет?</p>
             </div>
             <div className="modal-footer">
-              <button type="button" className="modal-close grey lighten-4 grey-text text-darken-4 waves-effect waves-red btn">
+              <button
+                type="button"
+                className="modal-close grey lighten-4 grey-text text-darken-4 waves-effect waves-red btn"
+              >
                 Нет
               </button>
-              <button type="button" className="modal-close grey lighten-4 grey-text text-darken-4 waves-effect waves-green btn">
+              <button
+                type="button"
+                className="modal-close grey lighten-4 grey-text text-darken-4 waves-effect waves-green btn"
+              >
                 Добавить
               </button>
             </div>
