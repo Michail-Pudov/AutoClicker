@@ -9,6 +9,7 @@ import Main from "./components/pages/Main/Main";
 import Home from "./components/pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 import CRM from "./components/pages/crmComponents/Crm";
+import { getUserJobsSaga } from "./redux/action";
 
 const mainBackground = {
   background:
@@ -29,6 +30,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.props.getUserJobsSaga(localStorage.email);
     if (
       this.props.location.pathname === "/" ||
       this.props.location.pathname === "/login" ||
@@ -107,5 +109,8 @@ class App extends React.Component {
 const mapStateToProps = state => ({
   email: state.email
 });
+const mapDispatchToProps = {
+  getUserJobsSaga
+};
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

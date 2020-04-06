@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-import { uploadUserJobsFetch } from "../../../allFetch/uploadUserJobsFetch";
 import { getUserJobsSaga } from "../../../redux/action";
 
 class Account extends React.Component {
@@ -11,10 +10,6 @@ class Account extends React.Component {
     this.state = {};
   }
 
-  async componentDidMount() {
-    this.props.getUserJobsSaga(localStorage.email);
-  }
-
   render() {
     return (
       <>
@@ -22,7 +17,7 @@ class Account extends React.Component {
           <h2>Личный кабинет</h2>
         </div>
         <div>
-          <Link to="/crm">Зайти в текущую базу</Link>
+          <Link to="/crm">Нужно придумать название для ссылки</Link>
           <br></br>
           <b>Здесь будет статистика</b>
         </div>

@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   testTaskCame: Array,
   iGotAnInvitationForAnInterview: Array,
   needToCall: Array,
-  rejectionCame: Array,
+  closedVacancies: Array,
   theOfferCame: Array
 });
 let userModel = mongoose.model("users", userSchema);

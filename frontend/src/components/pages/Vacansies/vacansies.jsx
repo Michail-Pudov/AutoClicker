@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { vacansiesFetch } from "../../../allFetch/vacansiesFetch";
 import { writeFilters } from "../../../redux/action";
 import ModalWindow from "./components/modalWindow";
-import { vacansiesToTheDatabase } from "../../../allFetch/vacansiesToTheDatabase";
+import { recordsNewVacansiesSaga } from "../../../redux/action";
 
 class Vacansies extends React.Component {
   constructor(props) {
@@ -48,10 +48,10 @@ class Vacansies extends React.Component {
     });
     if (agreement) {
       const vacansies = this.state.vacansies[index];
-      let answerFetch = await vacansiesToTheDatabase(
-        localStorage.email,
-        vacansies
-      );
+      this.props.recordsNewVacansiesSaga({
+        email: localStorage.email,
+        vacansies: vacansies
+      });
     }
   }
   render() {
@@ -84,11 +84,13 @@ class Vacansies extends React.Component {
 
 const mapStateToProps = state => ({
   email: state.email,
-  filters: state.filters
+  filters: state.filters,
+  userJobs: state.userJobs
 });
 
 const mapDispatchToProps = {
-  writeFilters
+  writeFilters,
+  recordsNewVacansiesSaga
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vacansies);
