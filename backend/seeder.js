@@ -12,7 +12,7 @@ const User = require('./models/user');
 
 
 async function createBase() {
-  await mongoose.connect('mongodb://localhost:27017/autoClicker', { useNewUrlParser: true, useUnifiedTopology: true });
+  await mongoose.connect('mongodb://localhost:27017/AutoClicker', { useNewUrlParser: true, useUnifiedTopology: true });
   mongoose.connection.on('error', console.error.bind(console, 'Ошибка соединения с MongoDB:'));
 
   let response = await fetch(
