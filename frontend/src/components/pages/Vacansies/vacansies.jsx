@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { vacansiesFetch } from "../../../allFetch/vacansiesFetch";
 import { writeFilters } from "../../../redux/action";
 import { recordsNewVacansiesSaga } from "../../../redux/action";
-// import { vacansiesToTheDatabase } from "../../../allFetch/vacansiesToTheDatabase";
 import Vacancy from "./components/Vacancy";
 
 class Vacansies extends React.Component {
@@ -12,7 +11,6 @@ class Vacansies extends React.Component {
 
     this.state = {
       vacansies: [{ name: "" }],
-      modalWindow: false,
       certainVacancy: {
         index: 0,
         title: ""
@@ -33,7 +31,6 @@ class Vacansies extends React.Component {
       title
     };
     this.setState({
-      modalWindow: true,
       certainVacancy
     });
   }
@@ -57,7 +54,7 @@ class Vacansies extends React.Component {
   }
 
   render() {
-    const { modalWindow, certainVacancy, vacansies } = this.state;
+    const { certainVacancy, vacansies } = this.state;
     return (
       <div>
         {vacansies.map((item, index) => (
@@ -89,29 +86,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vacansies);
-
-// <div>
-//
-//   {this.state.modalWindow ? (
-//     <ModalWindow
-//       closeModalWindowAndWriteVacansies={this.closeModalWindowAndWriteVacansies.bind(
-//         this,
-//       )}
-//       vacansies={this.state.certainVacancy}
-//     />
-//   ) : null}
-//
-//   {this.state.vacansies.map((item, index) => (
-//     <div key={index}>
-//       <br />
-//
-//       <a
-//         href={item.alternate_url}
-//         onClick={() => this.openModalWindow(index, item.name)}
-//       >
-//         {item.name}
-//       </a>
-//
-//     </div>
-//   ))}
-// </div>
