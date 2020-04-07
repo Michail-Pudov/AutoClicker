@@ -1,5 +1,17 @@
 import React from "react";
 import M from "materialize-css";
+import { connect } from "react-redux";
+import CardTitle from "./components/cardTitle";
+import ModalTitle from "./components/ModalTitle";
+import EmployerModal from "./components/EmployerModal";
+import SalaryCard from "./components/SalaryCard";
+import SalaryModal from "./components/SalaryModal";
+import SnippetModal from "./components/SnippetModal";
+import AddresModal from "./components/AddresModal";
+import CommentModal from "./components/CommentModal";
+import ContactsModal from "./components/ContactsModal";
+import StatusModal from "./components/StatusModal";
+import { vacancyStatusChangeSaga } from "../../../../../redux/action";
 
 class ModalAndCard extends React.Component {
   constructor(props) {
@@ -67,43 +79,15 @@ class ModalAndCard extends React.Component {
   }
 
   render() {
-    const { item, index } = this.props;
+    const { item, index, keyArray, userJobs, indexInArray } = this.props;
     return (
       <div className="row">
         <div className="col s6">
           <div className="card grey lighten-4 ">
             <div className="log card-content grey-text text-darken-4">
-              {" "}
               <br />
-              <span className="card-title">
-                <a
-                  className="modal-trigger"
-                  data-target={index}
-                  href={item.vacancy.alternate_url}
-                >
-                  {item.vacancy.name}
-                </a>
-              </span>{" "}
-              <p>
-                <b>Зарплата: </b>
-                {item.vacancy.salary
-                  ? ` От ${
-                      item.vacancy.salary.from
-                        ? item.vacancy.salary.from
-                        : "..."
-                    } ${
-                      item.vacancy.salary.currency
-                        ? item.vacancy.salary.currency
-                        : "..."
-                    } до ${
-                      item.vacancy.salary.to ? item.vacancy.salary.to : "..."
-                    } ${
-                      item.vacancy.salary.currency
-                        ? item.vacancy.salary.currency
-                        : "..."
-                    }`
-                  : "Не указано"}
-              </p>
+              <CardTitle item={item} index={index}></CardTitle>
+              <SalaryCard item={item} index={index}></SalaryCard>
               <div
                 ref={Modal => {
                   this.Modal = Modal;
@@ -112,133 +96,54 @@ class ModalAndCard extends React.Component {
                 className="modal"
               >
                 <div className="modal-content">
-                  <h4>
-                    {" "}
-                    <a href={item.vacancy.alternate_url}>{item.vacancy.name}</a>
-                  </h4>
-                  <p>
-                    <b>Работодатель: </b>{" "}
-                    <a href={item.vacancy.employer.alternate_url}>
-                      {item.vacancy.employer.name}
-                    </a>
-                  </p>
-                  <p>
-                    <b>Зарплата: </b>
-                    {item.vacancy.salary
-                      ? ` От ${
-                          item.vacancy.salary.from
-                            ? item.vacancy.salary.from
-                            : "..."
-                        } ${
-                          item.vacancy.salary.currency
-                            ? item.vacancy.salary.currency
-                            : "..."
-                        } до ${
-                          item.vacancy.salary.to
-                            ? item.vacancy.salary.to
-                            : "..."
-                        } ${
-                          item.vacancy.salary.currency
-                            ? item.vacancy.salary.currency
-                            : "..."
-                        }`
-                      : "Не указано"}
-                  </p>
-                  <p>
-                    {" "}
-                    <b>Описание: </b> {item.vacancy.snippet.responsibility}
-                  </p>
-                  <p>
-                    <b>Адрес: </b>
-                    {item.vacancy.address
-                      ? `${
-                          item.vacancy.address.raw
-                            ? item.vacancy.address.raw
-                            : "Не указано"
-                        }`
-                      : "Не указано"}
-                  </p>
-                  <p>
-                    <b>Комментарий: </b>
-                    {this.state.writeComment ? (
-                      <>
-                        <input
-                          type="text"
-                          defaultValue={this.state.comment}
-                          name="comment"
-                          onChange={e => this.writeData(e)}
-                        />
-                        <a
-                          name="writeComment"
-                          onClick={e => {
-                            this.saveData(e);
-                          }}
-                        >
-                          {" "}
-                          ✅
-                        </a>{" "}
-                      </>
-                    ) : (
-                      <span>
-                        {this.state.comment
-                          ? this.state.comment
-                          : "Вы пока не оставили комментарий"}
-                        <a
-                          name="writeComment"
-                          onClick={e => {
-                            this.iWantToRecordInformation(e);
-                          }}
-                        >
-                          {" "}
-                          ✏️
-                        </a>{" "}
-                      </span>
+                  <ModalTitle item={item} index={index}></ModalTitle>
+                  <EmployerModal item={item} index={index}></EmployerModal>
+                  <SalaryModal item={item} index={index}></SalaryModal>
+                  <SnippetModal item={item} index={index}></SnippetModal>
+                  <AddresModal item={item} index={index}></AddresModal>
+                  <CommentModal
+                    state={this.state}
+                    writeData={this.writeData.bind(this)}
+                    iWantToRecordInformation={this.iWantToRecordInformation.bind(
+                      this
                     )}
-                  </p>
-                  <p>
-                    <b>Контакты: </b>
-                    {this.state.writeContacts ? (
-                      <>
-                        <input
-                          type="text"
-                          defaultValue={this.state.contacts}
-                          name="contacts"
-                          onChange={e => this.writeData(e)}
-                        />
-                        <a
-                          name="writeContacts"
-                          onClick={e => {
-                            this.saveData(e);
-                          }}
-                        >
-                          {" "}
-                          ✅
-                        </a>{" "}
-                      </>
-                    ) : (
-                      <span>
-                        {this.state.contacts
-                          ? this.state.contacts
-                          : "Контакты отсутствуют"}
-                        <a
-                          name="writeContacts"
-                          onClick={e => {
-                            this.iWantToRecordInformation(e);
-                          }}
-                        >
-                          {" "}
-                          ✏️
-                        </a>{" "}
-                      </span>
+                    saveData={this.saveData.bind(this)}
+                  ></CommentModal>
+                  <ContactsModal
+                    state={this.state}
+                    writeData={this.writeData.bind(this)}
+                    iWantToRecordInformation={this.iWantToRecordInformation.bind(
+                      this
                     )}
-                  </p>
-                  <p>
-                    <b>Статус: </b>
-                    {this.state.status}
-                  </p>
+                    saveData={this.saveData.bind(this)}
+                  ></ContactsModal>
+                  <StatusModal
+                    state={this.state}
+                    writeData={this.writeData.bind(this)}
+                    iWantToRecordInformation={this.iWantToRecordInformation.bind(
+                      this
+                    )}
+                    saveData={this.saveData.bind(this)}
+                  ></StatusModal>
                 </div>
                 <div className="modal-footer">
-                  <a className="modal-close waves-effect waves-green btn-flat">
+                  <a
+                    className="modal-close waves-effect waves-green btn-flat"
+                    onClick={() => {
+                      this.props.vacancyStatusChangeSaga({
+                        email: localStorage.email,
+                        vacancy: index,
+                        keyArray: keyArray,
+                        allArray: userJobs,
+                        indexInArray: indexInArray,
+                        changes: {
+                          comment: this.state.comment,
+                          contacts: this.state.contacts,
+                          status: this.state.status
+                        }
+                      });
+                    }}
+                  >
                     okey
                   </a>
                 </div>
@@ -251,4 +156,13 @@ class ModalAndCard extends React.Component {
   }
 }
 
-export default ModalAndCard;
+const mapStateToProps = state => ({
+  email: state.email,
+  userJobs: state.userJobs
+});
+
+const mapDispatchToProps = {
+  vacancyStatusChangeSaga
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalAndCard);

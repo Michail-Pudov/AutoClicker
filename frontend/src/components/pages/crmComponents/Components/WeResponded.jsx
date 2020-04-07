@@ -15,7 +15,14 @@ class WeResponded extends React.Component {
       <div className="weResponded">
         <h4>Жду ответа:</h4>
         {this.props.userJobs.weResponded.map((item, index) => {
-          return <ModalAndCard item={item} index={index}></ModalAndCard>;
+          return (
+            <ModalAndCard
+              item={item}
+              index={item.vacancy.id}
+              keyArray={"weResponded"}
+              indexInArray={index}
+            ></ModalAndCard>
+          );
         })}
       </div>
     );

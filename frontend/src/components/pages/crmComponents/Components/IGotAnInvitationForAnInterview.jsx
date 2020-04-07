@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
+import ModalAndCard from "./components/ModalAndCard";
 
 class IGotAnInvitationForAnInterview extends React.Component {
   constructor(props) {
@@ -12,10 +13,17 @@ class IGotAnInvitationForAnInterview extends React.Component {
   render() {
     return (
       <div className="IGotAnInvitationForAnInterview">
-        <h4>Позвали на интервью:</h4>
+        <h4>Пригласили на интервью:</h4>
         {this.props.userJobs.iGotAnInvitationForAnInterview.map(
           (item, index) => {
-            return <div>{item.vacancy.name}</div>;
+            return (
+              <ModalAndCard
+                item={item}
+                index={item.vacancy.id}
+                keyArray={"iGotAnInvitationForAnInterview"}
+                indexInArray={index}
+              ></ModalAndCard>
+            );
           }
         )}
       </div>

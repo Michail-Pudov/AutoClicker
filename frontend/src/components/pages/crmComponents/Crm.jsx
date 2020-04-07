@@ -4,6 +4,7 @@ import WeResponded from "./Components/WeResponded";
 import TestTaskCame from "./Components/TestTaskCame";
 import IGotAnInvitationForAnInterview from "./Components/IGotAnInvitationForAnInterview";
 import NeedToCall from "./Components/NeedToCall";
+import { connect } from "react-redux";
 
 import ClosedVacancies from "./Components/ClosedVacancies";
 
@@ -33,4 +34,11 @@ class Crm extends React.Component {
   }
 }
 
-export default Crm;
+const mapStateToProps = state => ({
+  userJobs: state.userJobs,
+  email: state.email
+});
+
+const mapDispatchToProps = {};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Crm));

@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
+import ModalAndCard from "./components/ModalAndCard";
 
 class NeedToCall extends React.Component {
   constructor(props) {
@@ -14,7 +15,14 @@ class NeedToCall extends React.Component {
       <div className="NeedToCall">
         <h4>Требуется перезвонить:</h4>
         {this.props.userJobs.needToCall.map((item, index) => {
-          return <div>{item.vacancy.name}</div>;
+          return (
+            <ModalAndCard
+              item={item}
+              index={item.vacancy.id}
+              keyArray={"needToCall"}
+              indexInArray={index}
+            ></ModalAndCard>
+          );
         })}
       </div>
     );

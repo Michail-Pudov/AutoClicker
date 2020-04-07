@@ -2,7 +2,8 @@ import {
   ADD_USER,
   WRITE_FILTERS,
   GET_USER_JOBS,
-  RECORDS_NEW_VACANCIES
+  RECORDS_NEW_VACANCIES,
+  VACANCY_STATUS_CHANGE
 } from "./action-types";
 
 const initialState = {
@@ -40,6 +41,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         userJobs: action.userJobs
+      };
+    case VACANCY_STATUS_CHANGE:
+      return {
+        ...state,
+        userJobs: { ...action.userJobs }
       };
     default:
       return state;

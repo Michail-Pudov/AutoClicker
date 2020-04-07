@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
+import ModalAndCard from "./components/ModalAndCard";
 
 class TheOfferCame extends React.Component {
   constructor(props) {
@@ -14,7 +15,14 @@ class TheOfferCame extends React.Component {
       <div className="TheOfferCame">
         <h4>Прислали оффер:</h4>
         {this.props.userJobs.theOfferCame.map((item, index) => {
-          return <div>{item.vacancy.name}</div>;
+          return (
+            <ModalAndCard
+              item={item}
+              index={item.vacancy.id}
+              keyArray={"theOfferCame"}
+              indexInArray={index}
+            ></ModalAndCard>
+          );
         })}
       </div>
     );
