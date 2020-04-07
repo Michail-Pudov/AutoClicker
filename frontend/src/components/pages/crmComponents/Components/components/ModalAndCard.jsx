@@ -1,5 +1,5 @@
-import React from "react";
-import M from "materialize-css";
+import React from 'react';
+import M from 'materialize-css';
 
 class ModalAndCard extends React.Component {
   constructor(props) {
@@ -9,9 +9,9 @@ class ModalAndCard extends React.Component {
       writeComment: false,
       writeContacts: false,
       writeStatus: false,
-      comment: "",
-      contacts: "",
-      status: ""
+      comment: '',
+      contacts: '',
+      status: '',
     };
   }
 
@@ -19,27 +19,27 @@ class ModalAndCard extends React.Component {
     this.setState({
       comment: this.props.item.comment,
       contacts: this.props.item.contacts,
-      status: this.props.item.status
+      status: this.props.item.status,
     });
     const options = {
       onOpenStart: () => {
-        console.log("Open Start");
+        console.log('Open Start');
       },
       onOpenEnd: () => {
-        console.log("Open End");
+        console.log('Open End');
       },
       onCloseStart: () => {
-        console.log("Close Start");
+        console.log('Close Start');
       },
       onCloseEnd: () => {
-        console.log("Close End");
+        console.log('Close End');
       },
       inDuration: 250,
       outDuration: 250,
       opacity: 0.5,
       dismissible: false,
-      startingTop: "4%",
-      endingTop: "30%"
+      startingTop: '4%',
+      endingTop: '30%',
     };
     M.Modal.init(this.Modal, options);
   }
@@ -50,19 +50,19 @@ class ModalAndCard extends React.Component {
 
   iWantToRecordInformation(e) {
     this.setState({
-      [e.target.name]: true
+      [e.target.name]: true,
     });
   }
 
   writeData(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
 
   saveData(e) {
     this.setState({
-      [e.target.name]: false
+      [e.target.name]: false,
     });
   }
 
@@ -70,12 +70,10 @@ class ModalAndCard extends React.Component {
     const { item, index } = this.props;
     return (
       <div className="row">
-        <div className="col s6">
+        <div className="col s7">
           <div className="card grey lighten-4 ">
             <div className="log card-content grey-text text-darken-4">
-              {" "}
-              <br />
-              <span className="card-title">
+              <span className="">
                 <a
                   className="modal-trigger"
                   data-target={index}
@@ -83,29 +81,29 @@ class ModalAndCard extends React.Component {
                 >
                   {item.vacancy.name}
                 </a>
-              </span>{" "}
+              </span>
               <p>
                 <b>Зарплата: </b>
                 {item.vacancy.salary
                   ? ` От ${
-                      item.vacancy.salary.from
-                        ? item.vacancy.salary.from
-                        : "..."
-                    } ${
-                      item.vacancy.salary.currency
-                        ? item.vacancy.salary.currency
-                        : "..."
-                    } до ${
-                      item.vacancy.salary.to ? item.vacancy.salary.to : "..."
-                    } ${
-                      item.vacancy.salary.currency
-                        ? item.vacancy.salary.currency
-                        : "..."
-                    }`
-                  : "Не указано"}
+                    item.vacancy.salary.from
+                      ? item.vacancy.salary.from
+                      : '...'
+                  } ${
+                    item.vacancy.salary.currency
+                      ? item.vacancy.salary.currency
+                      : '...'
+                  } до ${
+                    item.vacancy.salary.to ? item.vacancy.salary.to : '...'
+                  } ${
+                    item.vacancy.salary.currency
+                      ? item.vacancy.salary.currency
+                      : '...'
+                  }`
+                  : 'Не указано'}
               </p>
               <div
-                ref={Modal => {
+                ref={(Modal) => {
                   this.Modal = Modal;
                 }}
                 id={index}
@@ -113,11 +111,12 @@ class ModalAndCard extends React.Component {
               >
                 <div className="modal-content">
                   <h4>
-                    {" "}
+                    {' '}
                     <a href={item.vacancy.alternate_url}>{item.vacancy.name}</a>
                   </h4>
                   <p>
-                    <b>Работодатель: </b>{" "}
+                    <b>Работодатель: </b>
+                    {' '}
                     <a href={item.vacancy.employer.alternate_url}>
                       {item.vacancy.employer.name}
                     </a>
@@ -126,37 +125,39 @@ class ModalAndCard extends React.Component {
                     <b>Зарплата: </b>
                     {item.vacancy.salary
                       ? ` От ${
-                          item.vacancy.salary.from
-                            ? item.vacancy.salary.from
-                            : "..."
-                        } ${
-                          item.vacancy.salary.currency
-                            ? item.vacancy.salary.currency
-                            : "..."
-                        } до ${
-                          item.vacancy.salary.to
-                            ? item.vacancy.salary.to
-                            : "..."
-                        } ${
-                          item.vacancy.salary.currency
-                            ? item.vacancy.salary.currency
-                            : "..."
-                        }`
-                      : "Не указано"}
+                        item.vacancy.salary.from
+                          ? item.vacancy.salary.from
+                          : '...'
+                      } ${
+                        item.vacancy.salary.currency
+                          ? item.vacancy.salary.currency
+                          : '...'
+                      } до ${
+                        item.vacancy.salary.to
+                          ? item.vacancy.salary.to
+                          : '...'
+                      } ${
+                        item.vacancy.salary.currency
+                          ? item.vacancy.salary.currency
+                          : '...'
+                      }`
+                      : 'Не указано'}
                   </p>
                   <p>
-                    {" "}
-                    <b>Описание: </b> {item.vacancy.snippet.responsibility}
+                    {' '}
+                    <b>Описание: </b>
+                    {' '}
+                    {item.vacancy.snippet.responsibility}
                   </p>
                   <p>
                     <b>Адрес: </b>
                     {item.vacancy.address
                       ? `${
-                          item.vacancy.address.raw
-                            ? item.vacancy.address.raw
-                            : "Не указано"
-                        }`
-                      : "Не указано"}
+                        item.vacancy.address.raw
+                          ? item.vacancy.address.raw
+                          : 'Не указано'
+                      }`
+                      : 'Не указано'}
                   </p>
                   <p>
                     <b>Комментарий: </b>
@@ -166,32 +167,34 @@ class ModalAndCard extends React.Component {
                           type="text"
                           defaultValue={this.state.comment}
                           name="comment"
-                          onChange={e => this.writeData(e)}
+                          onChange={(e) => this.writeData(e)}
                         />
                         <a
                           name="writeComment"
-                          onClick={e => {
+                          onClick={(e) => {
                             this.saveData(e);
                           }}
                         >
-                          {" "}
+                          {' '}
                           ✅
-                        </a>{" "}
+                        </a>
+                        {' '}
                       </>
                     ) : (
                       <span>
                         {this.state.comment
                           ? this.state.comment
-                          : "Вы пока не оставили комментарий"}
+                          : 'Вы пока не оставили комментарий'}
                         <a
                           name="writeComment"
-                          onClick={e => {
+                          onClick={(e) => {
                             this.iWantToRecordInformation(e);
                           }}
                         >
-                          {" "}
+                          {' '}
                           ✏️
-                        </a>{" "}
+                        </a>
+                        {' '}
                       </span>
                     )}
                   </p>
@@ -203,32 +206,34 @@ class ModalAndCard extends React.Component {
                           type="text"
                           defaultValue={this.state.contacts}
                           name="contacts"
-                          onChange={e => this.writeData(e)}
+                          onChange={(e) => this.writeData(e)}
                         />
                         <a
                           name="writeContacts"
-                          onClick={e => {
+                          onClick={(e) => {
                             this.saveData(e);
                           }}
                         >
-                          {" "}
+                          {' '}
                           ✅
-                        </a>{" "}
+                        </a>
+                        {' '}
                       </>
                     ) : (
                       <span>
                         {this.state.contacts
                           ? this.state.contacts
-                          : "Контакты отсутствуют"}
+                          : 'Контакты отсутствуют'}
                         <a
                           name="writeContacts"
-                          onClick={e => {
+                          onClick={(e) => {
                             this.iWantToRecordInformation(e);
                           }}
                         >
-                          {" "}
+                          {' '}
                           ✏️
-                        </a>{" "}
+                        </a>
+                        {' '}
                       </span>
                     )}
                   </p>

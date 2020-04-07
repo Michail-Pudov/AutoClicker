@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
-import ModalAndCard from "./components/ModalAndCard";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+import ModalAndCard from './components/ModalAndCard';
 
 class WeResponded extends React.Component {
   constructor(props) {
@@ -14,20 +14,19 @@ class WeResponded extends React.Component {
     return (
       <div className="weResponded">
         <h4>Жду ответа:</h4>
-        {this.props.userJobs.weResponded.map((item, index) => {
-          return <ModalAndCard item={item} index={index}></ModalAndCard>;
-        })}
+        {this.props.userJobs.weResponded
+          .map((item, index) => <ModalAndCard item={item} index={index} />)}
       </div>
     );
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userJobs: state.userJobs,
-  email: state.email
+  email: state.email,
 });
 
 const mapDispatchToProps = {};
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(WeResponded)
+  connect(mapStateToProps, mapDispatchToProps)(WeResponded),
 );
