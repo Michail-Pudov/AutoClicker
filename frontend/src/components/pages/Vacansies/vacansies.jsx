@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { vacansiesFetch } from "../../../allFetch/vacansiesFetch";
 import { writeFilters } from "../../../redux/action";
-import ModalWindow from "./components/modalWindow";
-import { vacansiesToTheDatabase } from "../../../allFetch/vacansiesToTheDatabase";
+import { recordsNewVacansiesSaga } from "../../../redux/action";
+import Vacancy from "./components/Vacancy";
 
 class Vacansies extends React.Component {
   constructor(props) {
@@ -11,7 +11,6 @@ class Vacansies extends React.Component {
 
     this.state = {
       vacansies: [{ name: "" }],
-      modalWindow: false,
       certainVacancy: {
         index: 0,
         title: ""
@@ -32,7 +31,6 @@ class Vacansies extends React.Component {
       title
     };
     this.setState({
-      modalWindow: true,
       certainVacancy
     });
   }
@@ -48,34 +46,28 @@ class Vacansies extends React.Component {
     });
     if (agreement) {
       const vacansies = this.state.vacansies[index];
-      let answerFetch = await vacansiesToTheDatabase(
-        localStorage.email,
-        vacansies
-      );
+      this.props.recordsNewVacansiesSaga({
+        email: localStorage.email,
+        vacansies: vacansies
+      });
     }
   }
+
   render() {
+    const { certainVacancy, vacansies } = this.state;
     return (
       <div>
-        {this.state.modalWindow ? (
-          <ModalWindow
+        {vacansies.map((item, index) => (
+          <Vacancy
+            item={item}
+            index={index}
+            key={index}
+            vacansies={certainVacancy}
+            openModalWindow={this.openModalWindow.bind(this)}
             closeModalWindowAndWriteVacansies={this.closeModalWindowAndWriteVacansies.bind(
               this
             )}
-            vacansies={this.state.certainVacancy}
-          ></ModalWindow>
-        ) : null}
-
-        {this.state.vacansies.map((item, index) => (
-          <div key={index}>
-            <br />
-            <a
-              href={item.alternate_url}
-              onClick={() => this.openModalWindow(index, item.name)}
-            >
-              {item.name}
-            </a>
-          </div>
+          />
         ))}
       </div>
     );
@@ -84,11 +76,13 @@ class Vacansies extends React.Component {
 
 const mapStateToProps = state => ({
   email: state.email,
-  filters: state.filters
+  filters: state.filters,
+  userJobs: state.userJobs
 });
 
 const mapDispatchToProps = {
-  writeFilters
+  writeFilters,
+  recordsNewVacansiesSaga
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vacansies);
