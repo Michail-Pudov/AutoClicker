@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import M from 'materialize-css';
-
+import React, { Component } from "react";
+import M from "materialize-css";
 
 class Vacancy extends Component {
   constructor(props) {
@@ -12,23 +11,23 @@ class Vacancy extends Component {
   componentDidMount() {
     const options = {
       onOpenStart: () => {
-        console.log('Open Start');
+        console.log("Open Start");
       },
       onOpenEnd: () => {
-        console.log('Open End');
+        console.log("Open End");
       },
       onCloseStart: () => {
-        console.log('Close Start');
+        console.log("Close Start");
       },
       onCloseEnd: () => {
-        console.log('Close End');
+        console.log("Close End");
       },
       inDuration: 250,
       outDuration: 250,
       opacity: 0.5,
       dismissible: false,
-      startingTop: '4%',
-      endingTop: '30%',
+      startingTop: "4%",
+      endingTop: "30%"
     };
     M.Modal.init(this.Modal, options);
   }
@@ -38,12 +37,10 @@ class Vacancy extends Component {
       item,
       index,
       openModalWindow,
-      closeModalWindowAndWriteVacansies,
+      closeModalWindowAndWriteVacansies
     } = this.props;
-    console.log(item);
 
     return (
-
       <div className="row">
         <div className="col s12">
           <div className="card grey lighten-4 ">
@@ -51,6 +48,7 @@ class Vacancy extends Component {
               <span className="card-title">
                 <a
                   onClick={() => {
+                    openModalWindow(index, item.name);
                     window.open(item.alternate_url);
                   }}
                   className="modal-trigger"
@@ -61,42 +59,33 @@ class Vacancy extends Component {
                 </a>
               </span>
               <p>
-                <b>Компания: </b>
-                {item.employer
-                  ? (
-                    <a href={item.employer.alternate_url}>
-                      {item.employer.name}
-                    </a>
-                  ) : 'Не указано'}
+                <b>Работодатель: </b>
+                {item.employer ? (
+                  <a href={item.employer.alternate_url}>{item.employer.name}</a>
+                ) : (
+                  "Не указано"
+                )}
               </p>
 
               <p>
                 <b>Зарплата: </b>
 
                 {item.salary
-                  ? ` От ${
-                    item.salary.from ? item.salary.from : '...'
-                  } ${
-                    item.salary.currency
-                      ? item.salary.currency
-                      : '...'
-                  } до ${
-                    item.salary.to ? item.salary.to : '...'
-                  } ${
-                    item.salary.currency
-                      ? item.salary.currency
-                      : '...'
-                  }`
-                  : 'Не указано'}
+                  ? ` От ${item.salary.from ? item.salary.from : "..."} ${
+                      item.salary.currency ? item.salary.currency : "..."
+                    } до ${item.salary.to ? item.salary.to : "..."} ${
+                      item.salary.currency ? item.salary.currency : "..."
+                    }`
+                  : "Не указано"}
               </p>
               <p>
                 <b>Адрес: </b>
                 {item.address
-                  ? `${item.address.raw ? item.address.raw : 'Не указано'}`
-                  : 'Не указано'}
+                  ? `${item.address.raw ? item.address.raw : "Не указано"}`
+                  : "Не указано"}
               </p>
               <div
-                ref={(Modal) => {
+                ref={Modal => {
                   this.Modal = Modal;
                 }}
                 id={index}
@@ -110,15 +99,19 @@ class Vacancy extends Component {
                 <div className="modal-footer">
                   <button
                     type="button"
+                    onClick={() =>
+                      closeModalWindowAndWriteVacansies(index, false)
+                    }
                     className="modal-close grey lighten-4 grey-text text-darken-4 waves-effect waves-red btn"
-                    onClick={() => closeModalWindowAndWriteVacansies(index, false)}
                   >
                     Нет
                   </button>
                   <button
                     type="button"
+                    onClick={() =>
+                      closeModalWindowAndWriteVacansies(index, true)
+                    }
                     className="modal-close grey lighten-4 grey-text text-darken-4 waves-effect waves-green btn"
-                    onClick={() => closeModalWindowAndWriteVacansies(index, true)}
                   >
                     Добавить
                   </button>

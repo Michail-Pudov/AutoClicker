@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import M from "materialize-css";
 
 class ModalAndCard extends React.Component {
@@ -8,11 +8,19 @@ class ModalAndCard extends React.Component {
     this.state = {
       writeComment: false,
       writeContacts: false,
-      writeStatus: false
+      writeStatus: false,
+      comment: "",
+      contacts: "",
+      status: ""
     };
   }
 
   componentDidMount() {
+    this.setState({
+      comment: this.props.item.comment,
+      contacts: this.props.item.contacts,
+      status: this.props.item.status
+    });
     const options = {
       onOpenStart: () => {
         console.log("Open Start");
@@ -46,107 +54,196 @@ class ModalAndCard extends React.Component {
     });
   }
 
+  writeData(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  saveData(e) {
+    this.setState({
+      [e.target.name]: false
+    });
+  }
+
   render() {
     const { item, index } = this.props;
     return (
-      <div>
-        <br />
-        <a
-          className="modal-trigger"
-          data-target={index}
-          href={item.vacancy.alternate_url}
-        >
-          {item.vacancy.name}
-        </a>
-        <div
-          ref={Modal => {
-            this.Modal = Modal;
-          }}
-          id={index}
-          className="modal"
-        >
-          <div className="modal-content">
-            <h4>
+      <div className="row">
+        <div className="col s6">
+          <div className="card grey lighten-4 ">
+            <div className="log card-content grey-text text-darken-4">
               {" "}
-              <a href={item.vacancy.alternate_url}>{item.vacancy.name}</a>
-            </h4>
-            <p>
-              <b>Работодатель: </b>{" "}
-              <a href={item.vacancy.employer.alternate_url}>
-                {item.vacancy.employer.name}
-              </a>
-            </p>
-            <p>
-              <b>Зарплата: </b>
-              {item.vacancy.salary
-                ? ` От ${
-                    item.vacancy.salary.from ? item.vacancy.salary.from : "..."
-                  } ${
-                    item.vacancy.salary.currency
-                      ? item.vacancy.salary.currency
-                      : "..."
-                  } до ${
-                    item.vacancy.salary.to ? item.vacancy.salary.to : "..."
-                  } ${
-                    item.vacancy.salary.currency
-                      ? item.vacancy.salary.currency
-                      : "..."
-                  }`
-                : "Не указано"}
-            </p>
-            <p>
-              {" "}
-              <b>Описание: </b> {item.vacancy.snippet.responsibility}
-            </p>
-            <p>
-              <b>Комментарий: </b>
-              {this.state.writeComment ? (
-                <input type="text" defaultValue={item.comment} />
-              ) : (
-                <div>
-                  {item.comment
-                    ? item.comment
-                    : "Вы пока не оставили комментарий"}
-                  <a
-                    name="writeComment"
-                    onClick={e => {
-                      this.iWantToRecordInformation(e);
-                    }}
-                  >
+              <br />
+              <span className="card-title">
+                <a
+                  className="modal-trigger"
+                  data-target={index}
+                  href={item.vacancy.alternate_url}
+                >
+                  {item.vacancy.name}
+                </a>
+              </span>{" "}
+              <p>
+                <b>Зарплата: </b>
+                {item.vacancy.salary
+                  ? ` От ${
+                      item.vacancy.salary.from
+                        ? item.vacancy.salary.from
+                        : "..."
+                    } ${
+                      item.vacancy.salary.currency
+                        ? item.vacancy.salary.currency
+                        : "..."
+                    } до ${
+                      item.vacancy.salary.to ? item.vacancy.salary.to : "..."
+                    } ${
+                      item.vacancy.salary.currency
+                        ? item.vacancy.salary.currency
+                        : "..."
+                    }`
+                  : "Не указано"}
+              </p>
+              <div
+                ref={Modal => {
+                  this.Modal = Modal;
+                }}
+                id={index}
+                className="modal"
+              >
+                <div className="modal-content">
+                  <h4>
                     {" "}
-                    ✏️
-                  </a>{" "}
-                </div>
-              )}
-            </p>
-            <p>
-              <b>Контакты: </b>
-              {this.state.writeContacts ? (
-                <input type="text" defaultValue={item.contacts} />
-              ) : (
-                <div>
-                  {item.contacts ? item.contacts : "Контакты отсутствуют"}
-                  <a
-                    name="writeContacts"
-                    onClick={e => {
-                      this.iWantToRecordInformation(e);
-                    }}
-                  >
+                    <a href={item.vacancy.alternate_url}>{item.vacancy.name}</a>
+                  </h4>
+                  <p>
+                    <b>Работодатель: </b>{" "}
+                    <a href={item.vacancy.employer.alternate_url}>
+                      {item.vacancy.employer.name}
+                    </a>
+                  </p>
+                  <p>
+                    <b>Зарплата: </b>
+                    {item.vacancy.salary
+                      ? ` От ${
+                          item.vacancy.salary.from
+                            ? item.vacancy.salary.from
+                            : "..."
+                        } ${
+                          item.vacancy.salary.currency
+                            ? item.vacancy.salary.currency
+                            : "..."
+                        } до ${
+                          item.vacancy.salary.to
+                            ? item.vacancy.salary.to
+                            : "..."
+                        } ${
+                          item.vacancy.salary.currency
+                            ? item.vacancy.salary.currency
+                            : "..."
+                        }`
+                      : "Не указано"}
+                  </p>
+                  <p>
                     {" "}
-                    ✏️
-                  </a>{" "}
+                    <b>Описание: </b> {item.vacancy.snippet.responsibility}
+                  </p>
+                  <p>
+                    <b>Адрес: </b>
+                    {item.vacancy.address
+                      ? `${
+                          item.vacancy.address.raw
+                            ? item.vacancy.address.raw
+                            : "Не указано"
+                        }`
+                      : "Не указано"}
+                  </p>
+                  <p>
+                    <b>Комментарий: </b>
+                    {this.state.writeComment ? (
+                      <>
+                        <input
+                          type="text"
+                          defaultValue={this.state.comment}
+                          name="comment"
+                          onChange={e => this.writeData(e)}
+                        />
+                        <a
+                          name="writeComment"
+                          onClick={e => {
+                            this.saveData(e);
+                          }}
+                        >
+                          {" "}
+                          ✅
+                        </a>{" "}
+                      </>
+                    ) : (
+                      <span>
+                        {this.state.comment
+                          ? this.state.comment
+                          : "Вы пока не оставили комментарий"}
+                        <a
+                          name="writeComment"
+                          onClick={e => {
+                            this.iWantToRecordInformation(e);
+                          }}
+                        >
+                          {" "}
+                          ✏️
+                        </a>{" "}
+                      </span>
+                    )}
+                  </p>
+                  <p>
+                    <b>Контакты: </b>
+                    {this.state.writeContacts ? (
+                      <>
+                        <input
+                          type="text"
+                          defaultValue={this.state.contacts}
+                          name="contacts"
+                          onChange={e => this.writeData(e)}
+                        />
+                        <a
+                          name="writeContacts"
+                          onClick={e => {
+                            this.saveData(e);
+                          }}
+                        >
+                          {" "}
+                          ✅
+                        </a>{" "}
+                      </>
+                    ) : (
+                      <span>
+                        {this.state.contacts
+                          ? this.state.contacts
+                          : "Контакты отсутствуют"}
+                        <a
+                          name="writeContacts"
+                          onClick={e => {
+                            this.iWantToRecordInformation(e);
+                          }}
+                        >
+                          {" "}
+                          ✏️
+                        </a>{" "}
+                      </span>
+                    )}
+                  </p>
+                  <p>
+                    <b>Статус: </b>
+                    {this.state.status}
+                  </p>
                 </div>
-              )}
-            </p>
-            <p>
-              <b>Статус: </b>
-              {item.status}
-            </p>
-          </div>
-          <div className="modal-footer">
-            <a className="modal-close waves-effect waves-green btn-flat">
-              save
-            </a>
+                <div className="modal-footer">
+                  <a className="modal-close waves-effect waves-green btn-flat">
+                    okey
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
