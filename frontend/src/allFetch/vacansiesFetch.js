@@ -14,6 +14,8 @@ export const vacansiesFetch = async payload => {
       payload.keyWords
     }&per_page=100&area=1&vacancy_search_order=publication_time`
   );
+
+  
   let result = await response.json();
   return result.items;
 };

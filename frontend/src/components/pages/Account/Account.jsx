@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { getUserJobsSaga } from "../../../redux/action";
+import Statistic from './StatisticCompanents/Statistic'
+
 
 class Account extends React.Component {
   constructor(props) {
@@ -19,7 +21,9 @@ class Account extends React.Component {
         <div>
           <Link to="/crm">Нужно придумать название для ссылки</Link>
           <br></br>
-          <b>Здесь будет статистика</b>
+          <b> Первый график</b>
+          <br/>
+          <Statistic />
         </div>
       </>
     );
