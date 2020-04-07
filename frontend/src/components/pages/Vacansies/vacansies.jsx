@@ -2,8 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { vacansiesFetch } from "../../../allFetch/vacansiesFetch";
 import { writeFilters } from "../../../redux/action";
-import ModalWindow from "./components/modalWindow";
 import { recordsNewVacansiesSaga } from "../../../redux/action";
+// import { vacansiesToTheDatabase } from "../../../allFetch/vacansiesToTheDatabase";
+import Vacancy from "./components/Vacancy";
 
 class Vacansies extends React.Component {
   constructor(props) {
@@ -54,28 +55,22 @@ class Vacansies extends React.Component {
       });
     }
   }
+
   render() {
+    const { modalWindow, certainVacancy, vacansies } = this.state;
     return (
       <div>
-        {this.state.modalWindow ? (
-          <ModalWindow
+        {vacansies.map((item, index) => (
+          <Vacancy
+            item={item}
+            index={index}
+            key={index}
+            vacansies={certainVacancy}
+            openModalWindow={this.openModalWindow.bind(this)}
             closeModalWindowAndWriteVacansies={this.closeModalWindowAndWriteVacansies.bind(
               this
             )}
-            vacansies={this.state.certainVacancy}
-          ></ModalWindow>
-        ) : null}
-
-        {this.state.vacansies.map((item, index) => (
-          <div key={index}>
-            <br />
-            <a
-              href={item.alternate_url}
-              onClick={() => this.openModalWindow(index, item.name)}
-            >
-              {item.name}
-            </a>
-          </div>
+          />
         ))}
       </div>
     );
@@ -94,3 +89,29 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vacansies);
+
+// <div>
+//
+//   {this.state.modalWindow ? (
+//     <ModalWindow
+//       closeModalWindowAndWriteVacansies={this.closeModalWindowAndWriteVacansies.bind(
+//         this,
+//       )}
+//       vacansies={this.state.certainVacancy}
+//     />
+//   ) : null}
+//
+//   {this.state.vacansies.map((item, index) => (
+//     <div key={index}>
+//       <br />
+//
+//       <a
+//         href={item.alternate_url}
+//         onClick={() => this.openModalWindow(index, item.name)}
+//       >
+//         {item.name}
+//       </a>
+//
+//     </div>
+//   ))}
+// </div>

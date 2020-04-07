@@ -5,7 +5,11 @@ class ModalAndCard extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      writeComment: false,
+      writeContacts: false,
+      writeStatus: false
+    };
   }
 
   componentDidMount() {
@@ -32,10 +36,18 @@ class ModalAndCard extends React.Component {
     M.Modal.init(this.Modal, options);
   }
 
+  componentDidCatch(error, errorInfo) {
+    console.log(error, errorInfo);
+  }
+
+  iWantToRecordInformation(e) {
+    this.setState({
+      [e.target.name]: true
+    });
+  }
+
   render() {
     const { item, index } = this.props;
-    console.log(item);
-
     return (
       <div>
         <br />
@@ -59,7 +71,7 @@ class ModalAndCard extends React.Component {
               <a href={item.vacancy.alternate_url}>{item.vacancy.name}</a>
             </h4>
             <p>
-              <b>Компания: </b>{" "}
+              <b>Работодатель: </b>{" "}
               <a href={item.vacancy.employer.alternate_url}>
                 {item.vacancy.employer.name}
               </a>
@@ -88,11 +100,43 @@ class ModalAndCard extends React.Component {
             </p>
             <p>
               <b>Комментарий: </b>
-              {item.comment ? item.comment : "Вы пока не оставили комментарий"}
+              {this.state.writeComment ? (
+                <input type="text" defaultValue={item.comment} />
+              ) : (
+                <div>
+                  {item.comment
+                    ? item.comment
+                    : "Вы пока не оставили комментарий"}
+                  <a
+                    name="writeComment"
+                    onClick={e => {
+                      this.iWantToRecordInformation(e);
+                    }}
+                  >
+                    {" "}
+                    ✏️
+                  </a>{" "}
+                </div>
+              )}
             </p>
             <p>
               <b>Контакты: </b>
-              {item.contacts ? item.contacts : "Контакты отсутствуют"}
+              {this.state.writeContacts ? (
+                <input type="text" defaultValue={item.contacts} />
+              ) : (
+                <div>
+                  {item.contacts ? item.contacts : "Контакты отсутствуют"}
+                  <a
+                    name="writeContacts"
+                    onClick={e => {
+                      this.iWantToRecordInformation(e);
+                    }}
+                  >
+                    {" "}
+                    ✏️
+                  </a>{" "}
+                </div>
+              )}
             </p>
             <p>
               <b>Статус: </b>
