@@ -21,10 +21,18 @@ class Vacansies extends React.Component {
   }
 
   async componentDidMount() {
+    window.scrollTo({
+      top: 1000,
+      behavior: 'smooth',
+    });
     const vacansies = await vacansiesFetch(this.props.filters);
     this.setState({
       vacansies,
       isReady: true,
+    });
+    window.scrollTo({
+      top: 1400,
+      behavior: 'smooth',
     });
   }
 
