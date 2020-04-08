@@ -1,4 +1,9 @@
-@import '~materialize-css/dist/css/materialize.min.css';
+@import "~materialize-css/dist/css/materialize.min.css";
+
+.container {
+  max-width: 1900px;
+  width: 90%;
+}
 
 nav .brand-logo {
   margin-left: 20px;
@@ -25,14 +30,20 @@ select:focus {
   margin-top: 80px;
 }
 
-.arrowImage img{
+.arrowImage img {
   bottom: 50px;
-  left: 50px;
+  right: 50px;
   position: fixed;
   max-width: 100px;
+  z-index: 9;
 }
 .preloader {
   margin-top: 40px;
   display: flex;
   justify-content: center;
+}
+
+.tableItem {
+  height: 500px;
+  overflow: auto;
 }

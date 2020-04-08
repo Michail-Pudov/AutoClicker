@@ -1,10 +1,8 @@
-import React from 'react';
-import {
-  Switch, Route, withRouter, Link,
-} from 'react-router-dom';
-import { connect } from 'react-redux';
-import ListStatus from './Components/listStatus';
-import ScrollTo from '../../ScrollTo/ScrollTo';
+import React from "react";
+import { Switch, Route, withRouter, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import ListStatus from "./Components/listStatus";
+import ScrollTo from "../../ScrollTo/ScrollTo";
 
 class Crm extends React.Component {
   constructor(props) {
@@ -17,18 +15,13 @@ class Crm extends React.Component {
     return (
       <div className="row">
         <h3>Общая база моих откликов</h3>
+        <ScrollTo />
+
         <div className=" allVacansies">
-          <ScrollTo />
           <div className="col s12">
             <ListStatus text="Жду ответа:" list="weResponded" />
-            <ListStatus
-              text="Прислали тестовое задание:"
-              list="testTaskCame"
-            />
-            <ListStatus
-              text="Требуется перезвонить:"
-              list="needToCall"
-            />
+            <ListStatus text="Прислали тестовое задание:" list="testTaskCame" />
+            <ListStatus text="Требуется перезвонить:" list="needToCall" />
           </div>
           <div className="col s12">
             <ListStatus
@@ -37,10 +30,7 @@ class Crm extends React.Component {
             />
 
             <ListStatus text="Прислали оффер:" list="theOfferCame" />
-            <ListStatus
-              text="Закрытые вакансии:"
-              list="closedVacancies"
-            />
+            <ListStatus text="Закрытые вакансии:" list="closedVacancies" />
           </div>
         </div>
       </div>
@@ -48,9 +38,9 @@ class Crm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   userJobs: state.userJobs,
-  email: state.email,
+  email: state.email
 });
 
 const mapDispatchToProps = {};
