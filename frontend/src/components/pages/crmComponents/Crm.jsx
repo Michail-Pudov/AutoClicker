@@ -1,8 +1,10 @@
-import React from "react";
-import { Switch, Route, withRouter, Link } from "react-router-dom";
-import ListStatus from "./Components/listStatus";
-import { connect } from "react-redux";
-import ScrollTo from "../../ScrollTo/ScrollTo";
+import React from 'react';
+import {
+  Switch, Route, withRouter, Link,
+} from 'react-router-dom';
+import { connect } from 'react-redux';
+import ListStatus from './Components/listStatus';
+import ScrollTo from '../../ScrollTo/ScrollTo';
 
 class Crm extends React.Component {
   constructor(props) {
@@ -13,38 +15,42 @@ class Crm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="row">
         <h3>Общая база моих откликов</h3>
-        <div className="allVacansies">
+        <div className=" allVacansies">
           <ScrollTo />
-          <ListStatus text="Жду ответа:" list="weResponded"></ListStatus>
-          <ListStatus
-            text="Прислали тестовое задание:"
-            list="testTaskCame"
-          ></ListStatus>
-          <ListStatus
-            text="Требуется перезвонить:"
-            list="needToCall"
-          ></ListStatus>
-          <ListStatus
-            text="Пригласили на интервью:"
-            list="iGotAnInvitationForAnInterview"
-          ></ListStatus>
+          <div className="col s12">
+            <ListStatus text="Жду ответа:" list="weResponded" />
+            <ListStatus
+              text="Прислали тестовое задание:"
+              list="testTaskCame"
+            />
+            <ListStatus
+              text="Требуется перезвонить:"
+              list="needToCall"
+            />
+          </div>
+          <div className="col s12">
+            <ListStatus
+              text="Пригласили на интервью:"
+              list="iGotAnInvitationForAnInterview"
+            />
 
-          <ListStatus text="Прислали оффер:" list="theOfferCame"></ListStatus>
-          <ListStatus
-            text="Закрытые вакансии:"
-            list="closedVacancies"
-          ></ListStatus>
+            <ListStatus text="Прислали оффер:" list="theOfferCame" />
+            <ListStatus
+              text="Закрытые вакансии:"
+              list="closedVacancies"
+            />
+          </div>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userJobs: state.userJobs,
-  email: state.email
+  email: state.email,
 });
 
 const mapDispatchToProps = {};

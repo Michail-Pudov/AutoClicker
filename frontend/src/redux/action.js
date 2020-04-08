@@ -7,8 +7,22 @@ import {
   SAGA_RECORDS_NEW_VACANCIES,
   VACANCY_STATUS_CHANGE,
   SAGA_VACANCY_STATUS_CHANGE,
-  WRITE_NEW_REVIEWS
+  WRITE_NEW_REVIEWS,
+  GET_ALL_REVIEW_IN_DATABASE,
+  SAGA_GET_ALL_REVIEW_IN_DATABASE
 } from "./action-types";
+
+export const getAllReviewInDatabase = payload => {
+  return {
+    type: GET_ALL_REVIEW_IN_DATABASE,
+    allReviews: payload.allReviews
+  };
+};
+export const getAllReviewInDatabaseSaga = payload => {
+  return {
+    type: SAGA_GET_ALL_REVIEW_IN_DATABASE
+  };
+};
 
 export const writeNewReviews = payload => {
   return {

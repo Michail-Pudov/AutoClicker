@@ -4,7 +4,8 @@ import {
   GET_USER_JOBS,
   RECORDS_NEW_VACANCIES,
   VACANCY_STATUS_CHANGE,
-  WRITE_NEW_REVIEWS
+  WRITE_NEW_REVIEWS,
+  GET_ALL_REVIEW_IN_DATABASE
 } from "./action-types";
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
     closedVacancies: [],
     theOfferCame: []
   },
-  urlNewReviews: ""
+  urlNewReviews: "",
+  allReviews: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -53,6 +55,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         urlNewReviews: action.urlNewReviews
+      };
+    case GET_ALL_REVIEW_IN_DATABASE:
+      return {
+        ...state,
+        allReviews: action.allReviews
       };
     default:
       return state;

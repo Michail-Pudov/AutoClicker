@@ -2,16 +2,28 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import {
   SAGA_GET_USER_JOBS,
   SAGA_RECORDS_NEW_VACANCIES,
-  SAGA_VACANCY_STATUS_CHANGE
+  SAGA_VACANCY_STATUS_CHANGE,
+  SAGA_GET_ALL_REVIEW_IN_DATABASE
 } from "../action-types";
 import {
   getUserJobs,
   recordsNewVacansies,
-  vacancyStatusChange
+  vacancyStatusChange,
+  getAllReviewInDatabase
 } from "../action";
 import { uploadUserJobsFetch } from "../../allFetch/uploadUserJobsFetch";
 import { vacansiesToTheDatabase } from "../../allFetch/vacansiesToTheDatabase";
 import { newStatusInVacancy } from "../../allFetch/newStatusInVacancy";
+import { getAllReviews } from "../../allFetch/getAllReviews";
+
+function* fetchSagaGetAllReviews(payload) {
+  try {
+    const data = yield call(getAllReviews);
+    yield put(getAllReviewInDatabase(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 function* fetchSagaVacancyStatusChange(payload) {
   try {
@@ -79,4 +91,5 @@ export default function* actionWatcher() {
   yield takeLatest(SAGA_GET_USER_JOBS, fetchSagaUserJobs);
   yield takeLatest(SAGA_RECORDS_NEW_VACANCIES, fetchSagaNewVacancy);
   yield takeLatest(SAGA_VACANCY_STATUS_CHANGE, fetchSagaVacancyStatusChange);
+  yield takeLatest(SAGA_GET_ALL_REVIEW_IN_DATABASE, fetchSagaGetAllReviews);
 }
