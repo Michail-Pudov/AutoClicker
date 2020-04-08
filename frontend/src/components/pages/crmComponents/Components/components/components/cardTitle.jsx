@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 
 class CardTitle extends PureComponent {
   constructor(props) {
@@ -10,7 +10,7 @@ class CardTitle extends PureComponent {
   render() {
     const { item, index } = this.props;
     return (
-      <span className="card-title">
+      <div className="">
         <a
           className="modal-trigger"
           data-target={index}
@@ -18,7 +18,7 @@ class CardTitle extends PureComponent {
         >
           {item.vacancy.name}
         </a>
-      </span>
+      </div>
     );
   }
 }
