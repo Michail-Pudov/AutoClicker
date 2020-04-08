@@ -1,14 +1,7 @@
 import React from "react";
 import { Switch, Route, withRouter, Link } from "react-router-dom";
-import WeResponded from "./Components/WeResponded";
-import TestTaskCame from "./Components/TestTaskCame";
-import IGotAnInvitationForAnInterview from "./Components/IGotAnInvitationForAnInterview";
-import NeedToCall from "./Components/NeedToCall";
+import ListStatus from "./Components/listStatus";
 import { connect } from "react-redux";
-
-import ClosedVacancies from "./Components/ClosedVacancies";
-
-import TheOfferCame from "./Components/TheOfferCame";
 
 class Crm extends React.Component {
   constructor(props) {
@@ -22,12 +15,25 @@ class Crm extends React.Component {
       <div>
         <h3>Общая база моих откликов</h3>
         <div className="allVacansies">
-          <WeResponded></WeResponded>
-          <TestTaskCame></TestTaskCame>
-          <IGotAnInvitationForAnInterview></IGotAnInvitationForAnInterview>
-          <NeedToCall></NeedToCall>
-          <TheOfferCame></TheOfferCame>
-          <ClosedVacancies></ClosedVacancies>
+          <ListStatus text="Жду ответа:" list="weResponded"></ListStatus>
+          <ListStatus
+            text="Прислали тестовое задание:"
+            list="testTaskCame"
+          ></ListStatus>
+          <ListStatus
+            text="Требуется перезвонить:"
+            list="needToCall"
+          ></ListStatus>
+          <ListStatus
+            text="Пригласили на интервью:"
+            list="iGotAnInvitationForAnInterview"
+          ></ListStatus>
+
+          <ListStatus text="Прислали оффер:" list="theOfferCame"></ListStatus>
+          <ListStatus
+            text="Закрытые вакансии:"
+            list="closedVacancies"
+          ></ListStatus>
         </div>
       </div>
     );

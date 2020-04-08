@@ -3,27 +3,24 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import ModalAndCard from "./components/ModalAndCard";
 
-class ClosedVacancies extends React.Component {
+class ListStatus extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {};
   }
 
-  componentDidUpdate() {
-    console.log(this.props);
-  }
-
   render() {
+    const { text, list } = this.props;
     return (
-      <div className="ClosedVacancies">
-        <h4>Закрытые вакансии:</h4>
-        {this.props.userJobs.closedVacancies.map((item, index) => {
+      <div className={list}>
+        <h4>{text}</h4>
+        {this.props.userJobs[list].map((item, index) => {
           return (
             <ModalAndCard
               item={item}
               index={item.vacancy.id}
-              keyArray={"closedVacancies"}
+              keyArray={list}
               indexInArray={index}
             ></ModalAndCard>
           );
@@ -32,6 +29,7 @@ class ClosedVacancies extends React.Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   userJobs: state.userJobs,
   email: state.email
@@ -40,5 +38,5 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {};
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ClosedVacancies)
+  connect(mapStateToProps, mapDispatchToProps)(ListStatus)
 );
