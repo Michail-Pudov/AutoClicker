@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const ReviewsModel = require("../models/reviews");
 
 async function getData() {
   let currentUser = await User.findOne({ email: "1" });

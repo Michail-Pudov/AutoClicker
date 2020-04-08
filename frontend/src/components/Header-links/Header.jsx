@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { PureComponent } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { addUser } from "../../redux/action";
 import { connect } from "react-redux";
 
@@ -8,53 +8,71 @@ class Header extends PureComponent {
     super(props);
     this.state = {
       email: "",
-      status: false,
+      status: false
     };
   }
 
-
   userLogout = () => {
-    localStorage.removeItem('email')
+    localStorage.removeItem("email");
     this.setState({
-      status: false,
+      status: false
     });
   };
 
-
   render() {
-    const storage = localStorage.getItem('email');
+    const storage = localStorage.getItem("email");
     return (
       <nav>
         <div className="nav-wrapper grey lighten-4 ">
-          <Link to="/" className="brand-logo grey-text text-darken-4">AutoClicker</Link>
+          <Link to="/" className="brand-logo grey-text text-darken-4">
+            AutoClicker
+          </Link>
           {storage ? (
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-
               <li>
-                <Link to="/" className="grey-text text-darken-4">Home</Link>
+                <Link to="/" className="grey-text text-darken-4">
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/search" className="grey-text text-darken-4">Search</Link>
+                <Link to="/search" className="grey-text text-darken-4">
+                  Search
+                </Link>
               </li>
               <li>
-                <Link to="/account" className="grey-text text-darken-4">Account</Link>
+                <Link to="/account" className="grey-text text-darken-4">
+                  Account
+                </Link>
               </li>
               <li>
-                <Link to="/" className="grey-text text-darken-4" onClick={
-                  () =>  {
-                    this.userLogout()
+                <Link to="/reviews" className="grey-text text-darken-4">
+                  Reviews
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/"
+                  className="grey-text text-darken-4"
+                  onClick={() => {
+                    this.userLogout();
                     this.props.addUser(this.state.email);
-                  }}>Logout</Link>
+                  }}
+                >
+                  Logout
+                </Link>
               </li>
             </ul>
-
           ) : (
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
-                <Link to="/registration" className="grey-text text-darken-4">Registration</Link>
+                <Link to="/registration" className="grey-text text-darken-4">
+                  Registration
+                </Link>
               </li>
               <li>
-                <Link to="/login" className="grey-text text-darken-4">Login</Link>
+                <Link to="/login" className="grey-text text-darken-4">
+                  Login
+                </Link>
               </li>
             </ul>
           )}
@@ -63,7 +81,6 @@ class Header extends PureComponent {
     );
   }
 }
-
 
 const mapDispatchToProps = dispatch => ({
   addUser: email => dispatch(addUser(email))

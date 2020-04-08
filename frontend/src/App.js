@@ -10,6 +10,8 @@ import Home from "./components/pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 import CRM from "./components/pages/crmComponents/Crm";
 import { getUserJobsSaga } from "./redux/action";
+import AllReviews from "./components/pages/Reviews/AllReviews";
+import NewReviews from "./components/pages/Reviews/components/NewReviews";
 
 const mainBackground = {
   background:
@@ -90,6 +92,12 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/account">
                       <Account />
+                    </Route>
+                    <Route exact path="/reviews">
+                      <AllReviews />
+                    </Route>
+                    <Route exact path="/newReviews">
+                      <NewReviews />
                     </Route>
                     <Route exact path="/crm" component={CRM} />
                   </>

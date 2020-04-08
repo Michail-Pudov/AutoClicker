@@ -6,8 +6,16 @@ import {
   RECORDS_NEW_VACANCIES,
   SAGA_RECORDS_NEW_VACANCIES,
   VACANCY_STATUS_CHANGE,
-  SAGA_VACANCY_STATUS_CHANGE
+  SAGA_VACANCY_STATUS_CHANGE,
+  WRITE_NEW_REVIEWS
 } from "./action-types";
+
+export const writeNewReviews = payload => {
+  return {
+    type: WRITE_NEW_REVIEWS,
+    urlNewReviews: payload.url
+  };
+};
 
 export const vacancyStatusChange = payload => {
   return {
@@ -15,6 +23,7 @@ export const vacancyStatusChange = payload => {
     userJobs: payload.userJobs
   };
 };
+
 export const vacancyStatusChangeSaga = payload => {
   return {
     type: SAGA_VACANCY_STATUS_CHANGE,
