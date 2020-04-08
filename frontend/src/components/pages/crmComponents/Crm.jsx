@@ -16,9 +16,10 @@ class Crm extends React.Component {
   render() {
     return (
       <div className="row">
-        <h3>Общая база моих откликов</h3>
+        <h3>Сохраненные вакансии</h3>
+        <ScrollTo />
+
         <div className=" allVacansies">
-          <ScrollTo />
           <div className="col s12">
             <ListStatus text="Жду ответа:" list="weResponded" />
             <ListStatus

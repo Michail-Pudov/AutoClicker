@@ -31,10 +31,11 @@ select:focus {
 }
 
 .arrowImage img{
-  bottom: 50px;
-  right: 50px;
+  bottom: 2%;
+  right: 2%;
   position: fixed;
-  max-width: 100px;
+  max-width: 80px;
+  z-index: 9;
 }
 .preloader {
   margin-top: 40px;
