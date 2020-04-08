@@ -9,8 +9,6 @@ class CardTitle extends PureComponent {
 
   render() {
     const { item, index } = this.props;
-    console.log(item, index);
-
     return (
       <span className="card-title">
         <a

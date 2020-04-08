@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import ModalAndCard from "./components/ModalAndCard";
+import { v4 as uuidv4 } from "uuid";
 
 class ListStatus extends PureComponent {
   constructor(props) {
@@ -22,6 +23,7 @@ class ListStatus extends PureComponent {
               index={item.vacancy.id}
               keyArray={list}
               indexInArray={index}
+              key={uuidv4()}
             ></ModalAndCard>
           );
         })}

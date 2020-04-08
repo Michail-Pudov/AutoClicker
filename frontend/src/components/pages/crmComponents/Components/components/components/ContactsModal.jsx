@@ -19,12 +19,14 @@ class ContactsModal extends PureComponent {
               defaultValue={state.contacts}
               name="contacts"
               onChange={e => writeData(e)}
+              style={{ cursor: "text" }}
             />
             <a
               name="writeContacts"
               onClick={e => {
                 saveData(e);
               }}
+              style={{ cursor: "pointer" }}
             >
               {" "}
               ✅
@@ -38,6 +40,7 @@ class ContactsModal extends PureComponent {
               onClick={e => {
                 iWantToRecordInformation(e);
               }}
+              style={{ cursor: "pointer" }}
             >
               {" "}
               ✏️

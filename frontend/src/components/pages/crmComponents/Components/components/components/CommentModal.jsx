@@ -20,12 +20,14 @@ class CommentModal extends PureComponent {
               defaultValue={state.comment}
               name="comment"
               onChange={e => writeData(e)}
+              style={{ cursor: "text" }}
             />
             <a
               name="writeComment"
               onClick={e => {
                 saveData(e);
               }}
+              style={{ cursor: "pointer" }}
             >
               ✅
             </a>
@@ -38,6 +40,7 @@ class CommentModal extends PureComponent {
               onClick={e => {
                 iWantToRecordInformation(e);
               }}
+              style={{ cursor: "pointer" }}
             >
               ✏️
             </a>

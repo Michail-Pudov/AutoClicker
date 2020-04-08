@@ -8,7 +8,7 @@ class ModalTitle extends PureComponent {
   }
 
   render() {
-    const { item, index } = this.props;
+    const { item } = this.props;
 
     return (
       <h4>

@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 class StatusModal extends PureComponent {
   constructor(props) {
@@ -16,14 +17,6 @@ class StatusModal extends PureComponent {
     };
   }
 
-  // componentDidMount() {
-  //   let status = [...this.state.status];
-  //   status = status.filter(item => item != this.props.state.status);
-  //   this.setState({
-  //     status
-  //   });
-  // }
-
   componentDidUpdate(props) {
     if (this.props.state !== props.state) {
       let status = [
@@ -34,7 +27,13 @@ class StatusModal extends PureComponent {
         "Поступил оффер",
         "Вакансия закрыта"
       ];
-      status = status.filter(item => item != this.props.state.status);
+      // status = status.filter(item => item !== this.props.state.status);
+      for (let i = 0; i < status.length; i++) {
+        if (status[i] === this.props.state.status) {
+          let value = status.splice(i, 1);
+          status.unshift(value);
+        }
+      }
       this.setState({
         status
       });
@@ -50,13 +49,17 @@ class StatusModal extends PureComponent {
         {state.writeStatus ? (
           <>
             <select
-              style={{ display: "block" }}
+              style={{ display: "block", cursor: "pointer" }}
               name="status"
               onChange={e => writeData(e)}
             >
-              <option value={state.status}>{state.status}</option>
+              {/* <option value={state.status}>{state.status}</option> */}
               {this.state.status.map(item => {
-                return <option value={item}>{item}</option>;
+                return (
+                  <option value={item} key={uuidv4()}>
+                    {item}
+                  </option>
+                );
               })}
             </select>
             <a
@@ -64,6 +67,7 @@ class StatusModal extends PureComponent {
               onClick={e => {
                 saveData(e);
               }}
+              style={{ cursor: "pointer" }}
             >
               ✅
             </a>
@@ -76,6 +80,7 @@ class StatusModal extends PureComponent {
               onClick={e => {
                 iWantToRecordInformation(e);
               }}
+              style={{ cursor: "pointer" }}
             >
               ✏️
             </a>

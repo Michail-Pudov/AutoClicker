@@ -33,6 +33,7 @@ class ModalAndCard extends React.Component {
       contacts: this.props.item.contacts,
       status: this.props.item.status
     });
+
     const options = {
       onOpenStart: () => {
         console.log("Open Start");
@@ -82,7 +83,7 @@ class ModalAndCard extends React.Component {
     const { item, index, keyArray, userJobs, indexInArray } = this.props;
     return (
       <div className="row">
-        <div className="col s6">
+        <div className="col s7">
           <div className="card grey lighten-4 ">
             <div className="log card-content grey-text text-darken-4">
               <br />

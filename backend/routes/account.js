@@ -36,12 +36,25 @@ router.post("/uploadJobs", async function(req, res) {
 
 router.post("/newVacansy", async function(req, res) {
   let user = await User.findOne({ email: req.body.email });
+  let contacts = req.body.vacansies.contacts
+    ? `${
+        req.body.vacansies.contacts.name ? req.body.vacansies.contacts.name : ""
+      } ${
+        req.body.vacansies.contacts.email
+          ? req.body.vacansies.contacts.email
+          : ""
+      } ${
+        req.body.vacansies.contacts.phones
+          ? `+${req.body.vacansies.contacts.phones[0].country}-${req.body.vacansies.contacts.phones[0].city}-${req.body.vacansies.contacts.phones[0].number}`
+          : ""
+      }`
+    : "";
   const vacanсy = {
     vacancy: req.body.vacansies,
     date: new Date(),
     status: "Жду ответа",
     comment: "",
-    contacts: ""
+    contacts: contacts
   };
   user.allVacansies.push(vacanсy);
   user.weResponded.push(vacanсy);

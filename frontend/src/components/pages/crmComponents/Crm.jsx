@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, withRouter, Link } from "react-router-dom";
 import ListStatus from "./Components/listStatus";
 import { connect } from "react-redux";
+import ScrollTo from "../../ScrollTo/ScrollTo";
 
 class Crm extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Crm extends React.Component {
       <div>
         <h3>Общая база моих откликов</h3>
         <div className="allVacansies">
+          <ScrollTo />
           <ListStatus text="Жду ответа:" list="weResponded"></ListStatus>
           <ListStatus
             text="Прислали тестовое задание:"

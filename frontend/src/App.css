@@ -20,3 +20,19 @@ select:focus {
 .main {
   flex: 1 0 auto;
 }
+
+.vacansiesCollection {
+  margin-top: 80px;
+}
+
+.arrowImage img{
+  bottom: 50px;
+  left: 50px;
+  position: fixed;
+  max-width: 100px;
+}
+.preloader {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}

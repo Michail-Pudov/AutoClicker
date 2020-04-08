@@ -8,7 +8,7 @@ class SalaryCard extends PureComponent {
   }
 
   render() {
-    const { item, index } = this.props;
+    const { item } = this.props;
 
     return (
       <p>
