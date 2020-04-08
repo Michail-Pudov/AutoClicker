@@ -14,7 +14,7 @@ class ListStatus extends PureComponent {
   render() {
     const { text, list } = this.props;
     return (
-      <div className="col s4 ">
+      <div className="tableItem col s4 ">
         <ul className="collection with-header">
           <div className={list}>
             <li className="collection-header"><h5>{text}</h5></li>
