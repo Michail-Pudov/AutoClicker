@@ -1,51 +1,69 @@
 import React from 'react'
-import { ComposedChart, Legend, Area, Bar, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts'
+import Percent from './Persent'
 import { connect } from "react-redux";
-
+import { getUserJobsSaga } from "../../../../redux/action";
+import { withRouter } from "react-router-dom";
 
 
 class FirstGraph extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
-      data1:0
+      data: 0
+
     }
   }
 
-  async componentDidMount() {
 
-let response = await fetch('/account/getdata')
-let result = await response.json();
-    
-    this.setState({
-      data1: result.data
-    });
-  }
 
 
 
   render() {
+
+    const vacancyObj = this.props.userJobs
+    const data = [
+      {
+        month: 'Тестовое', a: vacancyObj.testTaskCame.length, b: vacancyObj.allVacansies.length-vacancyObj.testTaskCame.length, c: Math.round(Math.random()*30),
+      },
+      {
+        month: 'Интервью', a: vacancyObj.iGotAnInvitationForAnInterview.length, b: vacancyObj.allVacansies.length-vacancyObj.iGotAnInvitationForAnInterview.length, c: Math.round(Math.random()*30),
+      },
+      {
+        month: 'Созвон', a: vacancyObj.needToCall.length, b: vacancyObj.allVacansies.length-vacancyObj.needToCall.length, c: Math.round(Math.random()*30),
+      },
+      {
+        month: 'Оффер', a: vacancyObj.theOfferCame.length, b: vacancyObj.allVacansies.length-vacancyObj.theOfferCame.length, c: Math.round(Math.random()*30),
+      },
+      {
+        month: 'Ожидаем', a: vacancyObj.weResponded.length, b: vacancyObj.allVacansies.length-vacancyObj.weResponded.length, c: Math.round(Math.random()*30),
+      },
+      {
+        month: 'Отказ', a: vacancyObj.closedVacancies.length, b: vacancyObj.allVacansies.length-vacancyObj.closedVacancies.length, c: Math.round(Math.random()*30),
+      }
+      
+    ];
+
+
+
+
     return (
       <div>
-        <ComposedChart width={730} height={250} data={this.state.data1}>
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <CartesianGrid stroke="#f5f5f5" />
-          <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" />
-          <Bar dataKey="pv" barSize={20} fill="#413ea0" />
-          <Line type="monotone" dataKey="uv" stroke="#ff7300" />
-        </ComposedChart>
+        <Percent data={data}/>
       </div>
     )
   }
 
-
-
-
-
 }
+const mapStateToProps = state => ({
+  userJobs: state.userJobs,
+  email: state.email
+});
 
-export default FirstGraph
+const mapDispatchToProps = {
+  getUserJobsSaga
+};
+
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(FirstGraph)
+);
