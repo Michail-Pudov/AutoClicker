@@ -3,7 +3,7 @@ import FirstGraph from './FirstGraph'
 import SecondGraph from './SecondGraph'
 import ThirdGraph from './ThirdGraph'
 import MyVacansions from './MyVacansions'
-import LogoTable from './LogoTable'
+
 
 
 class Statistic extends React.Component {
@@ -25,8 +25,6 @@ class Statistic extends React.Component {
         <ThirdGraph />
         <br />
         <FirstGraph />
-        <br />
-        {/* <LogoTable />         */}
       </div>
     )
   }
