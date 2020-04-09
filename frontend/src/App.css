@@ -60,13 +60,40 @@ select:focus {
 .pulse {
   width: 100px !important;
   height: 100px !important;
-  background-color: #94ABE3 !important;
+  /*background-color: #94ABE3 !important;*/
+  border: white 3px solid !important;
+  border-radius: 50% !important;
+  background: rgba(0,0,0,0.1) !important;
 }
 .pulse:before {
   background-color: #F5F5F5 !important;
 }
 
+.borderTextH1 {
+  padding: 15px;
+  margin: 8% 10% 3%;
+
+  font-size: 60px;
+  width: 440px;
+  border: white 3px solid;
+  border-radius: 15px;
+  background: rgba(0,0,0,0.4);
+}
+
+.borderTextH2 {
+  padding: 12px;
+  margin: 0 19% 3%;
+  font-size: 50px;
+  width: 220px;
+  border: white 3px solid;
+  border-radius: 15px;
+  background: rgba(0,0,0,0.4);
+}
 .btn-floating.btn-large i {
   line-height: 100px !important;
   font-size: 50px;
+}
+
+.buttonSearchOfHome {
+  margin: 0 24% 5%;
 }

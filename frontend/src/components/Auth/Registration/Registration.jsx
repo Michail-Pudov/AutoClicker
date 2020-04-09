@@ -9,7 +9,8 @@ class Registration extends React.Component {
     this.state = {
       email: "",
       password: "",
-      status: false
+      status: false,
+      invalid: '',
     };
   }
 
@@ -20,21 +21,30 @@ class Registration extends React.Component {
   }
 
   createUser = async () => {
-    let result = await registrationFetch(this.state.email, this.state.password);
-    this.setState({
-      status: result.registration
-    });
+    if (this.state.password.length > 5) {
+      let result = await registrationFetch(this.state.email, this.state.password);
+      this.setState({
+        status: result.registration
+      });
+    } else {
+      this.setState({
+        invalid: "invalid"
+      })
+    }
   };
 
   render() {
+
     return (
-      <div className="row" style={{ marginTop: "7vh" }}>
+      <div className="row" style={{ marginTop: "15vh", marginBottom: "20vh" }}>
         <div className="col s5 offset-s3">
           <div className="card grey lighten-4 ">
             <div className="reg card-content grey-text text-darken-4">
               <span className="card-title">Регистрация</span>
               <div className="input-field">
                 <input
+                  required
+                  type="email"
                   name="email"
                   placeholder="Email"
                   onChange={e => this.createData(e)}
@@ -42,6 +52,8 @@ class Registration extends React.Component {
               </div>
               <div className="input-field">
                 <input
+                  className={this.state.invalid}
+                  required
                   type="password"
                   name="password"
                   placeholder="Password"
@@ -55,10 +67,14 @@ class Registration extends React.Component {
                     if ( this.state.status ) {
                       this.props.history.push(`/login`);
                     } else {
+                      if (this.state.password.length <= 5) {
+                        document.querySelector(".reg").innerHTML +=
+                         " Пароль слишком короткий (мин: 6)"
+                      } else {
                       document.querySelector(".reg").innerHTML +=
-                        "Пользователь с таким email уже существует";
+                          "Пользователь с таким email уже существует"
                     }
-                  }}
+                  }}}
                 >
                   Регистрация
                 </button>
