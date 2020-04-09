@@ -65,7 +65,7 @@ export const reducer = (state = initialState, action) => {
     case WRITE_NEW_REVIEW:
       return {
         ...state,
-        allReviews: action.allReviews
+        allReviews: JSON.parse(JSON.stringify(action.allReviews))
       };
     default:
       return state;

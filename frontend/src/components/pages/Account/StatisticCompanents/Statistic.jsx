@@ -2,7 +2,6 @@ import React from "react";
 import FirstGraph from "./FirstGraph";
 import SecondGraph from "./SecondGraph";
 import ThirdGraph from "./ThirdGraph";
-import MyVacansions from "./MyVacansions";
 import LogoTable from "./LogoTable";
 
 class Statistic extends React.Component {
@@ -15,8 +14,6 @@ class Statistic extends React.Component {
   render() {
     return (
       <div>
-        <MyVacansions />
-        <br />
         <SecondGraph />
         <br />
         <ThirdGraph />

@@ -37,8 +37,6 @@ function* fetchSagaWriteNewReview(payload) {
         indexCompany = `${i}`;
       }
     }
-    console.log(indexCompany);
-
     if (indexCompany) {
       payload.allReviews[+indexCompany].comments.push(comment);
     } else {
@@ -50,8 +48,6 @@ function* fetchSagaWriteNewReview(payload) {
       };
       payload.allReviews.push(newCompany);
     }
-    console.log([...payload.allReviews]);
-
     yield put(writeNewReviewInRedux({ allReviews: [...payload.allReviews] }));
   } catch (e) {
     console.log(e);

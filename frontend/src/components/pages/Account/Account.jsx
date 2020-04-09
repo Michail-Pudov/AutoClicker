@@ -24,7 +24,6 @@ class Account extends React.Component {
         <div>
           <Link to="/crm">Сохраненные вакансии</Link>
           <br />
-          <b> Первый график</b>
           <br />
           <Statistic />
         </div>
