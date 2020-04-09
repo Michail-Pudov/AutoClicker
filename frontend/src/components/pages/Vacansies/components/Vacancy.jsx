@@ -35,10 +35,10 @@ class Vacancy extends Component {
   callStyleChange(e, value) {
     if (value) {
       e.target.parentNode.parentNode.parentNode.parentNode.className =
-        "card grey lighten-4 addedMap";
+        "card light-green lighten-3";
     } else {
       e.target.parentNode.parentNode.parentNode.parentNode.className =
-        "card grey lighten-4 didNotAddAMap";
+        "card red lighten-3";
     }
     console.log(e.target.parentNode.parentNode.parentNode.parentNode);
   }
