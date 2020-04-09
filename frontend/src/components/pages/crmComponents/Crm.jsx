@@ -14,7 +14,7 @@ class Crm extends React.Component {
   render() {
     return (
       <div className="row">
-        <h3>Общая база моих откликов</h3>
+        <h3>Сохраненные вакансии</h3>
         <ScrollTo />
 
         <div className=" allVacansies">
