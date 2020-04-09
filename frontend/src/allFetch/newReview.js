@@ -1,4 +1,5 @@
-export const newReviewFetch = async (email, review, vacancy) => {
+export const newReviewFetch = async payload => {
+  const { email, review, vacancy } = payload;
   let response = await fetch("http://localhost:5000/account/newReview", {
     method: "POST",
     headers: {

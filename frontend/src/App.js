@@ -1,28 +1,26 @@
-import React from 'react';
-import {
-  withRouter, Route, Switch, Redirect,
-} from 'react-router-dom';
-import { connect } from 'react-redux';
-import Registration from './components/Auth/Registration/Registration';
-import Login from './components/Auth/Login/Login';
-import Header from './components/Header-links/Header';
-import Account from './components/pages/Account/Account';
-import Main from './components/pages/Main/Main';
-import Home from './components/pages/Home/Home';
-import Footer from './components/Footer/Footer';
-import CRM from './components/pages/crmComponents/Crm';
-import { getUserJobsSaga } from './redux/action';
-import AllReviews from './components/pages/Reviews/AllReviews';
-import NewReviews from './components/pages/Reviews/components/NewReviews';
+import React from "react";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import Registration from "./components/Auth/Registration/Registration";
+import Login from "./components/Auth/Login/Login";
+import Header from "./components/Header-links/Header";
+import Account from "./components/pages/Account/Account";
+import Main from "./components/pages/Main/Main";
+import Home from "./components/pages/Home/Home";
+import Footer from "./components/Footer/Footer";
+import CRM from "./components/pages/crmComponents/Crm";
+import { getUserJobsSaga, getAllReviewInDatabaseSaga } from "./redux/action";
+import AllReviews from "./components/pages/Reviews/AllReviews";
+import NewReviews from "./components/pages/Reviews/components/NewReviews";
 
 const mainBackground = {
   marginTop: '-2%',
   background:
     'no-repeat url("https://sciencemagic.ru/wp-content/uploads/2016/01/unemployed.jpg")',
-  backgroundSize: 'cover',
+  backgroundSize: "cover"
 };
 const mainBackgroundWhite = {
-  background: 'white',
+  background: "white"
 };
 
 class App extends React.Component {
@@ -30,24 +28,25 @@ class App extends React.Component {
     super(props);
     this.state = {
       backgroundStyle: {
-        background: mainBackground,
-      },
+        background: mainBackground
+      }
     };
   }
 
   componentDidMount() {
     this.props.getUserJobsSaga(localStorage.email);
+    this.props.getAllReviewInDatabaseSaga();
     if (
-      this.props.location.pathname === '/'
-      || this.props.location.pathname === '/login'
-      || this.props.location.pathname === '/registration'
+      this.props.location.pathname === "/" ||
+      this.props.location.pathname === "/login" ||
+      this.props.location.pathname === "/registration"
     ) {
       this.setState({
-        backgroundStyle: mainBackground,
+        backgroundStyle: mainBackground
       });
     } else {
       this.setState({
-        backgroundStyle: mainBackgroundWhite,
+        backgroundStyle: mainBackgroundWhite
       });
     }
   }
@@ -55,23 +54,23 @@ class App extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       if (
-        this.props.location.pathname === '/'
-        || this.props.location.pathname === '/login'
-        || this.props.location.pathname === '/registration'
+        this.props.location.pathname === "/" ||
+        this.props.location.pathname === "/login" ||
+        this.props.location.pathname === "/registration"
       ) {
         this.setState({
-          backgroundStyle: mainBackground,
+          backgroundStyle: mainBackground
         });
       } else {
         this.setState({
-          backgroundStyle: mainBackgroundWhite,
+          backgroundStyle: mainBackgroundWhite
         });
       }
     }
   }
 
   render() {
-    const storage = localStorage.getItem('email');
+    const storage = localStorage.getItem("email");
 
     return (
       <>
@@ -83,9 +82,9 @@ class App extends React.Component {
                 <Route
                   exact
                   path="/registration"
-                  render={(props) => <Registration {...props} />}
+                  render={props => <Registration {...props} />}
                 />
-                <Route path="/login" render={(props) => <Login {...props} />} />
+                <Route path="/login" render={props => <Login {...props} />} />
                 {storage ? (
                   <>
                     <Route exact path="/">
@@ -118,11 +117,12 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  email: state.email,
+const mapStateToProps = state => ({
+  email: state.email
 });
 const mapDispatchToProps = {
   getUserJobsSaga,
+  getAllReviewInDatabaseSaga
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

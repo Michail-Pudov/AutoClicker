@@ -9,8 +9,25 @@ import {
   SAGA_VACANCY_STATUS_CHANGE,
   WRITE_NEW_REVIEWS,
   GET_ALL_REVIEW_IN_DATABASE,
-  SAGA_GET_ALL_REVIEW_IN_DATABASE
+  SAGA_GET_ALL_REVIEW_IN_DATABASE,
+  WRITE_NEW_REVIEW,
+  SAGA_WRITE_NEW_REVIEW
 } from "./action-types";
+
+export const writeNewReviewInRedux = payload => {
+  return {
+    type: WRITE_NEW_REVIEW,
+    allReviews: [...payload.allReviews]
+  };
+};
+
+export const writeNewReviewInReduxSaga = payload => {
+  return {
+    type: SAGA_WRITE_NEW_REVIEW,
+    allReviews: payload.allReviews,
+    newReview: payload.newReview
+  };
+};
 
 export const getAllReviewInDatabase = payload => {
   return {
