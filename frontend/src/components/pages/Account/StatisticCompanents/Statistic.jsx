@@ -1,7 +1,8 @@
-import React from "react";
-import FirstGraph from "./FirstGraph";
-import SecondGraph from "./SecondGraph";
-import ThirdGraph from "./ThirdGraph";
+import React from 'react';
+import FirstGraph from './FirstGraph';
+import SecondGraph from './SecondGraph';
+import ThirdGraph from './ThirdGraph';
+import { statisticBlock } from "../Account.module.css";
 
 class Statistic extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Statistic extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={statisticBlock}>
         <SecondGraph />
         <br />
         <ThirdGraph />

@@ -1,8 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
-import { getUserJobsSaga } from "../../../redux/action";
-import Statistic from "./StatisticCompanents/Statistic";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+import { getUserJobsSaga } from '../../../redux/action';
+import Statistic from './StatisticCompanents/Statistic';
+import {
+  saveVacancy, linkSize, headingStat, linkBlock,
+} from './Account.module.css';
+import ScrollTo from '../../ScrollTo/ScrollTo';
+
 
 class Account extends React.Component {
   constructor(props) {
@@ -17,30 +22,34 @@ class Account extends React.Component {
 
   render() {
     return (
-      <>
-        <div>
-          <h2>Личный кабинет</h2>
+      <div className="">
+        <ScrollTo />
+        <div className={linkBlock}>
+          <Link className={linkSize} to="/crm">
+            <div className={saveVacancy}>
+              Сохраненные вакансии
+            </div>
+          </Link>
         </div>
-        <div>
-          <Link to="/crm">Сохраненные вакансии</Link>
-          <br />
-          <br />
+
+        <div className={headingStat}>
+          <h3>Статистика</h3>
           <Statistic />
         </div>
-      </>
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userJobs: state.userJobs,
-  email: state.email
+  email: state.email,
 });
 
 const mapDispatchToProps = {
-  getUserJobsSaga
+  getUserJobsSaga,
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Account)
+  connect(mapStateToProps, mapDispatchToProps)(Account),
 );
