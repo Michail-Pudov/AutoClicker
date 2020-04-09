@@ -9,11 +9,16 @@ nav .brand-logo {
   margin-left: 20px;
 }
 
+input:focus {
+  border-bottom: 1px solid #94ABE3 !important;
+  box-shadow: 0 1px 0 0 #94ABE3 !important;
+}
+
 select {
   border: 1px solid lightgray !important;
 }
 select:focus {
-  outline: 1px solid #26a69a !important;
+  outline: 1px solid #94ABE3 !important;
 }
 
 .body {
@@ -46,4 +51,22 @@ select:focus {
 .tableItem {
   height: 500px;
   overflow: auto;
+}
+
+.textModal {
+  font-size: medium;
+}
+
+.pulse {
+  width: 100px !important;
+  height: 100px !important;
+  background-color: #94ABE3 !important;
+}
+.pulse:before {
+  background-color: #F5F5F5 !important;
+}
+
+.btn-floating.btn-large i {
+  line-height: 100px !important;
+  font-size: 50px;
 }

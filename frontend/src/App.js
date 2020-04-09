@@ -15,7 +15,8 @@ import NewReviews from "./components/pages/Reviews/components/NewReviews";
 
 const mainBackground = {
   background:
-    'no-repeat 100% 50%  url("https://images.unsplash.com/photo-1577481759281-b2e3a1e62c2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80")'
+    'no-repeat url("https://images.unsplash.com/photo-1577481759281-b2e3a1e62c2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80")',
+  backgroundSize: "cover"
 };
 const mainBackgroundWhite = {
   background: "white"

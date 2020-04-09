@@ -10,7 +10,7 @@ class Dictionaries extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="block__dictionaries input-field col s6">
+        <div className="block__dictionaries input-field col s8 offset-l2">
           <h4>Tип занятости</h4>
           <select name="" className="select__employment browser-default">
             {this.props.state.dictionaries.employment

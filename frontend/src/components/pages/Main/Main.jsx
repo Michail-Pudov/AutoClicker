@@ -6,8 +6,8 @@ import ScrollTo from '../../ScrollTo/ScrollTo';
 class Main extends Component {
   render() {
     return (
-      <div className="search">
-        <h1>Поиск вакансий</h1>
+      <div className="search row">
+        <h1 className="col s8 offset-l1">Поиск вакансий</h1>
         <ScrollTo />
         <Filters />
       </div>

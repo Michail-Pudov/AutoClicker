@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
-import M from "materialize-css";
-import CommentInModal from "./components/commentInModal";
+import React, { PureComponent } from 'react';
+import M from 'materialize-css';
+import CommentInModal from './components/commentInModal';
 
 class CardAndModal extends PureComponent {
   constructor(props) {
@@ -12,23 +12,23 @@ class CardAndModal extends PureComponent {
   componentDidMount() {
     const options = {
       onOpenStart: () => {
-        console.log("Open Start");
+        console.log('Open Start');
       },
       onOpenEnd: () => {
-        console.log("Open End");
+        console.log('Open End');
       },
       onCloseStart: () => {
-        console.log("Close Start");
+        console.log('Close Start');
       },
       onCloseEnd: () => {
-        console.log("Close End");
+        console.log('Close End');
       },
       inDuration: 250,
       outDuration: 250,
       opacity: 0.5,
       dismissible: false,
-      startingTop: "4%",
-      endingTop: "30%"
+      startingTop: '2%',
+      endingTop: '15%',
     };
     M.Modal.init(this.Modal, options);
   }
@@ -47,29 +47,29 @@ class CardAndModal extends PureComponent {
           {item.companyName}
         </a>
         <div
-          ref={Modal => {
+          ref={(Modal) => {
             this.Modal = Modal;
           }}
           id={item.companyId}
           className="modal"
         >
           <div className="modal-content">
-            <h4>
+            <h5>
               Работодатель:
               <a href={item.company.employer.alternate_url}>
-                {" "}
+                {' '}
                 {item.companyName}
               </a>
               <p>Комментарии:</p>
-              {item.comments.map((itemComment, indexComment) => {
-                return (
+              <ul className="collection">
+                {item.comments.map((itemComment, indexComment) => (
                   <CommentInModal
                     item={itemComment}
                     index={indexComment}
-                  ></CommentInModal>
-                );
-              })}
-            </h4>
+                  />
+                ))}
+              </ul>
+            </h5>
           </div>
           <div className="modal-footer">
             <a className="modal-close waves-effect waves-green btn-flat">

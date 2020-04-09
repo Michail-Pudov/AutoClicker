@@ -1,25 +1,22 @@
-import React from 'react'
-import FirstGraph from './FirstGraph'
-import SecondGraph from './SecondGraph'
-import ThirdGraph from './ThirdGraph'
-import MyVacansions from './MyVacansions'
-import LogoTable from './LogoTable'
-
+import React from "react";
+import FirstGraph from "./FirstGraph";
+import SecondGraph from "./SecondGraph";
+import ThirdGraph from "./ThirdGraph";
+import MyVacansions from "./MyVacansions";
+import LogoTable from "./LogoTable";
 
 class Statistic extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {
-
-    }
+    this.state = {};
   }
 
   render() {
     return (
       <div>
         <MyVacansions />
-        <br />        
+        <br />
         <SecondGraph />
         <br />
         <ThirdGraph />
@@ -28,8 +25,8 @@ class Statistic extends React.Component {
         <br />
         {/* <LogoTable />         */}
       </div>
-    )
+    );
   }
 }
 
-export default Statistic
+export default Statistic;

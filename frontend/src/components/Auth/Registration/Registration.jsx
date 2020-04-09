@@ -29,7 +29,7 @@ class Registration extends React.Component {
   render() {
     return (
       <div className="row" style={{ marginTop: "7vh" }}>
-        <div className="col s6 offset-s3">
+        <div className="col s5 offset-s3">
           <div className="card grey lighten-4 ">
             <div className="reg card-content grey-text text-darken-4">
               <span className="card-title">Регистрация</span>
@@ -42,6 +42,7 @@ class Registration extends React.Component {
               </div>
               <div className="input-field">
                 <input
+                  type="password"
                   name="password"
                   placeholder="Password"
                   onChange={e => this.createData(e)}

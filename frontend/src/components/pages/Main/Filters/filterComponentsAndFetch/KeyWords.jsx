@@ -11,9 +11,8 @@ class KeyWords extends React.Component {
   render() {
     return (
       <div className="row">
-        <h4>Ключевые слова</h4>
-
-        <div className="input-field col s4">
+        <h4 className="col s8 offset-l2">Ключевые слова</h4>
+        <div className="input-field col s4 offset-l2">
           <input type="text" className="keyWords" name="keyWords" placeholder="Введите теги" />
         </div>
         <div className="input-field col s4">

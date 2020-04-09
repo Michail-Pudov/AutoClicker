@@ -42,7 +42,7 @@ class Vacancy extends Component {
 
     return (
       <div className="row">
-        <div className="col s10">
+        <div className="col s8 offset-l2">
           <div className="card grey lighten-4 ">
             <div className="log card-content grey-text text-darken-4">
               <span className="card-title">
