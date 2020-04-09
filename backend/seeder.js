@@ -7,10 +7,9 @@ const saltRounds = 10;
 const mongoose = require("mongoose");
 mongoose.pluralize(null);
 const User = require("./models/user");
-//const Vacancy = require('./models/vacancy');
 
 async function createBase() {
-  await mongoose.connect("mongodb://localhost:27017/autoClicker", {
+  await mongoose.connect("mongodb://localhost:27017/AutoClicker", {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
@@ -20,41 +19,70 @@ async function createBase() {
   );
 
   let response = await fetch(
-    `https://api.hh.ru/vacancies?salary=50000&employment=full&experience=noExperience&profession=1.395&schedule=fullDay&specialization=1&vacancy_label=with_address&vacancy_search_fields=name&vacancy_type=open&per_page=100&area=1&vacancy_search_order=publication_time`
+    `https://api.hh.ru/vacancies?salary=50000&employment=full&experience=noExperience&profession=1.395&schedule=fullDay&specialization=1&vacancy_label=with_address&vacancy_search_fields=name&vacancy_type=open&text=javascript&per_page=100&area=1&vacancy_search_order=publication_time`
   );
   let result = await response.json();
 
-  console.log(result.items);
+  function randomTracker() {
+    const timeArr = [];
+    const stages = Math.round(Math.random() * 5) + 1;
+    for (let index = 0; index < stages; index++) {
+      let newDate = new Date(2020, index, Math.round(Math.random() * 30));
+      timeArr.push(newDate);
+    }
+    return timeArr;
+  }
 
-  let indexUser = 1;
-  let passwordHash = await bcrypt.hash(String(indexUser), saltRounds);
-  await User.create({
-    email: indexUser,
-    password: passwordHash,
-    allVacansies: await result.items,
-    weResponded: await result.items.slice([0], [23]),
-    testTaskCame: await result.items.slice([24], [32]),
-    iGotAnInvitationForAnInterview: await result.items.slice([33], [57]),
-    needToCall: await result.items.slice([58], [72]),
-    rejectionCame: await result.items.slice([73], [84]),
-    theOfferCame: await result.items.slice([85], [99])
-  });
+  const arrvacansy = [];
+  for (
+    let indexVacancy = 0;
+    indexVacancy < result.items.length;
+    indexVacancy++
+  ) {
+    let vacan = {
+      vacancy: await result.items[indexVacancy],
+      date: new Date(),
+      timeTracker: randomTracker(),
+      status: "Жду ответа",
+      comment: "",
+      contacts: await result.items[indexVacancy].contacts
+    };
 
-  // for (let vacancyIndex = 0; vacancyIndex < 30; vacancyIndex++) {
+    arrvacansy.push(await vacan);
+  }
+  for (let indexUser = 0; indexUser < 10; indexUser++) {
+    let passwordHash = await bcrypt.hash(String(indexUser), saltRounds);
 
-  //   await Vacancy.create({
-  //     createdAt: faker.date.past(),
-  //     title: faker.name.jobTitle(),
-  //     description: faker.name.jobDescriptor(),
-  //     responsibilities: faker.name.jobDescriptor(),
-  //     experience: Math.round(Math.random() * 6),
-  //     company: faker.company.companyName(),
-  //     salary: Math.round(faker.finance.amount() * 100),
-  //     userStatus: 'ADD',
-  //     link: "https://hh.ru/vacancy/" + Math.round(Math.random() * 36312327),
-  //   });
-
-  // console.table(await Vacancy.find())
+    await User.create({
+      email: indexUser,
+      password: passwordHash,
+      allVacansies: await arrvacansy,
+      weResponded: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      ),
+      testTaskCame: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      ),
+      iGotAnInvitationForAnInterview: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      ),
+      needToCall: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      ),
+      closedVacancies: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      ),
+      theOfferCame: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      )
+    });
+  }
 
   await mongoose.disconnect();
 }

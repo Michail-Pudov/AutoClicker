@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   iGotAnInvitationForAnInterview: Array,
   needToCall: Array,
   closedVacancies: Array,
-  theOfferCame: Array
+  theOfferCame: Array,
 });
 let userModel = mongoose.model("users", userSchema);
 

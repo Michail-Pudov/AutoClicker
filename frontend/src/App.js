@@ -11,7 +11,7 @@ import Main from './components/pages/Main/Main';
 import Home from './components/pages/Home/Home';
 import Footer from './components/Footer/Footer';
 import CRM from './components/pages/crmComponents/Crm';
-import { getUserJobsSaga } from './redux/action';
+import { getUserJobsSaga, getAllReviewInDatabaseSaga } from './redux/action';
 import AllReviews from './components/pages/Reviews/AllReviews';
 import NewReviews from './components/pages/Reviews/components/NewReviews';
 
@@ -36,6 +36,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.getUserJobsSaga(localStorage.email);
+    this.props.getAllReviewInDatabaseSaga();
     if (
       this.props.location.pathname === '/'
       || this.props.location.pathname === '/login'
@@ -122,6 +123,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = {
   getUserJobsSaga,
+  getAllReviewInDatabaseSaga,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -20,24 +20,6 @@ router.get("/getdata", async function(req, res) {
   res.json({ data: await getData() });
 });
 
-//////////
-//////////
-//////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-//////////
-
 router.get("/getAllReviews", async function(req, res) {
   const allReviews = await ReviewsModel.find();
   res.json({ allReviews });
@@ -67,20 +49,6 @@ router.post("/newReview", async function(req, res) {
 
   res.json({ write: true });
 });
-
-//////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-////////////////////
-//////////
 
 router.post("/uploadJobs", async function(req, res) {
   let user = await User.findOne({ email: req.body.email });
@@ -116,7 +84,8 @@ router.post("/newVacansy", async function(req, res) {
     date: new Date(),
     status: "Жду ответа",
     comment: "",
-    contacts: contacts
+    contacts: contacts,
+    timeTracker: [new Date()]
   };
   user.allVacansies.push(vacanсy);
   user.weResponded.push(vacanсy);

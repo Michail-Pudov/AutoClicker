@@ -5,7 +5,8 @@ import {
   RECORDS_NEW_VACANCIES,
   VACANCY_STATUS_CHANGE,
   WRITE_NEW_REVIEWS,
-  GET_ALL_REVIEW_IN_DATABASE
+  GET_ALL_REVIEW_IN_DATABASE,
+  WRITE_NEW_REVIEW
 } from "./action-types";
 
 const initialState = {
@@ -60,6 +61,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         allReviews: action.allReviews
+      };
+    case WRITE_NEW_REVIEW:
+      return {
+        ...state,
+        allReviews: JSON.parse(JSON.stringify(action.allReviews))
       };
     default:
       return state;
