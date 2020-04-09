@@ -20,6 +20,7 @@ class ThirdGraph extends React.Component {
 
     let arrVacansy = this.props.userJobs.allVacansies
     const dat = []
+    let realIndex = 0;
 
     for (let vacancyIndex = 0; vacancyIndex < arrVacansy.length; vacancyIndex++) {
 
@@ -43,48 +44,53 @@ class ThirdGraph extends React.Component {
 
         if (arrVacansy[vacancyIndex].vacancy.employer.logo_urls != null) {
           logoUrl = arrVacansy[vacancyIndex].vacancy.employer.logo_urls['240']
-          
-          }
 
-          
-          let salaryVacancy = {
-            companyId: arrVacansy[vacancyIndex].vacancy.employer.id,
-            name: `${vacancyIndex}`,
-            title: arrVacansy[vacancyIndex].vacancy.name,
-            salaryFrom: from,
-            salaryTo: to,
-            averege: Math.round((to - from) / 2 + from),
-            quantity: 1,
-            logoUrl: logoUrl,
-          }
-          dat.push(salaryVacancy);
         }
 
+
+        let salaryVacancy = {
+          companyId: arrVacansy[vacancyIndex].vacancy.employer.id,
+          name: realIndex,
+          title: arrVacansy[vacancyIndex].vacancy.name,
+          salaryFrom: from,
+          salaryTo: to,
+          averege: Math.round((to - from) / 2 + from),
+          quantity: 1,
+          logoUrl: logoUrl,
+          companyName: arrVacansy[vacancyIndex].vacancy.employer.name,
+        }
+        realIndex += 1;
+        dat.push(salaryVacancy);
       }
-      const data = dat;
 
-
-
-      return (
-        <div>
-          <Graf3 data={data} />
-          <Stars data={data} />
-        </div>
-      )
     }
+    const data = dat;
+
+
+
+
+
+    return (
+      <div>
+        <Stars data={data} />
+        <Graf3 data={data} />
+
+      </div>
+    )
   }
+}
 
 
-  const mapStateToProps = state => ({
-    userJobs: state.userJobs,
-    email: state.email
-  });
+const mapStateToProps = state => ({
+  userJobs: state.userJobs,
+  email: state.email
+});
 
-  const mapDispatchToProps = {
-    getUserJobsSaga
-  };
+const mapDispatchToProps = {
+  getUserJobsSaga
+};
 
 
-  export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(ThirdGraph)
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ThirdGraph)
 );

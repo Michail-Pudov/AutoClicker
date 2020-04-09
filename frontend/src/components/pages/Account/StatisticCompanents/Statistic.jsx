@@ -2,7 +2,7 @@ import React from "react";
 import FirstGraph from "./FirstGraph";
 import SecondGraph from "./SecondGraph";
 import ThirdGraph from "./ThirdGraph";
-import LogoTable from "./LogoTable";
+// import MyVacansions from "./MyVacansions";
 
 class Statistic extends React.Component {
   constructor(props) {
@@ -19,8 +19,6 @@ class Statistic extends React.Component {
         <ThirdGraph />
         <br />
         <FirstGraph />
-        <br />
-        {/* <LogoTable />         */}
       </div>
     );
   }
