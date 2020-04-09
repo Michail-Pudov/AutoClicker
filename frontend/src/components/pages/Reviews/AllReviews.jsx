@@ -11,10 +11,6 @@ class AllReviews extends PureComponent {
     this.state = {};
   }
 
-  componentDidMount() {
-    this.props.getAllReviewInDatabaseSaga();
-  }
-
   render() {
     return (
       <div>

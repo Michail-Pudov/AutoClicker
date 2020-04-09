@@ -1,51 +1,60 @@
-import React from 'react'
-import Graf2 from './Graf2'
+import React from "react";
+import Graf2 from "./Graf2";
 import { connect } from "react-redux";
 import { getUserJobsSaga } from "../../../../redux/action";
 import { withRouter } from "react-router-dom";
 
-
 class SecondGraph extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       data: 0
-
-    }
+    };
   }
 
   render() {
     const nameArr = [
-      'click', 'respond', 'tasc', 'interview', 'call', 'offer', 'close'
-    ]
+      "click",
+      "respond",
+      "tasc",
+      "interview",
+      "call",
+      "offer",
+      "close"
+    ];
 
-    let arrVacansy = this.props.userJobs.allVacansies
-      const dat = [];
-      const test=[]
-    for (let vacancyIndex = 0; vacancyIndex < arrVacansy.length; vacancyIndex++) {
-      
-
+    let arrVacansy = this.props.userJobs.allVacansies;
+    const dat = [];
+    const test = [];
+    for (
+      let vacancyIndex = 0;
+      vacancyIndex < arrVacansy.length;
+      vacancyIndex++
+    ) {
       let obj = {
         name: `${vacancyIndex}`,
         status: nameArr[4]
-      }
-      for (let propIndex = 0; propIndex < arrVacansy[vacancyIndex].timeTracker.length; propIndex++) {
-        obj[nameArr[propIndex]] = 1;        
+      };
+      // console.log(arrVacansy[vacancyIndex], "<<<<<<<<<<<<<<<<<<<");
+
+      for (
+        let propIndex = 0;
+        propIndex < arrVacansy[vacancyIndex].timeTracker.length;
+        propIndex++
+      ) {
+        obj[nameArr[propIndex]] = 1;
       }
 
-      dat.push(obj)      
+      dat.push(obj);
     }
-    const data = dat
-
-
+    const data = dat;
 
     return (
       <div>
-        <Graf2 data={data}/>
+        <Graf2 data={data} />
       </div>
-    )
+    );
   }
-
 }
 const mapStateToProps = state => ({
   userJobs: state.userJobs,
@@ -55,7 +64,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   getUserJobsSaga
 };
-
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(SecondGraph)
