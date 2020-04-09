@@ -11,18 +11,10 @@ class CardAndModal extends PureComponent {
 
   componentDidMount() {
     const options = {
-      onOpenStart: () => {
-        console.log("Open Start");
-      },
-      onOpenEnd: () => {
-        console.log("Open End");
-      },
-      onCloseStart: () => {
-        console.log("Close Start");
-      },
-      onCloseEnd: () => {
-        console.log("Close End");
-      },
+      onOpenStart: () => {},
+      onOpenEnd: () => {},
+      onCloseStart: () => {},
+      onCloseEnd: () => {},
       inDuration: 250,
       outDuration: 250,
       opacity: 0.5,

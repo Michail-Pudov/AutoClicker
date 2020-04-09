@@ -10,18 +10,10 @@ class Vacancy extends Component {
 
   componentDidMount() {
     const options = {
-      onOpenStart: () => {
-        console.log("Open Start");
-      },
-      onOpenEnd: () => {
-        console.log("Open End");
-      },
-      onCloseStart: () => {
-        console.log("Close Start");
-      },
-      onCloseEnd: () => {
-        console.log("Close End");
-      },
+      onOpenStart: () => {},
+      onOpenEnd: () => {},
+      onCloseStart: () => {},
+      onCloseEnd: () => {},
       inDuration: 250,
       outDuration: 250,
       opacity: 0.5,
@@ -40,7 +32,6 @@ class Vacancy extends Component {
       e.target.parentNode.parentNode.parentNode.parentNode.className =
         "card red lighten-3";
     }
-    console.log(e.target.parentNode.parentNode.parentNode.parentNode);
   }
 
   render() {
