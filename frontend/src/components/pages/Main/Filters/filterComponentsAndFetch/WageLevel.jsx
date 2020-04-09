@@ -10,7 +10,7 @@ class WageLevel extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="input-field col s6">
+        <div className="input-field col s8 offset-l2">
           <h4>Уровень заработной платы</h4>
           <input type="text" placeholder="RUB" className="WageLevel" />
         </div>

@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 
 class CommentInModal extends PureComponent {
   constructor(props) {
@@ -10,13 +10,28 @@ class CommentInModal extends PureComponent {
   render() {
     const { item, index } = this.props;
     return (
-      <div style={{ backgroundColor: "#f0e4e4" }}>
-        <p>
-          Вакансия: <a href={item.urlVacancy}>{item.nameVacancy}</a>
-        </p>
-        <p>Отзыв: {item.review}</p>
-        <p>{item.creator}</p>
-      </div>
+
+
+      <li className="collection-item">
+        <div className="textModal">
+          <p>
+            Вакансия:
+            {' '}
+            <a href={item.urlVacancy}>{item.nameVacancy}</a>
+          </p>
+          <p>
+            Отзыв:
+            {' '}
+            {item.review}
+          </p>
+          <p>
+            Автор:
+            {' '}
+            {' '}
+            {item.creator}
+          </p>
+        </div>
+      </li>
     );
   }
 }
