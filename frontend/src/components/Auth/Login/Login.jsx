@@ -31,7 +31,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="row" style={{marginTop: "7vh"}}>
-        <div className="col s5 offset-s3">
+        <div className="col s6 offset-s3">
         <div className="card grey lighten-4 ">
       <div className="log card-content grey-text text-darken-4">
         <span className="card-title">Авторизация</span>
@@ -46,7 +46,6 @@ class Login extends React.Component {
 
         <div className="input-field">
         <input
-          type="password"
           className="validate"
           name="password"
           placeholder="Password"
