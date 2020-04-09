@@ -1,9 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
-import { getUserJobsSaga } from "../../../redux/action";
-import Statistic from './StatisticCompanents/Statistic'
-
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+import { getUserJobsSaga } from '../../../redux/action';
+import Statistic from './StatisticCompanents/Statistic';
 
 class Account extends React.Component {
   constructor(props) {
@@ -19,10 +18,10 @@ class Account extends React.Component {
           <h2>Личный кабинет</h2>
         </div>
         <div>
-          <Link to="/crm">Нужно придумать название для ссылки</Link>
-          <br></br>
+          <Link to="/crm">Сохраненные вакансии</Link>
+          <br />
           <b> Первый график</b>
-          <br/>
+          <br />
           <Statistic />
         </div>
       </>
@@ -30,15 +29,15 @@ class Account extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userJobs: state.userJobs,
-  email: state.email
+  email: state.email,
 });
 
 const mapDispatchToProps = {
-  getUserJobsSaga
+  getUserJobsSaga,
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Account)
+  connect(mapStateToProps, mapDispatchToProps)(Account),
 );
