@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
-import ModalAndCard from './components/ModalAndCard';
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import ModalAndCard from "./components/ModalAndCard";
 
 class ListStatus extends PureComponent {
   constructor(props) {
@@ -12,12 +12,14 @@ class ListStatus extends PureComponent {
   }
 
   render() {
-    const { text, list } = this.props;
+    const { text, list, colorList } = this.props;
     return (
       <div className="tableItem col s4 ">
-        <ul className="collection with-header">
+        <ul className="collection with-header ">
           <div className={list}>
-            <li className="collection-header"><h5>{text}</h5></li>
+            <li className={`collection-header ${colorList}`}>
+              <h5>{text}</h5>
+            </li>
             {this.props.userJobs[list].map((item, index) => (
               <ModalAndCard
                 item={item}
@@ -34,13 +36,13 @@ class ListStatus extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   userJobs: state.userJobs,
-  email: state.email,
+  email: state.email
 });
 
 const mapDispatchToProps = {};
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ListStatus),
+  connect(mapStateToProps, mapDispatchToProps)(ListStatus)
 );

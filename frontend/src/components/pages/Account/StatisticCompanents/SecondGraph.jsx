@@ -35,8 +35,6 @@ class SecondGraph extends React.Component {
         name: `${vacancyIndex}`,
         status: nameArr[4]
       };
-      // console.log(arrVacansy[vacancyIndex], "<<<<<<<<<<<<<<<<<<<");
-
       for (
         let propIndex = 0;
         propIndex < arrVacansy[vacancyIndex].timeTracker.length;

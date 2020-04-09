@@ -25,12 +25,11 @@ class Vacancy extends Component {
   }
 
   callStyleChange(e, value) {
+    const block = e.target.parentNode.parentNode.parentNode.parentNode;
     if (value) {
-      e.target.parentNode.parentNode.parentNode.parentNode.className =
-        "card light-green lighten-3";
+      block.className = "card light-green";
     } else {
-      e.target.parentNode.parentNode.parentNode.parentNode.className =
-        "card red lighten-3";
+      block.className = "card pink lighten-2";
     }
   }
 

@@ -19,18 +19,39 @@ class Crm extends React.Component {
 
         <div className=" allVacansies">
           <div className="col s12">
-            <ListStatus text="Жду ответа:" list="weResponded" />
-            <ListStatus text="Прислали тестовое задание:" list="testTaskCame" />
-            <ListStatus text="Требуется перезвонить:" list="needToCall" />
+            <ListStatus
+              text="Жду ответа:"
+              list="weResponded"
+              colorList="light-blue accent-4"
+            />
+            <ListStatus
+              text="Прислали тестовое задание:"
+              list="testTaskCame"
+              colorList="indigo lighten-2"
+            />
+            <ListStatus
+              text="Требуется перезвонить:"
+              list="needToCall"
+              colorList="amber"
+            />
           </div>
           <div className="col s12">
             <ListStatus
               text="Пригласили на интервью:"
               list="iGotAnInvitationForAnInterview"
+              colorList="teal accent-3"
             />
 
-            <ListStatus text="Прислали оффер:" list="theOfferCame" />
-            <ListStatus text="Закрытые вакансии:" list="closedVacancies" />
+            <ListStatus
+              text="Прислали оффер:"
+              list="theOfferCame"
+              colorList="deep-orange lighten-1"
+            />
+            <ListStatus
+              text="Закрытые вакансии:"
+              list="closedVacancies"
+              colorList="deep-purple lighten-2"
+            />
           </div>
         </div>
       </div>
