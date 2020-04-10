@@ -2,12 +2,13 @@
   text-align: center;
   padding: 10px;
   font-size: 23px;
-  border: #212121 2px solid;
+  border: black 2px solid;
   border-radius: 16px;
-  color: #212121;
+  color: black;
+  transition: 0.5s;
 }
 .saveVacancy:hover {
-  box-shadow: 0 0 5px #94abe3;
+  box-shadow: 0 0 10px #94abe3;
   text-shadow: 0 0 1px #94abe3;
 }
 

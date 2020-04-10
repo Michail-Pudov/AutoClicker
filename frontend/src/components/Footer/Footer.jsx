@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
 
-
 class Footer extends Component {
   render() {
     return (
       <footer className="page-footer grey lighten-3">
         <div className="container ">
           <div className="row">
-            <div className="col s6  ">
-              <h5 className="grey-text text-darken-4">Какой-то полезный текст</h5>
-              <p className="grey-text text-darken-4">
-                Тут возможно будет описание, предоставляемого сервиса))
-              </p>
+            <div className="col s3  ">
+              <b className="grey-text text-darken-4">При поддержке: </b>
+              <ul>
+                <a className="grey-text text-darken-4" href="https://elbrusboot.camp/">Elbrus/bootcamp</a>
+              </ul>
+            </div>
+            <div className="col s3  ">
+              <b className="grey-text text-darken-4">Разработали: </b>
+              <ul>
+                <li>
+                  <a className="grey-text text-darken-4" href="https://github.com/Alex90rus">Александр</a>
+                </li>
+                <li><a className="grey-text text-darken-4" href="https://github.com/Michail-Pudov">Михаил</a></li>
+                <li><a className="grey-text text-darken-4" href="https://github.com/Ellpm">Эльдар</a></li>
+              </ul>
             </div>
             <div className="col s3   ">
               <b className="grey-text text-darken-4">Полезные ссылки</b>
