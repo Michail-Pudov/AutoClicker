@@ -14,6 +14,7 @@ import AllReviews from "./components/pages/Reviews/AllReviews";
 import NewReviews from "./components/pages/Reviews/components/NewReviews";
 
 const mainBackground = {
+  marginTop: "-2%",
   background:
     //1 https://sciencemagic.ru/wp-content/uploads/2016/01/unemployed.jpg
     //2 https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
@@ -21,7 +22,7 @@ const mainBackground = {
     //4 https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
     //5 https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
     //6 https://images.unsplash.com/photo-1468971050039-be99497410af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80
-    'no-repeat url("https://images.unsplash.com/photo-1503551723145-6c040742065b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")',
+    'no-repeat url("https://images.unsplash.com/photo-1468971050039-be99497410af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80")',
   backgroundSize: "cover"
 };
 const mainBackgroundWhite = {
