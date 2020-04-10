@@ -1,0 +1,20 @@
+{
+  "name": "autoclicker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd backend & npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michail-Pudov/AutoClicker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Michail-Pudov/AutoClicker/issues"
+  },
+  "homepage": "https://github.com/Michail-Pudov/AutoClicker#readme"
+}
