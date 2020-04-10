@@ -52,7 +52,12 @@ const PORT = config.get("port") || 5000;
 
 const start = async () => {
   try {
-    await mongoose.connect(config.get("mongoUri"), {
+    // await mongoose.connect(config.get("mongoUri"), {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    //   useCreateIndex: true
+    // });
+    await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true
