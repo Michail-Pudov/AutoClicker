@@ -33,12 +33,21 @@
   background-color: rgba(6, 140, 255, 0.5) !important;
 }
 
+
+
 .authInput {
   color: white;
   border-bottom: 3px solid white !important;
+  font-size: 20px !important;
 }
 
 .authInput:focus {
   box-shadow: 0px 0px 7px 5px #0487F1 !important;
   border: 2px white solid !important;
+}
+
+.authInput::placeholder {
+  font-size: 20px;
+  color: white !important;
+  text-shadow: 2px 2px 7px black;
 }

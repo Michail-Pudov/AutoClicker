@@ -63,6 +63,7 @@ class Login extends React.Component {
         </div>
 
         <button
+          type="submit"
           className={classes.authcardButton}
           onClick={async () => {
             await this.userAuthorization();
