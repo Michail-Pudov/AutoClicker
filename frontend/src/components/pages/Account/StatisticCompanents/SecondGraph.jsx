@@ -1,29 +1,29 @@
-import React from "react";
-import Graf2 from "./Graf2";
-import { connect } from "react-redux";
-import { getUserJobsSaga } from "../../../../redux/action";
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import Graf2 from './Graf2';
+import { getUserJobsSaga } from '../../../../redux/action';
 
 class SecondGraph extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: 0
+      data: 0,
     };
   }
 
   render() {
     const nameArr = [
-      "click",
-      "respond",
-      "tasc",
-      "interview",
-      "call",
-      "offer",
-      "close"
+      'click',
+      'respond',
+      'tasc',
+      'interview',
+      'call',
+      'offer',
+      'close',
     ];
 
-    let arrVacansy = this.props.userJobs.allVacansies;
+    const arrVacansy = this.props.userJobs.allVacansies;
     const dat = [];
     const test = [];
     for (
@@ -31,12 +31,10 @@ class SecondGraph extends React.Component {
       vacancyIndex < arrVacansy.length;
       vacancyIndex++
     ) {
-      let obj = {
+      const obj = {
         name: `${vacancyIndex}`,
-        status: nameArr[4]
+        status: nameArr[4],
       };
-      // console.log(arrVacansy[vacancyIndex], "<<<<<<<<<<<<<<<<<<<");
-
       for (
         let propIndex = 0;
         propIndex < arrVacansy[vacancyIndex].timeTracker.length;
@@ -56,15 +54,15 @@ class SecondGraph extends React.Component {
     );
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userJobs: state.userJobs,
-  email: state.email
+  email: state.email,
 });
 
 const mapDispatchToProps = {
-  getUserJobsSaga
+  getUserJobsSaga,
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(SecondGraph)
+  connect(mapStateToProps, mapDispatchToProps)(SecondGraph),
 );

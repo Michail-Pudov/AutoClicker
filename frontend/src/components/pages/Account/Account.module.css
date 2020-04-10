@@ -1,0 +1,35 @@
+.saveVacancy {
+  text-align: center;
+  padding: 10px;
+  font-size: 23px;
+  border: black 2px solid;
+  border-radius: 16px;
+  color: black;
+  transition: 0.5s;
+}
+.saveVacancy:hover {
+  box-shadow: 0 0 10px #94abe3;
+  text-shadow: 0 0 1px #94abe3;
+}
+
+.linkSize {
+  /*width: 300px !important;*/
+}
+
+.statisticBlock {
+  width: 1010px;
+  height: 1600px;
+  margin: 60px auto;
+
+}
+
+.linkBlock {
+  display: block;
+  width: 300px;
+  margin: 20px auto;
+}
+
+.headingStat {
+  max-width: 1100px;
+  margin: 10px auto;
+}
