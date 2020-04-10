@@ -1,0 +1,53 @@
+.authcard {
+  width: 40%;
+  min-width: 350px;
+  margin: auto;
+  border: 4px white solid;
+  border-radius: 20px;
+  padding: 2vw;
+  box-shadow: 0 0 7vw #0487F1;
+  text-shadow: 0 0 1.5vw #12ccf4;
+  background: rgba(6, 140, 255, 0.5);
+}
+
+.authcardTitle {
+  text-shadow: 0 0 3vw #000000;
+  font-size: 30px;
+  color: white;
+}
+
+.authcardButton {
+  color: white;
+  background: rgba(6, 140, 255, 0.5); ;
+  font-size: 1.5rem;
+  min-width: 100px;
+  min-height: 30px;
+  width: 160px;
+  height: 40px;
+  padding: 0.5vh;
+  border-radius: 7px;
+  margin: 5px;
+}
+
+.authcardButton:focus {
+  background-color: rgba(6, 140, 255, 0.5) !important;
+}
+
+
+
+.authInput {
+  color: white;
+  border-bottom: 3px solid white !important;
+  font-size: 20px !important;
+}
+
+.authInput:focus {
+  box-shadow: 0px 0px 7px 5px #0487F1 !important;
+  border: 2px white solid !important;
+}
+
+.authInput::placeholder {
+  font-size: 20px;
+  color: white !important;
+  text-shadow: 2px 2px 7px black;
+}
