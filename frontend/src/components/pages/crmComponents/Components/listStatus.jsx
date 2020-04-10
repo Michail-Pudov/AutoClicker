@@ -15,7 +15,7 @@ class ListStatus extends PureComponent {
     const { text, list, colorList } = this.props;
     return (
       <div className="tableItem col s4 ">
-        <ul className="collection with-header ">
+        <ul className="collection with-header shadow">
           <div className={list}>
             <li className={`collection-header ${colorList}`}>
               <h5>{text}</h5>

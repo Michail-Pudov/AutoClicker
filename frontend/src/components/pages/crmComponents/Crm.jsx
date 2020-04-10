@@ -13,7 +13,7 @@ class Crm extends React.Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row ">
         <h3>Сохраненные вакансии</h3>
         <ScrollTo />
 
@@ -22,7 +22,7 @@ class Crm extends React.Component {
             <ListStatus
               text="Жду ответа:"
               list="weResponded"
-              colorList="light-blue accent-4"
+              colorList="light-blue accent-4 "
             />
             <ListStatus
               text="Прислали тестовое задание:"
@@ -35,6 +35,11 @@ class Crm extends React.Component {
               colorList="amber"
             />
           </div>
+          <div className="col s12">
+            <br />
+            <br />
+          </div>
+
           <div className="col s12">
             <ListStatus
               text="Пригласили на интервью:"

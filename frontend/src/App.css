@@ -97,3 +97,7 @@ select:focus {
 .buttonSearchOfHome {
   margin: 0 24% 5%;
 }
+
+.shadow {
+  box-shadow: 0 0 10px rgb(149, 152, 160);
+}
