@@ -25,6 +25,10 @@ class Vacancy extends Component {
   }
 
   callStyleChange(e, value) {
+    e.target
+      .closest(".card-content")
+      .querySelectorAll("a")
+      .forEach(el => (el.className += " blue-text text-lighten-5"));
     const block = e.target.parentNode.parentNode.parentNode.parentNode;
     if (value) {
       block.className = "card light-green";
