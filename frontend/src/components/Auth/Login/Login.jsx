@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { addUser } from "../../../redux/action";
 import { withRouter } from "react-router-dom";
 import { loginFetch } from "../../../allFetch/loginFetch";
+import classes from "../auth.module.css"
+
+
 
 class Login extends React.Component {
   constructor(props) {
@@ -31,14 +34,15 @@ class Login extends React.Component {
   render() {
     return (
       <div className="row" style={{ marginTop: "15vh", marginBottom: "20vh" }}>
-        <div className="col s5 offset-s3">
-        <div className="card grey lighten-4 ">
-      <div className="log card-content grey-text text-darken-4">
-        <span className="card-title">Авторизация</span>
+        <div className="">
+        <div className={classes.authcard}>
+      <div className="log">
+        <span className={classes.authcardTitle}>Авторизация</span>
         <div className="input-field">
         <input
           required
           className="validate"
+          className={classes.authInput}
           type="email"
           name="email"
           placeholder="Email"
@@ -51,6 +55,7 @@ class Login extends React.Component {
           required
           type="password"
           className="validate"
+          className={classes.authInput}
           name="password"
           placeholder="Password"
           onChange={e => this.createData(e)}
@@ -58,7 +63,7 @@ class Login extends React.Component {
         </div>
 
         <button
-          className="btn grey lighten-4 grey-text text-darken-4"
+          className={classes.authcardButton}
           onClick={async () => {
             await this.userAuthorization();
             if (this.state.status) {
@@ -66,11 +71,11 @@ class Login extends React.Component {
               localStorage.setItem("email", this.state.email);
               this.props.history.push(`/`);
             } else {
-              document.querySelector(".log").innerHTML += "Неверные данные";
+              document.querySelector(".log").innerHTML += "<b>Неверные данные</b>";
             }
           }}
         >
-          Авторизация
+          Войти
         </button>
           </div>
         </div>

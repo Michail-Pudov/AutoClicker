@@ -1,5 +1,6 @@
 import React from "react";
 import { registrationFetch } from "../../../allFetch/registrationFetch";
+import classes from "../auth.module.css";
 
 class Registration extends React.Component {
   constructor(props) {
@@ -38,14 +39,15 @@ class Registration extends React.Component {
   render() {
     return (
       <div className="row" style={{ marginTop: "15vh", marginBottom: "20vh" }}>
-        <div className="col s5 offset-s3">
-          <div className="card grey lighten-4 ">
-            <div className="reg card-content grey-text text-darken-4">
-              <span className="card-title">Регистрация</span>
+        <div className="">
+          <div className={classes.authcard}>
+            <div className="reg">
+              <span className={classes.authcardTitle}>Регистрация</span>
               <div className="input-field">
                 <input
                   required
                   className="validate"
+                  className={classes.authInput}
                   type="email"
                   name="email"
                   placeholder="Email"
@@ -57,6 +59,7 @@ class Registration extends React.Component {
                   className={this.state.invalid}
                   required
                   className="validate"
+                  className={classes.authInput}
                   type="password"
                   name="password"
                   placeholder="Password"
@@ -64,7 +67,7 @@ class Registration extends React.Component {
                 />
               </div>
               <button
-                className="btn grey lighten-4 grey-text text-darken-4"
+                className={classes.authcardButton}
                 onClick={async () => {
                   await this.createUser();
                   if (this.state.status) {

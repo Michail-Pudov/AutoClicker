@@ -117,3 +117,11 @@ select:focus {
 .shadow {
   box-shadow: 0 0 10px rgb(149, 152, 160);
 }
+
+.log {
+  color: white;
+}
+
+.reg {
+  color: white;
+}
