@@ -1,5 +1,5 @@
 {
-  "name": "autoclicker",
+  "name": "worky-helper",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,17 @@
     "build": "cd backend && npm run dev",
     "start": "npm run build"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Michail-Pudov/AutoClicker.git"
+    "url": "git+https://github.com/Michail-Pudov/worky-helper.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Michail-Pudov/AutoClicker/issues"
+    "url": "https://github.com/Michail-Pudov/worky-helper/issues"
   },
-  "homepage": "https://github.com/Michail-Pudov/AutoClicker#readme"
+  "homepage": "https://github.com/Michail-Pudov/worky-helper#readme"
 }
