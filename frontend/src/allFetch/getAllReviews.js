@@ -1,5 +1,5 @@
 export const getAllReviews = async () => {
-  let response = await fetch("http://localhost:5000/account/getAllReviews", {
+  let response = await fetch("/account/getAllReviews", {
     method: "GET",
     headers: {
       "Content-Type": "application/json;charset=utf-8"

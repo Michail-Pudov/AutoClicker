@@ -29,6 +29,8 @@ app.use(
   })
 );
 
+app.use(express.static(`${__dirname}/build`));
+
 app.use("/", indexRouter);
 
 app.use("/account", accountRouter);
