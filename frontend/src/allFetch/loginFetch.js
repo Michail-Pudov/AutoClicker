@@ -1,5 +1,5 @@
 export const loginFetch = async (email, password) => {
-  let response = await fetch("http://localhost:5000/login", {
+  let response = await fetch("/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8"

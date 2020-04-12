@@ -1,0 +1,24 @@
+{
+  "name": "worky-helper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd frontend && npm install --only=dev && npm install && npm run build && cp -r build ../backend/",
+    "start": "cd backend && npm install && npm start"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michail-Pudov/worky-helper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Michail-Pudov/worky-helper/issues"
+  },
+  "homepage": "https://github.com/Michail-Pudov/worky-helper#readme"
+}

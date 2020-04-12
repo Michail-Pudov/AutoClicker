@@ -29,10 +29,14 @@ app.use(
   })
 );
 
+app.use(express.static(`${__dirname}/build`));
+
 app.use("/", indexRouter);
 
 app.use("/account", accountRouter);
-
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -52,12 +56,19 @@ const PORT = config.get("port") || 5000;
 
 const start = async () => {
   try {
-    await mongoose.connect(config.get("mongoUri"), {
+    // await mongoose.connect(config.get("mongoUri"), {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    //   useCreateIndex: true
+    // });
+    await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true
     });
-    app.listen(PORT, () => console.log(`App has been started on ${PORT}`));
+    app.listen(process.env.PORT || 3000, () =>
+      console.log(`App has been started on ${PORT}`)
+    );
   } catch (e) {
     console.log("Server Error", e.message);
     process.exit(1);

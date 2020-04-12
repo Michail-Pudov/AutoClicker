@@ -64,7 +64,7 @@ select:focus {
   border: white 4px solid !important;
   border-radius: 50% !important;
   background: rgba(6, 140, 255, 0.3) !important;
-  box-shadow: 0 0 5vw #0487F1;
+  box-shadow: 0 0 5vw #0487f1;
   text-shadow: 0 0 1.5vw #12ccf4;
 }
 .pulse:before {
@@ -87,7 +87,7 @@ select:focus {
   border: white 5px solid;
   border-radius: 15px;
   background: rgba(6, 140, 255, 0.3);
-  box-shadow: 0 0 7vw #0487F1 ;
+  box-shadow: 0 0 7vw #0487f1;
   text-shadow: 0 0 1.5vw #12ccf4;
 }
 
@@ -101,7 +101,7 @@ select:focus {
   border: white 5px solid;
   border-radius: 15px;
   background: rgba(6, 140, 255, 0.3);
-  box-shadow: 0 0 7vw #0487F1;
+  box-shadow: 0 0 7vw #0487f1;
   text-shadow: 0 0 1.5vw #12ccf4;
 }
 .btn-floating.btn-large i {
@@ -115,7 +115,8 @@ select:focus {
 }
 
 .shadow {
-  box-shadow: 0 0 10px rgb(149, 152, 160);
+  /* box-shadow: 0 0 10px rgb(149, 152, 160); */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 .log {
