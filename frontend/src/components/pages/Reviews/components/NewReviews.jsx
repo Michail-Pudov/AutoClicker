@@ -1,14 +1,16 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import { newReviewFetch } from "../../../../allFetch/newReview";
-import { getAllReviewInDatabaseSaga } from "../../../../redux/action";
+import { writeNewReviewInReduxSaga } from "../../../../redux/action";
+
 class NewReviews extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       review: "",
+      incorrectUrl: false,
       vacancy: {
         name: "",
         employer: {
@@ -26,7 +28,9 @@ class NewReviews extends PureComponent {
     let result = await response.json();
     delete result.branded_description;
     if (result.errors || result.items) {
-      console.log("неверный url");
+      this.setState({
+        incorrectUrl: true
+      });
     } else {
       this.setState({
         vacancy: result
@@ -35,12 +39,15 @@ class NewReviews extends PureComponent {
   }
 
   async writeReviewInDatabase() {
-    let response = await newReviewFetch(
-      localStorage.email,
-      this.state.review,
-      this.state.vacancy
-    );
-    this.props.getAllReviewInDatabaseSaga();
+    const allReviewAndNewReview = {
+      allReviews: [...this.props.allReviews],
+      newReview: {
+        email: localStorage.email,
+        review: this.state.review,
+        vacancy: this.state.vacancy
+      }
+    };
+    this.props.writeNewReviewInReduxSaga(allReviewAndNewReview);
   }
 
   writeReview(e) {
@@ -53,29 +60,38 @@ class NewReviews extends PureComponent {
     const { vacancy } = this.state;
 
     return (
-      <div>
-        <h2>Создание нового отзыва:</h2>
-        <h5>Работодатель:</h5>
-        <a href={vacancy.employer.alternate_url}>{vacancy.employer.name}</a>
-        <h5>Вакансия:</h5>
-        <a href={this.props.urlNewReviews}>{vacancy.name}</a>
-        <h5>Отзыв:</h5>
-        <input type="text" onChange={e => this.writeReview(e)} />
-        <Link to="/reviews" onClick={() => this.writeReviewInDatabase()}>
-          Создать
-        </Link>
-      </div>
+      <>
+        {this.state.incorrectUrl ? (
+          <>
+            <Redirect to="/reviews"></Redirect>;
+          </>
+        ) : (
+          <div>
+            <h2>Создание нового отзыва:</h2>
+            <h5>Работодатель:</h5>
+            <a href={vacancy.employer.alternate_url}>{vacancy.employer.name}</a>
+            <h5>Вакансия:</h5>
+            <a href={this.props.urlNewReviews}>{vacancy.name}</a>
+            <h5>Отзыв:</h5>
+            <input type="text" onChange={e => this.writeReview(e)} />
+            <Link to="/reviews" onClick={() => this.writeReviewInDatabase()}>
+              Создать
+            </Link>
+          </div>
+        )}
+      </>
     );
   }
 }
 
 const mapStateToProps = state => ({
   email: state.email,
-  urlNewReviews: state.urlNewReviews
+  urlNewReviews: state.urlNewReviews,
+  allReviews: state.allReviews
 });
 
 const mapDispatchToProps = {
-  getAllReviewInDatabaseSaga
+  writeNewReviewInReduxSaga
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewReviews);

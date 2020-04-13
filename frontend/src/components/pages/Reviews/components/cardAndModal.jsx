@@ -11,31 +11,22 @@ class CardAndModal extends PureComponent {
 
   componentDidMount() {
     const options = {
-      onOpenStart: () => {
-        console.log("Open Start");
-      },
-      onOpenEnd: () => {
-        console.log("Open End");
-      },
-      onCloseStart: () => {
-        console.log("Close Start");
-      },
-      onCloseEnd: () => {
-        console.log("Close End");
-      },
+      onOpenStart: () => {},
+      onOpenEnd: () => {},
+      onCloseStart: () => {},
+      onCloseEnd: () => {},
       inDuration: 250,
       outDuration: 250,
       opacity: 0.5,
       dismissible: false,
-      startingTop: "4%",
-      endingTop: "30%"
+      startingTop: "2%",
+      endingTop: "15%"
     };
     M.Modal.init(this.Modal, options);
   }
 
   render() {
     const { item, index } = this.props;
-
     return (
       <div>
         <br />
@@ -54,22 +45,19 @@ class CardAndModal extends PureComponent {
           className="modal"
         >
           <div className="modal-content">
-            <h4>
+            <h5>
               Работодатель:
               <a href={item.company.employer.alternate_url}>
                 {" "}
                 {item.companyName}
               </a>
               <p>Комментарии:</p>
-              {item.comments.map((itemComment, indexComment) => {
-                return (
-                  <CommentInModal
-                    item={itemComment}
-                    index={indexComment}
-                  ></CommentInModal>
-                );
-              })}
-            </h4>
+              <ul className="collection">
+                {item.comments.map((itemComment, indexComment) => (
+                  <CommentInModal item={itemComment} index={indexComment} />
+                ))}
+              </ul>
+            </h5>
           </div>
           <div className="modal-footer">
             <a className="modal-close waves-effect waves-green btn-flat">

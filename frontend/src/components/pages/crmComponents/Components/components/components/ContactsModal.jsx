@@ -16,7 +16,7 @@ class ContactsModal extends PureComponent {
           <>
             <input
               type="text"
-              defaultValue={state.contacts}
+              defaultValue={`${state.contacts}`}
               name="contacts"
               onChange={e => writeData(e)}
               style={{ cursor: "text" }}

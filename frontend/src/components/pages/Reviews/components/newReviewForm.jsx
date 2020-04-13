@@ -27,12 +27,14 @@ class NewReviewForm extends PureComponent {
           placeholder="Вставьте URL вакансии"
           onChange={e => this.writeURL(e)}
         />
-        <Link
-          to="/newReviews"
-          onClick={() => this.props.writeNewReviews({ url: this.state.URL })}
-        >
-          Создать
-        </Link>
+        {this.state.URL ? (
+          <Link
+            to="/newReviews"
+            onClick={() => this.props.writeNewReviews({ url: this.state.URL })}
+          >
+            Создать
+          </Link>
+        ) : null}
       </div>
     );
   }

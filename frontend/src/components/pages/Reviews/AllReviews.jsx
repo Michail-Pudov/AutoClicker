@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
-import NewReviewForm from "./components/newReviewForm";
 import { connect } from "react-redux";
+import NewReviewForm from "./components/newReviewForm";
 import CardAndModal from "./components/cardAndModal";
 import { getAllReviewInDatabaseSaga } from "../../../redux/action";
 
@@ -11,17 +11,15 @@ class AllReviews extends PureComponent {
     this.state = {};
   }
 
-  componentDidMount() {
-    this.props.getAllReviewInDatabaseSaga();
-  }
-
   render() {
     return (
-      <div>
-        <NewReviewForm></NewReviewForm>
-        {this.props.allReviews.map((item, index) => {
-          return <CardAndModal item={item} index={index}></CardAndModal>;
-        })}
+      <div className="row">
+        <div className="col s8">
+          <NewReviewForm />
+          {this.props.allReviews.map((item, index) => {
+            return <CardAndModal item={item} index={index} />;
+          })}
+        </div>
       </div>
     );
   }

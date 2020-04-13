@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { vacansiesFetch } from '../../../allFetch/vacansiesFetch';
-import { writeFilters, recordsNewVacansiesSaga } from '../../../redux/action';
+import React from "react";
+import { connect } from "react-redux";
+import { vacansiesFetch } from "../../../allFetch/vacansiesFetch";
+import { writeFilters, recordsNewVacansiesSaga } from "../../../redux/action";
 
-import Vacancy from './components/Vacancy';
-import Preloader from '../../Preloader/Preloader';
+import Vacancy from "./components/Vacancy";
+import Preloader from "../../Preloader/Preloader";
 
 class Vacansies extends React.Component {
   constructor(props) {
@@ -12,11 +12,11 @@ class Vacansies extends React.Component {
 
     this.state = {
       isReady: false,
-      vacansies: [{ name: '' }],
+      vacansies: [{ name: "" }],
       certainVacancy: {
         index: 0,
-        title: '',
-      },
+        title: ""
+      }
     };
   }
 
@@ -25,7 +25,7 @@ class Vacansies extends React.Component {
       const vacansies = await vacansiesFetch(this.props.filters);
       this.setState({
         vacansies,
-        isReady: true,
+        isReady: true
       });
     }
   }
@@ -33,43 +33,53 @@ class Vacansies extends React.Component {
   async componentDidMount() {
     window.scrollTo({
       top: 1000,
-      behavior: 'smooth',
+      behavior: "smooth"
     });
     const vacansies = await vacansiesFetch(this.props.filters);
+    for (let i = 0; i < this.props.userJobs.allVacansies.length; i++) {
+      for (let j = 0; j < vacansies.length; j++) {
+        if (
+          this.props.userJobs.allVacansies[i].vacancy.id === vacansies[j].id
+        ) {
+          vacansies.splice(j, 1);
+        }
+      }
+    }
+
     this.setState({
       vacansies,
-      isReady: true,
+      isReady: true
     });
     window.scrollTo({
       top: 1400,
-      behavior: 'smooth',
+      behavior: "smooth"
     });
   }
 
   openModalWindow(index, title) {
     const certainVacancy = {
       index,
-      title,
+      title
     };
     this.setState({
-      certainVacancy,
+      certainVacancy
     });
   }
 
   async closeModalWindowAndWriteVacansies(index, agreement) {
     const certainVacancy = {
       index: 0,
-      title: '',
+      title: ""
     };
     this.setState({
       modalWindow: false,
-      certainVacancy,
+      certainVacancy
     });
     if (agreement) {
       const vacansies = this.state.vacansies[index];
       this.props.recordsNewVacansiesSaga({
         email: localStorage.email,
-        vacansies,
+        vacansies
       });
     }
   }
@@ -88,7 +98,7 @@ class Vacansies extends React.Component {
             vacansies={certainVacancy}
             openModalWindow={this.openModalWindow.bind(this)}
             closeModalWindowAndWriteVacansies={this.closeModalWindowAndWriteVacansies.bind(
-              this,
+              this
             )}
           />
         ))}
@@ -97,15 +107,15 @@ class Vacansies extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   email: state.email,
   filters: state.filters,
-  userJobs: state.userJobs,
+  userJobs: state.userJobs
 });
 
 const mapDispatchToProps = {
   writeFilters,
-  recordsNewVacansiesSaga,
+  recordsNewVacansiesSaga
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vacansies);

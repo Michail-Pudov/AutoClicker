@@ -1,5 +1,6 @@
-export const newReviewFetch = async (email, review, vacancy) => {
-  let response = await fetch("http://localhost:5000/account/newReview", {
+export const newReviewFetch = async payload => {
+  const { email, review, vacancy } = payload;
+  let response = await fetch("/account/newReview", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8"

@@ -25,7 +25,6 @@ class Header extends PureComponent {
       const instance = M.Sidenav.init(elems, options);
     });
 
-    // M.Sidenav.init(this.Sidenav, options)
   }
 
   userLogout = () => {
@@ -42,7 +41,7 @@ class Header extends PureComponent {
       <nav>
         <div className="nav-wrapper grey lighten-4 ">
           <Link to="/" className="brand-logo grey-text text-darken-4">
-            AutoClicker
+            WorkyHelper
           </Link>
           <Link
             href="#"

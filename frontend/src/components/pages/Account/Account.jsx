@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { getUserJobsSaga } from '../../../redux/action';
 import Statistic from './StatisticCompanents/Statistic';
+import {
+  saveVacancy, linkSize, headingStat, linkBlock,
+} from './Account.module.css';
+import ScrollTo from '../../ScrollTo/ScrollTo';
+
 
 class Account extends React.Component {
   constructor(props) {
@@ -11,20 +16,27 @@ class Account extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    this.props.getUserJobsSaga(localStorage.email);
+  }
+
   render() {
     return (
-      <>
-        <div>
-          <h2>Личный кабинет</h2>
+      <div className="">
+        <ScrollTo />
+        <div className={linkBlock}>
+          <Link className={linkSize} to="/crm">
+            <div className={saveVacancy}>
+              Сохраненные вакансии
+            </div>
+          </Link>
         </div>
-        <div>
-          <Link to="/crm">Сохраненные вакансии</Link>
-          <br />
-          <b> Первый график</b>
-          <br />
+
+        <div className={headingStat}>
+          <h3>Статистика</h3>
           <Statistic />
         </div>
-      </>
+      </div>
     );
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 class SpecializationsAndProfissions extends React.Component {
   constructor(props) {
@@ -10,8 +10,8 @@ class SpecializationsAndProfissions extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="block__specializations input-field col s6">
-          <h4>Выбор специализации</h4>
+        <div className="block__specializations input-field col s8 offset-l2">
+          <h4>Выбор профессиональной области</h4>
           <select
             className="select__specializations browser-default"
             onChange={() => this.props.professions()}
@@ -28,16 +28,17 @@ class SpecializationsAndProfissions extends React.Component {
           </select>
         </div>
         {this.props.state.blockProfessions ? (
-          <div className="block__profissions input-field col s6">
-            <h4>Выбор профессии</h4>
+          <div className="block__profissions input-field col s8 offset-l2">
+            <h4>Выбор специализации</h4>
             <select className="select__professions browser-default">
-              {this.props.state.professions.map(item => (
+              {this.props.state.professions.map((item) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
                 </option>
               ))}
             </select>
           </div>
+
         ) : null}
       </div>
     );

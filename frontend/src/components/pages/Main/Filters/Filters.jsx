@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { writeFilters } from "../../../../redux/action";
+import { writeFilters, getUserJobsSaga } from "../../../../redux/action";
 import {
   fetchAreas,
   fetchDictionaries,
@@ -34,6 +34,7 @@ class Filters extends React.Component {
   }
 
   async componentDidMount() {
+    this.props.getUserJobsSaga(localStorage.email);
     const areas = await fetchAreas();
     const specializations = await fetchSpecializations();
     const dictionaries = await fetchDictionaries();
@@ -112,9 +113,9 @@ class Filters extends React.Component {
                 vacansies: true
               });
             }}
-            className="btn grey lighten-4 grey-text text-darken-4"
+            className="col s6 offset-l3 btn grey lighten-4 grey-text text-darken-4"
           >
-            Сохранить
+            Найти
           </button>
           {this.state.vacansies ? <Vacansies /> : null}
         </div>
@@ -124,7 +125,8 @@ class Filters extends React.Component {
 }
 
 const mapDispatchToProps = {
-  writeFilters
+  writeFilters,
+  getUserJobsSaga
 };
 
 export default connect(null, mapDispatchToProps)(Filters);

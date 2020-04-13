@@ -8,7 +8,6 @@ const mongoose = require("mongoose");
 mongoose.pluralize(null);
 const User = require("./models/user");
 
-
 async function createBase() {
   await mongoose.connect("mongodb://localhost:27017/AutoClicker", {
     useNewUrlParser: true,
@@ -25,58 +24,65 @@ async function createBase() {
   let result = await response.json();
 
   function randomTracker() {
-    const timeArr = []
-    const stages = Math.round(Math.random() * 5)+1
+    const timeArr = [];
+    const stages = Math.round(Math.random() * 5) + 1;
     for (let index = 0; index < stages; index++) {
-      let newDate = new Date(2020, index, Math.round(Math.random() * 30))
-      timeArr.push(newDate)
+      let newDate = new Date(2020, index, Math.round(Math.random() * 30));
+      timeArr.push(newDate);
     }
-    return timeArr
+    return timeArr;
   }
 
-
-  console.log(result.items);
-  const arrvacansy = []
-  for (let indexVacancy = 0; indexVacancy < result.items.length; indexVacancy++) {
+  const arrvacansy = [];
+  for (
+    let indexVacancy = 0;
+    indexVacancy < result.items.length;
+    indexVacancy++
+  ) {
     let vacan = {
       vacancy: await result.items[indexVacancy],
       date: new Date(),
       timeTracker: randomTracker(),
-      status: 'Жду ответа',
-      comment: '',
+      status: "Жду ответа",
+      comment: "",
       contacts: await result.items[indexVacancy].contacts
-    }
-    console.log(await vacan.timeTracker);
-    
-    arrvacansy.push(await vacan)
+    };
+
+    arrvacansy.push(await vacan);
   }
   for (let indexUser = 0; indexUser < 10; indexUser++) {
-
     let passwordHash = await bcrypt.hash(String(indexUser), saltRounds);
-    // await User.create({
-    //   email: indexUser,
-    //   password: passwordHash,
-    //   allVacansies: await arrvacansy,
-    //   weResponded: await arrvacansy.slice([Math.round(Math.random()*99)], [Math.round(Math.random()*99)]),
-    //   testTaskCame: await arrvacansy.slice([24], [32]),
-    //   iGotAnInvitationForAnInterview: await arrvacansy.slice([33], [57]),
-    //   needToCall: await arrvacansy.slice([58], [72]),
-    //   rejectionCame: await arrvacansy.slice([73], [84]),
-    //   theOfferCame: await arrvacansy.slice([85], [99])
 
     await User.create({
       email: indexUser,
       password: passwordHash,
       allVacansies: await arrvacansy,
-      weResponded: await arrvacansy.slice([Math.round(Math.random() * 49)], [Math.round(Math.random() * 20 + 50)]),
-      testTaskCame: await arrvacansy.slice([Math.round(Math.random() * 49)], [Math.round(Math.random() * 20 + 50)]),
-      iGotAnInvitationForAnInterview: await arrvacansy.slice([Math.round(Math.random() * 49)], [Math.round(Math.random() * 20 + 50)]),
-      needToCall: await arrvacansy.slice([Math.round(Math.random() * 49)], [Math.round(Math.random() * 20 + 50)]),
-      closedVacancies: await arrvacansy.slice([Math.round(Math.random() * 49)], [Math.round(Math.random() * 20 + 50)]),
-      theOfferCame: await arrvacansy.slice([Math.round(Math.random() * 49)], [Math.round(Math.random() * 20 + 50)]),
+      weResponded: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      ),
+      testTaskCame: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      ),
+      iGotAnInvitationForAnInterview: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      ),
+      needToCall: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      ),
+      closedVacancies: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      ),
+      theOfferCame: await arrvacansy.slice(
+        [Math.round(Math.random() * 49)],
+        [Math.round(Math.random() * 20 + 50)]
+      )
     });
   }
-
 
   await mongoose.disconnect();
 }
