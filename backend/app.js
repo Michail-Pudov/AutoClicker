@@ -10,6 +10,7 @@ const indexRouter = require("./routes/index");
 const accountRouter = require("./routes/account");
 const config = require("config");
 const app = express();
+require("dotenv").config();
 
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
