@@ -1,5 +1,5 @@
 # worky-helper
-Какой-то текст
+CRM for HeadHunter is an application with which you can track all your activity on hh: what you responded to, where you were invited, and where you refused and keep all these statistics handy.
 
 # Technologies:
 * React
