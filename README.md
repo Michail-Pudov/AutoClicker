@@ -2,6 +2,11 @@
 Какой-то текст
 
 # Technologies:
+* React
+* Redux
+* Redux-Saga
+* Materialize
+* D3.js
 * Node.Js
 * Express JS
 * MongoDB
