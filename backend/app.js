@@ -67,9 +67,9 @@ const start = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true
     });
-    app.listen(process.env.PORT || 3000, () =>
-      console.log(`App has been started on ${PORT}`)
-    );
+    // app.listen(process.env.PORT || 3000, () =>
+    //   console.log(`App has been started on ${PORT}`)
+    // );
   } catch (e) {
     console.log("Server Error", e.message);
     process.exit(1);

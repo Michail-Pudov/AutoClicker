@@ -33,7 +33,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="row" style={{ marginTop: "15vh", marginBottom: "20vh" }}>
+      <div className={classes.authcardContainer}>
         <div className="">
         <div className={classes.authcard}>
       <div className="log">

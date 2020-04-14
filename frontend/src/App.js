@@ -16,19 +16,19 @@ import AllReviews from './components/pages/Reviews/AllReviews';
 import NewReviews from './components/pages/Reviews/components/NewReviews';
 
 const mainBackground = {
-  marginTop: "-2%",
+  marginTop: '-2%',
   background:
-    //1 https://sciencemagic.ru/wp-content/uploads/2016/01/unemployed.jpg
-    //2 https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
-    //3 https://images.unsplash.com/photo-1503551723145-6c040742065b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
-    //4 https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
-    //5 https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
-    //6 https://images.unsplash.com/photo-1468971050039-be99497410af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80
+    // 1 https://sciencemagic.ru/wp-content/uploads/2016/01/unemployed.jpg
+    // 2 https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
+    // 3 https://images.unsplash.com/photo-1503551723145-6c040742065b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
+    // 4 https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
+    // 5 https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
+    // 6 https://images.unsplash.com/photo-1468971050039-be99497410af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80
     'no-repeat url("https://images.unsplash.com/photo-1468971050039-be99497410af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80")',
-  backgroundSize: "cover"
+  backgroundSize: 'cover',
 };
 const mainBackgroundWhite = {
-  background: "white"
+  background: 'white',
 };
 
 class App extends React.Component {
@@ -36,8 +36,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       backgroundStyle: {
-        background: mainBackground
-      }
+        background: mainBackground,
+      },
     };
   }
 
@@ -45,16 +45,16 @@ class App extends React.Component {
     this.props.getUserJobsSaga(localStorage.email);
     this.props.getAllReviewInDatabaseSaga();
     if (
-      this.props.location.pathname === "/" ||
-      this.props.location.pathname === "/login" ||
-      this.props.location.pathname === "/registration"
+      this.props.location.pathname === '/'
+      || this.props.location.pathname === '/login'
+      || this.props.location.pathname === '/registration'
     ) {
       this.setState({
-        backgroundStyle: mainBackground
+        backgroundStyle: mainBackground,
       });
     } else {
       this.setState({
-        backgroundStyle: mainBackgroundWhite
+        backgroundStyle: mainBackgroundWhite,
       });
     }
   }
@@ -62,9 +62,9 @@ class App extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       if (
-        this.props.location.pathname === "/" ||
-        this.props.location.pathname === "/login" ||
-        this.props.location.pathname === "/registration"
+        this.props.location.pathname === '/'
+        || this.props.location.pathname === '/login'
+        || this.props.location.pathname === '/registration'
       ) {
         this.setState({
           backgroundStyle: mainBackground,
@@ -111,6 +111,8 @@ class App extends React.Component {
                       <NewReviews />
                     </Route>
                     <Route exact path="/crm" component={CRM} />
+                    <Footer />
+
                   </>
                 ) : (
                   <Redirect to="/login" />
@@ -118,7 +120,6 @@ class App extends React.Component {
               </Switch>
             </div>
           </div>
-          <Footer />
         </div>
       </>
     );

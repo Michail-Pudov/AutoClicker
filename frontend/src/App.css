@@ -1,4 +1,4 @@
-@import '~materialize-css/dist/css/materialize.min.css';
+@import "~materialize-css/dist/css/materialize.min.css";
 
 .container {
   max-width: 1900px;
@@ -22,6 +22,7 @@ select:focus {
 }
 
 .body {
+  min-width: 310px;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -57,6 +58,42 @@ select:focus {
   font-size: medium;
 }
 
+
+
+.home {
+  float: right;
+  margin: 15vh 100px 50px;
+  width: 300px;
+}
+
+.borderTextH1 {
+  padding: 10px;
+  margin: 0% auto 7%;
+  color: white;
+  text-align: center;
+  font-size: 35px;
+  width: 90%;
+  border: white 5px solid;
+  border-radius: 15px;
+  background: rgba(39, 38, 102, 0.5);
+  box-shadow: 0 0 60px #0487f1;
+  text-shadow: 0 0 15px #12ccf4;
+}
+
+.borderTextH2 {
+  text-align: center;
+  color: white;
+  padding: 12px;
+  margin: 0 auto 20px;
+  font-size: 30px;
+  width: 220px;
+  border: white 5px solid;
+  border-radius: 15px;
+  background: rgba(39, 38, 102, 0.5);
+  box-shadow: 0 0 50px #0487f1;
+  text-shadow: 0 0 15px #12ccf4;
+}
+
 .pulse {
   margin: auto !important;
   align-items: center !important;
@@ -65,46 +102,13 @@ select:focus {
   /*background-color: #94ABE3 !important;*/
   border: white 5px solid !important;
   border-radius: 50% !important;
-  background: rgba(6, 140, 255, 0.3) !important;
-  box-shadow: 0 0 5vw #0487f1 !important;
-  text-shadow: 0 0 1.5vw #12ccf4 !important;
+  background: rgba(39, 38, 102, 0.5) !important;
+  box-shadow: 0 0 50px #0487f1 !important;
+  text-shadow: 0 0 25px #12ccf4 !important;
 }
 .pulse:before {
   background-color: #f5f5f5 !important;
-}
-
-.home {
-  float: right;
-  margin: 8% 3% 10%;
-  width: 30%;
-}
-
-.borderTextH1 {
-  padding: 10px;
-  margin: 0% auto 7%;
-  color: white;
-  text-align: center;
-  font-size: 3vw;
-  width: 90%;
-  border: white 5px solid;
-  border-radius: 15px;
-  background: rgba(6, 140, 255, 0.3);
-  box-shadow: 0 0 7vw #0487f1;
-  text-shadow: 0 0 1.5vw #12ccf4;
-}
-
-.borderTextH2 {
-  text-align: center;
-  color: white;
-  padding: 12px;
-  margin: 0 auto 20px;
-  font-size: 2.5vw;
-  width: 220px;
-  border: white 5px solid;
-  border-radius: 15px;
-  background: rgba(6, 140, 255, 0.3);
-  box-shadow: 0 0 7vw #0487f1;
-  text-shadow: 0 0 1.5vw #12ccf4;
+  box-shadow: 0 0 70px #0487f1 !important;
 }
 
 .buttonIcon {
@@ -123,13 +127,11 @@ select:focus {
 }
 
 .buttonSearchOfHome {
-  border: white 1px solid;
   width: 80px;
   margin: 0% auto 0%;
 }
 
 .shadow {
-  /* box-shadow: 0 0 10px rgb(149, 152, 160); */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
@@ -139,4 +141,29 @@ select:focus {
 
 .reg {
   color: white;
+}
+
+@media screen and (max-width: 992px) {
+  .home {
+    margin: 15vh auto 50px;
+    width: 300px;
+    float: none;
+  }
+  .borderTextH2 {
+    display: none;
+  }
+  .borderTextH1 {
+    background: rgba(39, 38, 102, 0.9);
+    margin-bottom: 150px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  /*.main {*/
+  /*  flex: 1 0 auto;*/
+  /*}*/
 }
