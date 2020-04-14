@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  withRouter, Route, Switch, Redirect,
-} from 'react-router-dom';
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Registration from './components/Auth/Registration/Registration';
 import Login from './components/Auth/Login/Login';
@@ -25,10 +23,10 @@ const mainBackground = {
     // 5 https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80
     // 6 https://images.unsplash.com/photo-1468971050039-be99497410af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80
     'no-repeat url("https://images.unsplash.com/photo-1468971050039-be99497410af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80")',
-  backgroundSize: 'cover',
+  backgroundSize: 'cover'
 };
 const mainBackgroundWhite = {
-  background: 'white',
+  background: 'white'
 };
 
 class App extends React.Component {
@@ -36,8 +34,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       backgroundStyle: {
-        background: mainBackground,
-      },
+        background: mainBackground
+      }
     };
   }
 
@@ -45,16 +43,16 @@ class App extends React.Component {
     this.props.getUserJobsSaga(localStorage.email);
     this.props.getAllReviewInDatabaseSaga();
     if (
-      this.props.location.pathname === '/'
-      || this.props.location.pathname === '/login'
-      || this.props.location.pathname === '/registration'
+      this.props.location.pathname === '/' ||
+      this.props.location.pathname === '/login' ||
+      this.props.location.pathname === '/registration'
     ) {
       this.setState({
-        backgroundStyle: mainBackground,
+        backgroundStyle: mainBackground
       });
     } else {
       this.setState({
-        backgroundStyle: mainBackgroundWhite,
+        backgroundStyle: mainBackgroundWhite
       });
     }
   }
@@ -62,16 +60,16 @@ class App extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       if (
-        this.props.location.pathname === '/'
-        || this.props.location.pathname === '/login'
-        || this.props.location.pathname === '/registration'
+        this.props.location.pathname === '/' ||
+        this.props.location.pathname === '/login' ||
+        this.props.location.pathname === '/registration'
       ) {
         this.setState({
-          backgroundStyle: mainBackground,
+          backgroundStyle: mainBackground
         });
       } else {
         this.setState({
-          backgroundStyle: mainBackgroundWhite,
+          backgroundStyle: mainBackgroundWhite
         });
       }
     }
@@ -90,9 +88,9 @@ class App extends React.Component {
                 <Route
                   exact
                   path="/registration"
-                  render={(props) => <Registration {...props} />}
+                  render={props => <Registration {...props} />}
                 />
-                <Route path="/login" render={(props) => <Login {...props} />} />
+                <Route path="/login" render={props => <Login {...props} />} />
                 {storage ? (
                   <>
                     <Route exact path="/">
@@ -111,8 +109,6 @@ class App extends React.Component {
                       <NewReviews />
                     </Route>
                     <Route exact path="/crm" component={CRM} />
-                    <Footer />
-
                   </>
                 ) : (
                   <Redirect to="/login" />
@@ -120,18 +116,19 @@ class App extends React.Component {
               </Switch>
             </div>
           </div>
+          {storage && <Footer />}
         </div>
       </>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  email: state.email,
+const mapStateToProps = state => ({
+  email: state.email
 });
 const mapDispatchToProps = {
   getUserJobsSaga,
-  getAllReviewInDatabaseSaga,
+  getAllReviewInDatabaseSaga
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
