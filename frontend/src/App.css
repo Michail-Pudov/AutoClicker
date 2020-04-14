@@ -1,4 +1,4 @@
-@import "~materialize-css/dist/css/materialize.min.css";
+@import '~materialize-css/dist/css/materialize.min.css';
 
 .container {
   max-width: 1900px;
@@ -58,14 +58,16 @@ select:focus {
 }
 
 .pulse {
-  width: 5vw !important;
-  height: 5vw !important;
+  margin: auto !important;
+  align-items: center !important;
+  width: 80px !important;
+  height: 80px !important;
   /*background-color: #94ABE3 !important;*/
-  border: white 4px solid !important;
+  border: white 5px solid !important;
   border-radius: 50% !important;
   background: rgba(6, 140, 255, 0.3) !important;
-  box-shadow: 0 0 5vw #0487f1;
-  text-shadow: 0 0 1.5vw #12ccf4;
+  box-shadow: 0 0 5vw #0487f1 !important;
+  text-shadow: 0 0 1.5vw #12ccf4 !important;
 }
 .pulse:before {
   background-color: #f5f5f5 !important;
@@ -95,7 +97,7 @@ select:focus {
   text-align: center;
   color: white;
   padding: 12px;
-  margin: 0% auto 7%;
+  margin: 0 auto 20px;
   font-size: 2.5vw;
   width: 220px;
   border: white 5px solid;
@@ -104,13 +106,25 @@ select:focus {
   box-shadow: 0 0 7vw #0487f1;
   text-shadow: 0 0 1.5vw #12ccf4;
 }
+
+.buttonIcon {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
 .btn-floating.btn-large i {
-  line-height: 5vw !important;
-  font-size: 3.2vw;
+  vertical-align: text-top;
+  line-height: 37px;
+}
+
+.btn-large i {
+  font-size: 47px;
 }
 
 .buttonSearchOfHome {
-  text-align: center;
+  border: white 1px solid;
+  width: 80px;
   margin: 0% auto 0%;
 }
 
@@ -126,4 +140,3 @@ select:focus {
 .reg {
   color: white;
 }
-
