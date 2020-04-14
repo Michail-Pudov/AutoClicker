@@ -35,7 +35,15 @@ npm start
 `
 
 # MVP Functionality
-* ...
+* Registration and authorization
+* Selection of various filters for job search
+* Search for vacancies by given filters
+* View suitable vacancies and the ability to add them to your account
+* View various metrics and analytics for your vacancies
+* Kanban board with the ability to: view, edit and drag cards with vacancies between categories
+* View employer reviews and specific job openings
+* Ability to leave your feedback about the vacancy and the employer
+
 
 # Team
 * [Eldar Sufiyanov](https://github.com/Ellpm)
@@ -46,4 +54,7 @@ npm start
 
 
 # In the plans
-Create new extensions
+* Improving existing functionality
+* Adding new metrics to your account
+* Improved animations and transitions
+* Improving search results for vacancies
