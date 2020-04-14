@@ -59,3 +59,5 @@ npm start
 * Improved animations and transitions
 * Improving search results for vacancies
 * Add the ability to view jobs on the map
+* Cover letter templates
+* The ability to share achievements with friends
