@@ -58,3 +58,4 @@ npm start
 * Adding new metrics to your account
 * Improved animations and transitions
 * Improving search results for vacancies
+* Add the ability to view jobs on the map
