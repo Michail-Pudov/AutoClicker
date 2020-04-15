@@ -43,6 +43,17 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+
+// if (process.env.NODE_ENV === 'production') {
+//   app.use('/', express.static(path.join(__dirname, 'build')));
+//   app.get("/*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "build", "index.html"));
+//   });
+// }
+
+
+
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -67,6 +78,7 @@ const start = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true
     });
+    // закоментить в dev режиме этот сервер
     app.listen(process.env.PORT || 3000, () =>
       console.log(`App has been started on ${PORT}`)
     );

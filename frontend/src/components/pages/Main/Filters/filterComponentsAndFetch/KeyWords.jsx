@@ -11,11 +11,11 @@ class KeyWords extends React.Component {
   render() {
     return (
       <div className="row">
-        <h4 className="col s8 offset-l2">Ключевые слова</h4>
-        <div className="input-field col s4 offset-l2">
+        <h4 className="col s12 offset-l2">Ключевые слова</h4>
+        <div className="input-field col l4 m6 s12 offset-l2">
           <input type="text" className="keyWords" name="keyWords" placeholder="Введите теги" />
         </div>
-        <div className="input-field col s4">
+        <div className="input-field col l4 m6 s12">
           <select name="" className="select__vacancy_search_fields browser-default">
             {this.props.dictionaries.vacancy_search_fields
               .map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}

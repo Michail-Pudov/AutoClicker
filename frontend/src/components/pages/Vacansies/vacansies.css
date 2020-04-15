@@ -1,0 +1,23 @@
+.card-title {
+  line-height: normal !important;
+}
+
+@media screen and (max-width: 600px) {
+  .card-title {
+    font-size: 1.2rem !important;
+    line-height: normal !important;
+  }
+  .card .card-content {
+    padding: 5px;
+  }
+  .row {
+    margin-bottom: 10px;
+  }
+  .modal {
+    width: 90%;
+  }
+  .modal .modal-content {
+    padding: 5px;
+  }
+}
+

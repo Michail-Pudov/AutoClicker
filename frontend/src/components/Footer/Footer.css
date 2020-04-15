@@ -1,0 +1,5 @@
+@media screen and (max-width: 660px){
+  .page-footer {
+    display: none;
+  }
+}
