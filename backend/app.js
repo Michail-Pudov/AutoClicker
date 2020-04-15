@@ -67,6 +67,7 @@ const start = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true
     });
+    // закоментить в dev режиме этот сервер
     app.listen(process.env.PORT || 3000, () =>
       console.log(`App has been started on ${PORT}`)
     );

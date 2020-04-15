@@ -10,7 +10,7 @@ class SpecializationsAndProfissions extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="block__specializations input-field col s8 offset-l2">
+        <div className="block__specializations input-field col l8 m12 s12 offset-l2">
           <h4>Выбор профессиональной области</h4>
           <select
             className="select__specializations browser-default"
@@ -28,7 +28,7 @@ class SpecializationsAndProfissions extends React.Component {
           </select>
         </div>
         {this.props.state.blockProfessions ? (
-          <div className="block__profissions input-field col s8 offset-l2">
+          <div className="block__profissions input-field col l8 m12 s12 offset-l2">
             <h4>Выбор специализации</h4>
             <select className="select__professions browser-default">
               {this.props.state.professions.map((item) => (
