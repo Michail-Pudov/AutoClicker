@@ -13,5 +13,11 @@
   .row {
     margin-bottom: 10px;
   }
+  .modal {
+    width: 90%;
+  }
+  .modal .modal-content {
+    padding: 5px;
+  }
 }
 

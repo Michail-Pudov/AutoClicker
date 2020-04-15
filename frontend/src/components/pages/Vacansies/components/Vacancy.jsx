@@ -97,7 +97,7 @@ class Vacancy extends Component {
               className="modal"
             >
               <div className="modal-content">
-                <h4>{item.name}</h4>
+                <h5>{item.name}</h5>
                 <br />
                 <p>Хотите добавить эту вакансию в личный кабинет?</p>
               </div>
