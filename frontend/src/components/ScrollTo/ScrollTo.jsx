@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import arrow from "../../up.png";
+import React, { Component } from 'react';
+import arrow from '../../up.png';
 
 class ScrollTo extends Component {
   render() {
@@ -7,13 +7,11 @@ class ScrollTo extends Component {
       <div>
         <div className="arrowImage">
           <img
-            style={{ cursor: "pointer" }}
-            onClick={() =>
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-              })
-            }
+            style={{ cursor: 'pointer' }}
+            onClick={() => window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            })}
             src={arrow}
             alt="arrow"
           />

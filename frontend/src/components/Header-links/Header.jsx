@@ -88,29 +88,29 @@ class Header extends PureComponent {
               </ul>
               <ul className="sidenav" id="mobile-demo">
                 <li>
-                  <Link to="/" className="grey-text text-darken-4">
+                  <Link to="/" className="sidenav-close grey-text text-darken-4">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/search" className="grey-text text-darken-4">
+                  <Link to="/search" className="sidenav-close grey-text text-darken-4">
                     Search
                   </Link>
                 </li>
                 <li>
-                  <Link to="/account" className="grey-text text-darken-4">
+                  <Link to="/account" className="sidenav-close grey-text text-darken-4">
                     Account
                   </Link>
                 </li>
                 <li>
-                  <Link to="/reviews" className="grey-text text-darken-4">
+                  <Link to="/reviews" className="sidenav-close grey-text text-darken-4">
                     Reviews
                   </Link>
                 </li>
                 <li>
                   <Link
                     to="/"
-                    className="grey-text text-darken-4"
+                    className="sidenav-close grey-text text-darken-4"
                     onClick={() => {
                       this.userLogout();
                       this.props.addUser(this.state.email);
@@ -137,12 +137,12 @@ class Header extends PureComponent {
               </ul>
               <ul className="sidenav" id="mobile-demo">
                 <li>
-                  <Link to="/registration" className="grey-text text-darken-4">
+                  <Link to="/registration" className="sidenav-close grey-text text-darken-4">
                     Registration
                   </Link>
                 </li>
                 <li>
-                  <Link to="/login" className="grey-text text-darken-4">
+                  <Link to="/login" className="sidenav-close grey-text text-darken-4">
                     Login
                   </Link>
                 </li>

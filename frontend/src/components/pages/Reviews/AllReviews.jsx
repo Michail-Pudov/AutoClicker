@@ -1,8 +1,8 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import NewReviewForm from "./components/newReviewForm";
-import CardAndModal from "./components/cardAndModal";
-import { getAllReviewInDatabaseSaga } from "../../../redux/action";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import NewReviewForm from './components/newReviewForm';
+import CardAndModal from './components/cardAndModal';
+import { getAllReviewInDatabaseSaga } from '../../../redux/action';
 
 class AllReviews extends PureComponent {
   constructor(props) {
@@ -14,19 +14,17 @@ class AllReviews extends PureComponent {
   render() {
     return (
       <div className="row">
-        <div className="col s8">
+        <div className="col s12 m10 l8 offset-l1 offset-m1">
           <NewReviewForm />
-          {this.props.allReviews.map((item, index) => {
-            return <CardAndModal item={item} index={index} />;
-          })}
+          {this.props.allReviews.map((item, index) => <CardAndModal item={item} index={index} />)}
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  allReviews: state.allReviews
+const mapStateToProps = (state) => ({
+  allReviews: state.allReviews,
 });
 
 const mapDispatchToProps = { getAllReviewInDatabaseSaga };

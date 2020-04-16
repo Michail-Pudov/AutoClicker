@@ -10,7 +10,7 @@ class Home extends Component {
         <div className="buttonSearchOfHome">
           <Link to="/search" className="pulse btn-floating btn-large">
             <div className="buttonIcon">
-            <i className="material-icons">search</i>
+              <i className="material-icons">search</i>
             </div>
           </Link>
         </div>
