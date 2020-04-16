@@ -1,17 +1,17 @@
-import React from "react";
-import M from "materialize-css";
-import { connect } from "react-redux";
-import CardTitle from "./components/cardTitle";
-import ModalTitle from "./components/ModalTitle";
-import EmployerModal from "./components/EmployerModal";
-import SalaryCard from "./components/SalaryCard";
-import SalaryModal from "./components/SalaryModal";
-import SnippetModal from "./components/SnippetModal";
-import AddresModal from "./components/AddresModal";
-import CommentModal from "./components/CommentModal";
-import ContactsModal from "./components/ContactsModal";
-import StatusModal from "./components/StatusModal";
-import { vacancyStatusChangeSaga } from "../../../../../redux/action";
+import React from 'react';
+import M from 'materialize-css';
+import { connect } from 'react-redux';
+import CardTitle from './components/cardTitle';
+import ModalTitle from './components/ModalTitle';
+import EmployerModal from './components/EmployerModal';
+import SalaryCard from './components/SalaryCard';
+import SalaryModal from './components/SalaryModal';
+import SnippetModal from './components/SnippetModal';
+import AddresModal from './components/AddresModal';
+import CommentModal from './components/CommentModal';
+import ContactsModal from './components/ContactsModal';
+import StatusModal from './components/StatusModal';
+import { vacancyStatusChangeSaga } from '../../../../../redux/action';
 
 class ModalAndCard extends React.Component {
   constructor(props) {
@@ -21,9 +21,9 @@ class ModalAndCard extends React.Component {
       writeComment: false,
       writeContacts: false,
       writeStatus: false,
-      comment: "",
-      contacts: "",
-      status: ""
+      comment: '',
+      contacts: '',
+      status: '',
     };
   }
 
@@ -31,7 +31,7 @@ class ModalAndCard extends React.Component {
     this.setState({
       comment: this.props.item.comment,
       contacts: this.props.item.contacts,
-      status: this.props.item.status
+      status: this.props.item.status,
     });
 
     const options = {
@@ -43,8 +43,8 @@ class ModalAndCard extends React.Component {
       outDuration: 250,
       opacity: 0.5,
       dismissible: false,
-      startingTop: "4%",
-      endingTop: "30%"
+      startingTop: '1%',
+      endingTop: '10%',
     };
     M.Modal.init(this.Modal, options);
   }
@@ -55,30 +55,32 @@ class ModalAndCard extends React.Component {
 
   iWantToRecordInformation(e) {
     this.setState({
-      [e.target.name]: true
+      [e.target.name]: true,
     });
   }
 
   writeData(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
 
   saveData(e) {
     this.setState({
-      [e.target.name]: false
+      [e.target.name]: false,
     });
   }
 
   render() {
-    const { item, index, keyArray, userJobs, indexInArray } = this.props;
+    const {
+      item, index, keyArray, userJobs, indexInArray,
+    } = this.props;
     return (
       <li className="collection-item">
         <CardTitle item={item} index={index} />
         <SalaryCard item={item} index={index} />
         <div
-          ref={Modal => {
+          ref={(Modal) => {
             this.Modal = Modal;
           }}
           id={index}
@@ -94,7 +96,7 @@ class ModalAndCard extends React.Component {
               state={this.state}
               writeData={this.writeData.bind(this)}
               iWantToRecordInformation={this.iWantToRecordInformation.bind(
-                this
+                this,
               )}
               saveData={this.saveData.bind(this)}
             />
@@ -102,7 +104,7 @@ class ModalAndCard extends React.Component {
               state={this.state}
               writeData={this.writeData.bind(this)}
               iWantToRecordInformation={this.iWantToRecordInformation.bind(
-                this
+                this,
               )}
               saveData={this.saveData.bind(this)}
             />
@@ -110,7 +112,7 @@ class ModalAndCard extends React.Component {
               state={this.state}
               writeData={this.writeData.bind(this)}
               iWantToRecordInformation={this.iWantToRecordInformation.bind(
-                this
+                this,
               )}
               saveData={this.saveData.bind(this)}
             />
@@ -128,8 +130,8 @@ class ModalAndCard extends React.Component {
                   changes: {
                     comment: this.state.comment,
                     contacts: this.state.contacts,
-                    status: this.state.status
-                  }
+                    status: this.state.status,
+                  },
                 });
               }}
             >
@@ -142,13 +144,13 @@ class ModalAndCard extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   email: state.email,
-  userJobs: state.userJobs
+  userJobs: state.userJobs,
 });
 
 const mapDispatchToProps = {
-  vacancyStatusChangeSaga
+  vacancyStatusChangeSaga,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalAndCard);

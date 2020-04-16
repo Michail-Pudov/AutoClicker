@@ -1,41 +1,33 @@
 @import "~materialize-css/dist/css/materialize.min.css";
-
 .container {
   max-width: 1900px;
   width: 90%;
 }
-
 nav .brand-logo {
   margin-left: 20px;
 }
-
 input:focus {
   border-bottom: 1px solid #94abe3 !important;
   box-shadow: 0 1px 0 0 #94abe3 !important;
 }
-
 select {
   border: 1px solid lightgray !important;
 }
 select:focus {
   outline: 1px solid #94abe3 !important;
 }
-
 .body {
   min-width: 310px;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
-
 .main {
   flex: 1 0 auto;
 }
-
 .vacansiesCollection {
   margin-top: 80px;
 }
-
 .arrowImage img {
   bottom: 2%;
   right: 2%;
@@ -48,17 +40,34 @@ select:focus {
   display: flex;
   justify-content: center;
 }
-
 .tableItem {
   height: 500px;
   overflow: auto;
+}
+.collection .collection-item {
+  padding: 5px !important;
+}
+.collection.with-header .collection-header {
+  padding: 10px 15px;
+  height: 95px;
+}
+.cardHeaderText {
+  font-size: 1.7rem;
+  vertical-align: center;
+}
+.tableItemText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tableItemText:hover {
+  white-space: normal;
+  overflow: visible;
 }
 
 .textModal {
   font-size: medium;
 }
-
-
 
 .home {
   float: right;
@@ -93,7 +102,6 @@ select:focus {
   box-shadow: 0 0 50px #0487f1;
   text-shadow: 0 0 15px #12ccf4;
 }
-
 .pulse {
   margin: auto !important;
   align-items: center !important;
@@ -163,7 +171,10 @@ select:focus {
     width: 100% !important;
     height: 100% !important;
   }
-  /*.main {*/
-  /*  flex: 1 0 auto;*/
-  /*}*/
+  .row .col {
+    padding: 1px;
+  }
+  .arrowImage {
+    display: none;
+  }
 }

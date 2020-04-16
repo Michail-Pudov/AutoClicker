@@ -1,20 +1,20 @@
-import React, { PureComponent } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { writeNewReviews } from "../../../../redux/action";
+import React, { PureComponent } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { writeNewReviews } from '../../../../redux/action';
 
 class NewReviewForm extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      URL: ""
+      URL: '',
     };
   }
 
   writeURL(e) {
     this.setState({
-      URL: e.target.value
+      URL: e.target.value,
     });
   }
 
@@ -25,7 +25,7 @@ class NewReviewForm extends PureComponent {
         <input
           type="text"
           placeholder="Вставьте URL вакансии"
-          onChange={e => this.writeURL(e)}
+          onChange={(e) => this.writeURL(e)}
         />
         {this.state.URL ? (
           <Link
@@ -40,10 +40,10 @@ class NewReviewForm extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {
-  writeNewReviews
+  writeNewReviews,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewReviewForm);

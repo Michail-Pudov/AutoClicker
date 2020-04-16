@@ -35,24 +35,22 @@ app.use(express.static(`${__dirname}/build`));
 app.use("/", indexRouter);
 
 app.use("/account", accountRouter);
+
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-
-// if (process.env.NODE_ENV === 'production') {
-//   app.use('/', express.static(path.join(__dirname, 'build')));
+// if (process.env.NODE_ENV === "production") {
+//   app.use("/", express.static(path.join(__dirname, "build")));
 //   app.get("/*", (req, res) => {
 //     res.sendFile(path.resolve(__dirname, "build", "index.html"));
 //   });
 // }
-
-
-
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -78,7 +76,7 @@ const start = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true
     });
-    // закоментить в dev режиме этот сервер
+
     app.listen(process.env.PORT || 3000, () =>
       console.log(`App has been started on ${PORT}`)
     );

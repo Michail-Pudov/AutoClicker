@@ -10,7 +10,7 @@ class CardTitle extends PureComponent {
   render() {
     const { item, index } = this.props;
     return (
-      <div className="">
+      <div className="tableItemText">
         <a
           className="modal-trigger"
           data-target={index}
